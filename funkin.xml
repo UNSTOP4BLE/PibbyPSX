@@ -124,13 +124,6 @@
 			<dir name = "week7">
 				<!-- Background art -->
 				<file name = "back.arc" type = "data" source = "iso/week7/back.arc"/>
-				
-				<!-- Ugh charts -->
-				<file name = "7.1n.cht" type = "data" source = "iso/chart/-hard.json.cht"/>
-				<!-- Guns charts -->
-				<file name = "7.2n.cht" type = "data" source = "iso/chart/-hard.json.cht"/>
-				<!-- Stress charts -->
-				<file name = "7.3n.cht" type = "data" source = "iso/chart/-hard.json.cht"/>
 			</dir>
 	
 			<!-- Character assets -->
