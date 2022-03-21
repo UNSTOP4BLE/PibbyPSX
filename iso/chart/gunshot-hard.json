@@ -1902,13 +1902,6 @@
 						61312.5,
 						3,
 						0
-					],
-					[
-						60000,
-						-1,
-						"Blammed Lights",
-						"2",
-						""
 					]
 				],
 				"mustHitSection": true
@@ -2297,13 +2290,6 @@
 						73406.25,
 						3,
 						0
-					],
-					[
-						72000,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
 					]
 				],
 				"mustHitSection": false

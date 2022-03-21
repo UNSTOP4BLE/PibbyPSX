@@ -3976,23 +3976,6 @@
 			{
 				"sectionNotes": [
 					[
-						84357.1428571429,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					]
-				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"mustHitSection": true,
-				"changeBPM": false,
-				"bpm": 339
-			},
-			{
-				"sectionNotes": [
-					[
 						84571.4285714286,
 						2,
 						0,
@@ -4768,13 +4751,6 @@
 						102571.428571429,
 						0,
 						178.571428571429
-					],
-					[
-						102571.428571429,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
 					]
 				],
 				"typeOfSection": 0,

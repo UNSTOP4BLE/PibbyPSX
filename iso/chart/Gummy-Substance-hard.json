@@ -6,20 +6,6 @@
 			{
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
-				"sectionNotes": [
-					[
-						1.97472353870458,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					]
-				],
-				"mustHitSection": false
-			},
-			{
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
 				"sectionNotes": [],
 				"mustHitSection": true
 			},
@@ -124,20 +110,6 @@
 						3,
 						0,
 						"Hurt Note"
-					],
-					[
-						8866.50868878357,
-						-1,
-						"Opponent_Fade",
-						"100",
-						"100"
-					],
-					[
-						8850.71090047393,
-						-1,
-						"Blammed Lights",
-						"4",
-						"100"
 					]
 				],
 				"mustHitSection": false
@@ -217,13 +189,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						10110.5845181675,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
 					]
 				],
 				"mustHitSection": false
@@ -1707,13 +1672,6 @@
 				"sectionNotes": [
 					[
 						40442.3380726698,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						40442.3380726698,
 						0,
 						0,
 						"Glitch"
@@ -1759,13 +1717,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						41074.2496050553,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": false
@@ -1827,20 +1778,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						41706.1611374408,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						42338.0726698262,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": false
@@ -1920,20 +1857,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						42969.9842022117,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						43601.8957345972,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"altAnim": false,
@@ -2008,20 +1931,6 @@
 						0,
 						0,
 						"Glitch"
-					],
-					[
-						44233.8072669826,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						44865.7187993681,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": false
@@ -2069,20 +1978,6 @@
 						46603.4755134281,
 						1,
 						0
-					],
-					[
-						45497.6303317536,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						46129.541864139,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": true
@@ -2135,20 +2030,6 @@
 						47867.2985781991,
 						1,
 						0
-					],
-					[
-						46761.4533965245,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						47393.36492891,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": true
@@ -2216,20 +2097,6 @@
 						49210.1105845182,
 						3,
 						0
-					],
-					[
-						48025.2764612954,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						48657.1879936809,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": true
@@ -2292,37 +2159,9 @@
 						50473.9336492891,
 						0,
 						0
-					],
-					[
-						49289.0995260664,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
-					],
-					[
-						49921.0110584518,
-						-1,
-						"Add Camera Zoom",
-						"0.090",
-						"0.020"
 					]
 				],
 				"mustHitSection": true
-			},
-			{
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"sectionNotes": [
-					[
-						50552.9225908373,
-						-1,
-						"Blammed Lights",
-						"3",
-						""
-					]
-				],
-				"mustHitSection": false
 			},
 			{
 				"typeOfSection": 0,
@@ -3394,13 +3233,6 @@
 				"sectionNotes": [
 					[
 						80884.6761453397,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						80884.6761453397,
 						1,
 						0,
 						"Glitch"
@@ -3833,13 +3665,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						90995.2606635071,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						90995.2606635071,
 						1,

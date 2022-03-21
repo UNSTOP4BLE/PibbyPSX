@@ -6,20 +6,6 @@
 			{
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
-				"sectionNotes": [
-					[
-						0,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					]
-				],
-				"mustHitSection": false
-			},
-			{
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
 				"sectionNotes": [],
 				"mustHitSection": true
 			},
@@ -2720,13 +2706,6 @@
 						33854.1666666667,
 						7,
 						0
-					],
-					[
-						33958.3333333333,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
 					],
 					[
 						34270.8333333333,
@@ -18515,13 +18494,6 @@
 						6,
 						0,
 						"Glitch"
-					],
-					[
-						171666.666666667,
-						-1,
-						"Screen Shake",
-						"1, 0.01",
-						""
 					]
 				],
 				"typeOfSection": 0,

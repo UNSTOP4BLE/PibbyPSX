@@ -205,13 +205,6 @@
 						6990.29126213592,
 						5,
 						218.446601941748
-					],
-					[
-						7864.07766990291,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -245,13 +238,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						9029.12621359223,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -290,13 +276,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						10194.1747572816,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -542,13 +521,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						17184.4660194175,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -624,13 +596,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						18640.7766990291,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -669,13 +634,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						20679.6116504854,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -1140,27 +1098,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						26796.1165048544,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						27233.0097087379,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						27669.9029126214,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": false
@@ -1387,27 +1324,6 @@
 						7,
 						0,
 						"Sword"
-					],
-					[
-						30291.2621359223,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						30873.786407767,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						31165.0485436893,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": false
@@ -1529,34 +1445,6 @@
 						0,
 						0,
 						"Glitch"
-					],
-					[
-						31456.3106796117,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						31601.9417475728,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						31747.572815534,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						32038.8349514563,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": false
@@ -1620,13 +1508,6 @@
 						3,
 						0,
 						"Sword"
-					],
-					[
-						33203.8834951457,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"altAnim": false,
@@ -1692,20 +1573,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						33786.4077669903,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						34805.8252427185,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -1791,27 +1658,6 @@
 						0,
 						0,
 						"Hurt Note"
-					],
-					[
-						34951.4563106796,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						35388.3495145631,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						35825.2427184466,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": false
@@ -1927,20 +1773,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						36116.504854369,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						36699.0291262136,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": false
@@ -1999,13 +1831,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						37864.0776699029,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -2167,13 +1992,6 @@
 						1,
 						0,
 						"Glitch"
-					],
-					[
-						39611.6504854369,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
 					]
 				],
 				"altAnim": false,
@@ -2330,20 +2148,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						42451.4563106796,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						42815.5339805825,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -2412,13 +2216,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						43106.7961165049,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -2624,20 +2421,6 @@
 						3,
 						0,
 						"Sword"
-					],
-					[
-						46893.2038834952,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						47330.0970873787,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -2697,20 +2480,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						48058.2524271845,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						48349.5145631068,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"mustHitSection": true
@@ -3157,13 +2926,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						55266.9902912622,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -3230,13 +2992,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						56359.2233009709,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -3299,20 +3054,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						57815.5339805826,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						58106.7961165049,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -3950,13 +3691,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						66262.1359223301,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -4145,20 +3879,6 @@
 						0,
 						0,
 						"Glitch"
-					],
-					[
-						67581.9174757282,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						67572.8155339806,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -4420,13 +4140,6 @@
 						3,
 						0,
 						"Sword"
-					],
-					[
-						73252.4271844661,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -4483,13 +4196,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						74271.8446601942,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -4606,13 +4312,6 @@
 						0,
 						0,
 						"Sword"
-					],
-					[
-						75873.786407767,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -4624,13 +4323,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						76893.2038834952,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						76893.2038834952,
 						0,
@@ -5750,13 +5442,6 @@
 				"sectionNotes": [
 					[
 						95533.9805825243,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
-						95533.9805825243,
 						2,
 						0,
 						"Glitch"
@@ -5956,13 +5641,6 @@
 						0
 					],
 					[
-						97864.077669903,
-						-1,
-						"Blammed Lights",
-						"2",
-						""
-					],
-					[
 						98883.4951456311,
 						3,
 						0,
@@ -6040,13 +5718,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						100194.174757282,
-						-1,
-						"Blammed Lights",
-						"3",
-						""
-					],
 					[
 						100194.174757282,
 						2,
@@ -6272,13 +5943,6 @@
 						0
 					],
 					[
-						102524.27184466,
-						-1,
-						"Blammed Lights",
-						"4",
-						""
-					],
-					[
 						103398.058252427,
 						1,
 						0,
@@ -6429,13 +6093,6 @@
 						3,
 						0,
 						"Glitch"
-					],
-					[
-						104854.368932039,
-						-1,
-						"Blammed Lights",
-						"5",
-						""
 					]
 				],
 				"typeOfSection": 0,
@@ -6572,13 +6229,6 @@
 						0,
 						0,
 						"Hurt Note"
-					],
-					[
-						107184.466019418,
-						-1,
-						"Blammed Lights",
-						"6",
-						""
 					]
 				],
 				"typeOfSection": 0,
@@ -6646,13 +6296,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						109514.563106796,
-						-1,
-						"Blammed Lights",
-						"7",
-						""
-					],
 					[
 						109514.563106796,
 						2,
@@ -6877,20 +6520,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						112864.077669903,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						111844.660194175,
-						-1,
-						"Blammed Lights",
-						"7",
-						""
 					]
 				],
 				"typeOfSection": 0,
@@ -6968,13 +6597,6 @@
 						3,
 						0,
 						"Hurt Note"
-					],
-					[
-						114029.126213592,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -6986,13 +6608,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						114174.757281553,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						114174.757281553,
 						2,
@@ -7069,13 +6684,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						115339.805825243,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
 					[
 						115339.805825243,
 						2,
@@ -7172,20 +6780,6 @@
 				"sectionNotes": [
 					[
 						116504.854368932,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						116504.854368932,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						116504.854368932,
 						2,
 						0
 					],
@@ -7250,20 +6844,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						117669.902912621,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
-						117669.902912622,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
 					[
 						117669.902912621,
 						2,
@@ -7334,13 +6914,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						118834.951456311,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						118980.582524272,
 						1,
@@ -7419,13 +6992,6 @@
 				"sectionNotes": [
 					[
 						120000,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
-						120000,
 						2,
 						0,
 						"Glitch"
@@ -7496,13 +7062,6 @@
 				"sectionNotes": [
 					[
 						121165.048543689,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						121165.048543689,
 						2,
 						0
 					],
@@ -7566,13 +7125,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						122330.097087379,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
 					[
 						123058.252427185,
 						2,
@@ -7639,13 +7191,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						123495.145631068,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						123495.145631068,
 						2,
@@ -7718,13 +7263,6 @@
 				"sectionNotes": [
 					[
 						124660.194174757,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
-						124660.194174757,
 						2,
 						0,
 						"Glitch"
@@ -7771,13 +7309,6 @@
 				"sectionNotes": [
 					[
 						125825.242718447,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						125825.242718447,
 						2,
 						0
 					],
@@ -7817,20 +7348,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						126116.504854369,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						126553.398058253,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -7842,13 +7359,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						126990.291262136,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
 					[
 						127135.922330097,
 						3,
@@ -7905,13 +7415,6 @@
 						127864.077669903,
 						2,
 						0
-					],
-					[
-						128009.708737864,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -7923,13 +7426,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						128155.339805825,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
 					[
 						128155.339805825,
 						2,
@@ -7996,13 +7492,6 @@
 				"sectionNotes": [
 					[
 						129320.388349515,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
-						129320.388349515,
 						2,
 						0,
 						"Glitch"
@@ -8061,13 +7550,6 @@
 				"sectionNotes": [
 					[
 						130485.436893204,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						130485.436893204,
 						2,
 						0
 					],
@@ -8117,13 +7599,6 @@
 			{
 				"sectionNotes": [
 					[
-						131650.485436894,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
-					[
 						131650.485436893,
 						2,
 						0
@@ -8168,13 +7643,6 @@
 						3,
 						0,
 						"Sword"
-					],
-					[
-						132524.27184466,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8186,20 +7654,6 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						132822.815533981,
-						-1,
-						"Add Camera Zoom",
-						"0.030",
-						"0.030"
-					],
-					[
-						132815.533980583,
-						-1,
-						"Blammed Lights",
-						"1",
-						""
-					],
 					[
 						132815.533980583,
 						6,
@@ -8289,20 +7743,6 @@
 						133689.32038835,
 						4,
 						0
-					],
-					[
-						133252.427184466,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						133834.951456311,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8404,27 +7844,6 @@
 						6,
 						0,
 						"Sword"
-					],
-					[
-						134417.475728155,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						133980.582524272,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						134708.737864078,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8526,27 +7945,6 @@
 						2,
 						0,
 						"Sword"
-					],
-					[
-						135145.631067961,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						135582.524271845,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						136019.417475728,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8648,27 +8046,6 @@
 						1,
 						0,
 						"Sword"
-					],
-					[
-						136310.679611651,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						136893.203883495,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
-					],
-					[
-						137184.466019418,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8801,13 +8178,6 @@
 						6,
 						0,
 						"Sword"
-					],
-					[
-						137766.990291262,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -8925,13 +8295,6 @@
 						7,
 						0,
 						"Sword"
-					],
-					[
-						139660.194174757,
-						-1,
-						"Play Animation",
-						"finn slash",
-						"finn"
 					]
 				],
 				"typeOfSection": 0,
@@ -10130,14 +9493,7 @@
 			},
 			{
 				"sectionNotes": [
-					[
-						151456.310679612,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
+					[ 	
 						151456.310679612,
 						1,
 						1092.23300970874,

@@ -487,23 +487,6 @@
 			},
 			{
 				"typeOfSection": 0,
-				"sectionNotes": [
-					[
-						25585,
-						-1,
-						"Change Character",
-						"1",
-						"steven"
-					]
-				],
-				"lengthInSteps": 16,
-				"altAnim": false,
-				"bpm": 144,
-				"changeBPM": false,
-				"mustHitSection": false
-			},
-			{
-				"typeOfSection": 0,
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
@@ -1019,13 +1002,6 @@
 						1,
 						350,
 						"Glitch"
-					],
-					[
-						40800,
-						-1,
-						"Camera Follow Pos",
-						"700",
-						"300"
 					]
 				],
 				"lengthInSteps": 16,
@@ -1320,13 +1296,6 @@
 						5,
 						350,
 						"Glitch"
-					],
-					[
-						50600,
-						-1,
-						"Camera Follow Pos",
-						"",
-						""
 					]
 				],
 				"lengthInSteps": 16,
@@ -1852,13 +1821,6 @@
 						3,
 						0,
 						"Hurt Note"
-					],
-					[
-						63700,
-						-1,
-						"Change Character",
-						"bf",
-						"bfscared"
 					]
 				],
 				"lengthInSteps": 16,
@@ -2426,13 +2388,6 @@
 						2,
 						350,
 						"Glitch"
-					],
-					[
-						77200,
-						-1,
-						"Change Character",
-						"1",
-						"nogf"
 					]
 				],
 				"lengthInSteps": 16,
@@ -2809,13 +2764,6 @@
 						"Glitch"
 					],
 					[
-						90900,
-						-1,
-						"Change Character",
-						"1",
-						"spinel"
-					],
-					[
 						90400,
 						1,
 						0,
@@ -2838,13 +2786,6 @@
 						1,
 						0,
 						"BO"
-					],
-					[
-						90800,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
 					]
 				],
 				"lengthInSteps": 16,
@@ -3325,20 +3266,6 @@
 				"sectionNotes": [
 					[
 						104600,
-						-1,
-						"Change Character",
-						"1",
-						"steven"
-					],
-					[
-						104598.020833333,
-						-1,
-						"Change Character",
-						"2",
-						"spinel"
-					],
-					[
-						104600,
 						1,
 						0,
 						"BO"
@@ -3360,13 +3287,6 @@
 						3,
 						250,
 						"BO"
-					],
-					[
-						104491.666666667,
-						-1,
-						"Blammed Lights",
-						"3",
-						""
 					]
 				],
 				"lengthInSteps": 16,
@@ -3595,34 +3515,6 @@
 						2,
 						0,
 						"BO"
-					],
-					[
-						114230,
-						-1,
-						"Play Animation",
-						"ready",
-						"dad"
-					],
-					[
-						114220,
-						-1,
-						"Change Character",
-						"1",
-						"steven"
-					],
-					[
-						114250,
-						-1,
-						"Blammed Lights",
-						"0",
-						""
-					],
-					[
-						114500,
-						-1,
-						"Camera Follow Pos",
-						"700",
-						"300"
 					]
 				],
 				"altAnimNum": 0,
@@ -4106,13 +3998,6 @@
 						126200,
 						2,
 						0
-					],
-					[
-						126000,
-						-1,
-						"Camera Follow Pos",
-						"",
-						""
 					]
 				],
 				"typeOfSection": 0,
@@ -4281,13 +4166,6 @@
 						2,
 						0,
 						"Spinel"
-					],
-					[
-						130800,
-						-1,
-						"Camera Follow Pos",
-						"700",
-						"300"
 					]
 				],
 				"typeOfSection": 0,
@@ -4387,9 +4265,7 @@
 					[
 						131400,
 						5,
-						"Camera Follow Pos",
-						"100",
-						"50"
+						0
 					]
 				],
 				"typeOfSection": 0,
@@ -4518,20 +4394,6 @@
 						1,
 						0,
 						"Spinel"
-					],
-					[
-						134400,
-						-1,
-						"Camera Follow Pos",
-						"",
-						""
-					],
-					[
-						135900,
-						-1,
-						"Camera Follow Pos",
-						"700",
-						"300"
 					]
 				],
 				"altAnimNum": 0,
