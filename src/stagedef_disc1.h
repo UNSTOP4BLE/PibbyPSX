@@ -8,7 +8,7 @@
 		Back_Week1_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(13,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},
 		1, 1,
 		XA_Bopeebo, 0,
 		
@@ -24,7 +24,7 @@
 		Back_Week1_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(13,10),FIXED_DEC(18,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(27,10),FIXED_DEC(1,1)},
 		1, 2,
 		XA_Fresh, 2,
 		
@@ -40,7 +40,7 @@
 		Back_Week1_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(15,10),FIXED_DEC(23,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		1, 3,
 		XA_Dadbattle, 0,
 		
@@ -56,7 +56,7 @@
 		Back_Week2_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(17,10),FIXED_DEC(24,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
 		2, 1,
 		XA_Spookeez, 0,
 		
@@ -73,7 +73,7 @@
 		Back_Week2_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(17,10),FIXED_DEC(24,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		2, 1,
 		XA_Spookeez, 0,
 		
@@ -89,7 +89,7 @@
 		Back_Week2_New,
 		
 		//Song info
-		{FIXED_DEC(11,10),FIXED_DEC(15,10),FIXED_DEC(22,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(33,10),FIXED_DEC(1,1)},
 		2, 2,
 		XA_South, 2,
 		
@@ -105,7 +105,7 @@
 		Back_Week2_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(13,10),FIXED_DEC(16,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		2, 3,
 		XA_Monster, 0,
 		
@@ -122,7 +122,7 @@
 		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(12,10),FIXED_DEC(14,10),FIXED_DEC(16,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},
 		3, 1,
 		XA_Pico, 0,
 		
@@ -138,7 +138,7 @@
 		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(13,10),FIXED_DEC(2,1)},
+		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},
 		3, 2,
 		XA_Philly, 2,
 		
@@ -154,7 +154,7 @@
 		Back_Week3_New,
 		
 		//Song info
-		{FIXED_DEC(12,10),FIXED_DEC(15,10),FIXED_DEC(23,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		3, 3,
 		XA_Blammed, 0,
 		
@@ -171,7 +171,7 @@
 		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(16,10),FIXED_DEC(18,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		4, 1,
 		XA_SatinPanties, 0,
 		
@@ -187,7 +187,7 @@
 		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(18,10),FIXED_DEC(2,1)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		4, 2,
 		XA_High, 2,
 		
@@ -203,7 +203,7 @@
 		Back_Week4_New,
 		
 		//Song info
-		{FIXED_DEC(14,10),FIXED_DEC(17,10),FIXED_DEC(26,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},
 		4, 3,
 		XA_MILF, 0,
 		
@@ -219,7 +219,7 @@
 		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(13,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
 		5, 1,
 		XA_Cocoa, 0,
 		
@@ -236,7 +236,7 @@
 		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(13,10),FIXED_DEC(13,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},
 		5, 1,
 		XA_Cocoa, 0,
 		
@@ -252,7 +252,7 @@
 		Back_Week5_New,
 		
 		//Song info
-		{FIXED_DEC(14,10),FIXED_DEC(16,10),FIXED_DEC(19,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		5, 2,
 		XA_Eggnog, 2,
 		
@@ -268,7 +268,7 @@
 		Back_Dummy_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(11,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		5, 3,
 		XA_WinterHorrorland, 0,
 		
@@ -285,7 +285,7 @@
 		Back_Week6_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(12,10),FIXED_DEC(13,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(31,10),FIXED_DEC(1,1)},
 		6, 1,
 		XA_Senpai, 0,
 		
@@ -301,7 +301,7 @@
 		Back_Week6_New,
 		
 		//Song info
-		{FIXED_DEC(12,10),FIXED_DEC(13,10),FIXED_DEC(15,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
 		6, 2,
 		XA_Roses, 2,
 		
@@ -317,7 +317,7 @@
 		Back_Week6_New,
 		
 		//Song info
-		{FIXED_DEC(11,10),FIXED_DEC(13,10),FIXED_DEC(15,10)},
+		{FIXED_DEC(1,1),FIXED_DEC(33,10),FIXED_DEC(1,1)},
 		6, 3,
 		XA_Thorns, 0,
 		

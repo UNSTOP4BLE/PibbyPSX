@@ -27,7 +27,7 @@
 
 int mogus;
 
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -1641,26 +1641,6 @@ void Stage_Tick(void)
 		{
 //			if ((stage.song_step & 0x3) == 0)
 //				mogus += FIXED_DEC(15,10);
-
-
-			//REMOVE THIS LATER!!!!!!!!!!!!!!
-			if (stage.song_step == 4)
-				mogus += FIXED_DEC(15,10);	
-			if (stage.song_step == 8)
-				mogus -= FIXED_DEC(30,10);	
-			if (stage.song_step == 12)
-				mogus += FIXED_DEC(15,10);	
-			if (stage.song_step == 16)
-				mogus -= FIXED_DEC(15,10);	
-			if (stage.song_step == 20)
-				mogus += FIXED_DEC(15,10);	
-			if (stage.song_step == 24)
-				mogus -= FIXED_DEC(15,10);	
-			if (stage.song_step == 28)
-				mogus += FIXED_DEC(15,10);	
-			if (stage.song_step == 32)
-				mogus -= FIXED_DEC(15,10);	
-
 
 
 
