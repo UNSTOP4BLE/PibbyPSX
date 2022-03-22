@@ -22,6 +22,8 @@
 #include "object/combo.h"
 #include "object/splash.h"
 
+u16 switch_note;
+
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
 
@@ -1640,34 +1642,43 @@ void Stage_Tick(void)
 		case StageState_Play:
 		{
 			mogus = 15;
-
-
-			if (stage.song_step == 4) 
+			
+			
+			
+			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
 			{
-				note_y[4] = FIXED_DEC(32 + (mogus * 2) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[5] = FIXED_DEC(32 + (mogus * 1.8) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[6] = FIXED_DEC(32 + (mogus * 1.6) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[7] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
+				if ((stage.song_step  & 0x3) == 0)
+				switch_note++;
+				
 
-				note_y[0] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[1] = FIXED_DEC(32 + (mogus * 1) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[2] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[3] = FIXED_DEC(32 + (mogus * 0.6) - 15 - SCREEN_HEIGHT2, 1);
+				//first beat
+				if (switch_note == 0)
+				{
+					note_y[4] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[5] = FIXED_DEC(32 + (mogus * 1.3) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[6] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[7] = FIXED_DEC(32 + (mogus * 1.1) - 15 - SCREEN_HEIGHT2, 1);
 
+					note_y[0] = FIXED_DEC(32 + (mogus * 1)   - 15 - SCREEN_HEIGHT2, 1);
+					note_y[1] = FIXED_DEC(32 + (mogus * 0.9) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[2] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[3] = FIXED_DEC(32 + (mogus * 0.7) - 15 - SCREEN_HEIGHT2, 1);
+				}
+				//2nd beat
+				else if (switch_note == 1)
+				{
+					note_y[4] = FIXED_DEC(32 + (mogus * 0.7) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[5] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[6] = FIXED_DEC(32 + (mogus * 0.9) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[7] = FIXED_DEC(32 + (mogus * 1)   - 15 - SCREEN_HEIGHT2, 1);
+					note_y[0] = FIXED_DEC(32 + (mogus * 1.1) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[1] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[2] = FIXED_DEC(32 + (mogus * 1.3) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[3] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
+				}
+				while (switch_note > 1)
+				switch_note = 0;
 			}
-			else if (stage.song_step == 8) 
-			{
-				note_y[4] = FIXED_DEC(32 + (mogus * 0.6) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[5] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[6] = FIXED_DEC(32 + (mogus * 1) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[7] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
-
-				note_y[0] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[1] = FIXED_DEC(32 + (mogus * 1.6) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[2] = FIXED_DEC(32 + (mogus * 1.8) - 15 - SCREEN_HEIGHT2, 1);
-				note_y[3] = FIXED_DEC(32 + (mogus * 2) - 15 - SCREEN_HEIGHT2, 1);
-			}
-
 
 			FntPrint("%d", mogus);
 			if (stage.botplay == 1)
