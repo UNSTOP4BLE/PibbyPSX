@@ -1639,19 +1639,34 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{
-//			if ((stage.song_step & 0x3) == 0)
-//				mogus += FIXED_DEC(15,10);
+			mogus = 15;
 
 
+			if (stage.song_step == 4) 
+			{
+				note_y[4] = FIXED_DEC(32 + (mogus * 2) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[5] = FIXED_DEC(32 + (mogus * 1.8) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[6] = FIXED_DEC(32 + (mogus * 1.6) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[7] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
 
+				note_y[0] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[1] = FIXED_DEC(32 + (mogus * 1) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[2] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[3] = FIXED_DEC(32 + (mogus * 0.6) - 15 - SCREEN_HEIGHT2, 1);
 
+			}
+			else if (stage.song_step == 8) 
+			{
+				note_y[4] = FIXED_DEC(32 + (mogus * 0.6) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[5] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[6] = FIXED_DEC(32 + (mogus * 1) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[7] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
 
-
-
-
-
-
-
+				note_y[0] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[1] = FIXED_DEC(32 + (mogus * 1.6) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[2] = FIXED_DEC(32 + (mogus * 1.8) - 15 - SCREEN_HEIGHT2, 1);
+				note_y[3] = FIXED_DEC(32 + (mogus * 2) - 15 - SCREEN_HEIGHT2, 1);
+			}
 
 
 			FntPrint("%d", mogus);
