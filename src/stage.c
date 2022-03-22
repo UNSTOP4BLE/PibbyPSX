@@ -1640,44 +1640,50 @@ void Stage_Tick(void)
 	switch (stage.state)
 	{
 		case StageState_Play:
-		{
+		{	
+			//randomley shake the screen
+			if(RandomRange(0, 20) == 4)
+				noteshake = 1;	
+			else 
+				noteshake = 0;
+
+
 			mogus = 15;
-			
-			
-			
 			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
 			{
 				if ((stage.song_step  & 0x3) == 0)
 				switch_note++;
 				
-
 				//first beat
 				if (switch_note == 0)
 				{
-					note_y[4] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[5] = FIXED_DEC(32 + (mogus * 1.3) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[6] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[7] = FIXED_DEC(32 + (mogus * 1.1) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[4] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[5] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[6] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[7] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 
-					note_y[0] = FIXED_DEC(32 + (mogus * 1)   - 15 - SCREEN_HEIGHT2, 1);
-					note_y[1] = FIXED_DEC(32 + (mogus * 0.9) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[2] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[3] = FIXED_DEC(32 + (mogus * 0.7) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[0] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[1] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[2] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[3] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 				}
 				//2nd beat
 				else if (switch_note == 1)
 				{
-					note_y[4] = FIXED_DEC(32 + (mogus * 0.7) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[5] = FIXED_DEC(32 + (mogus * 0.8) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[6] = FIXED_DEC(32 + (mogus * 0.9) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[7] = FIXED_DEC(32 + (mogus * 1)   - 15 - SCREEN_HEIGHT2, 1);
-					note_y[0] = FIXED_DEC(32 + (mogus * 1.1) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[1] = FIXED_DEC(32 + (mogus * 1.2) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[2] = FIXED_DEC(32 + (mogus * 1.3) - 15 - SCREEN_HEIGHT2, 1);
-					note_y[3] = FIXED_DEC(32 + (mogus * 1.4) - 15 - SCREEN_HEIGHT2, 1);
+					note_y[4] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[5] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[6] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[7] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					
+					note_y[0] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[1] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[2] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					note_y[3] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 				}
+
 				while (switch_note > 1)
 				switch_note = 0;
+				
 			}
 
 			FntPrint("%d", mogus);
