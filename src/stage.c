@@ -29,7 +29,7 @@ u16 switch_note;
 
 int mogus;
 
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
