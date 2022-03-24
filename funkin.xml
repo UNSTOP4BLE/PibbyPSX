@@ -131,7 +131,6 @@
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
-				<file name = "bfweeb.arc" type = "data" source = "iso/bf/weeb.arc"/>
 				
 				<!-- Dad assets -->
 				<file name = "dad.arc" type = "data" source = "iso/dad/main.arc"/>
@@ -147,7 +146,6 @@
 				<file name = "momhair.tim" type = "data" source = "iso/mom/hair.tim"/>
 				
 				<!-- Christmas assets -->
-				<file name = "xmasbf.arc" type = "data" source = "iso/bf/xmas.arc"/>
 				<file name = "xmasp.arc" type = "data" source = "iso/xmasp/main.arc"/>
 				
 				<!-- Senpai assets -->

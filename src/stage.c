@@ -76,7 +76,6 @@ boolean noteshake;
 #include "character/spook.h"
 #include "character/pico.h"
 #include "character/mom.h"
-#include "character/xmasbf.h"
 #include "character/xmasp.h"
 #include "character/senpai.h"
 #include "character/senpaim.h"

@@ -17,9 +17,6 @@ typedef enum
 	PlayerAnim_UpMiss,
 	PlayerAnim_RightMiss,
 	
-	PlayerAnim_Peace,
-	PlayerAnim_Sweat,
-	
 	PlayerAnim_Dead0, //BREAK
 	PlayerAnim_Dead1, //Idle with mic
 	PlayerAnim_Dead2, //Mic Drop

@@ -211,7 +211,7 @@
 	},
 	{ //StageId_4_4 (NULL)
 		//Characters
-		{Char_XmasBF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -228,7 +228,7 @@
 	
 	{ //StageId_5_1 (no-hero-remastered)
 		//Characters
-		{Char_XmasBF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -244,7 +244,7 @@
 	},
 	{ //StageId_5_2 (lost-legend)
 		//Characters
-		{Char_XmasBF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -260,7 +260,7 @@
 	},
 	{ //StageId_5_3 (elastic-destruction)
 		//Characters
-		{Char_XmasBF_New, FIXED_DEC(105,1),  FIXED_DEC(100,1)},
+		{Char_BF_New, FIXED_DEC(105,1),  FIXED_DEC(100,1)},
 		{Char_Dad_New,   FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
