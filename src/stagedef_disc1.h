@@ -1,7 +1,8 @@
 	{ //StageId_1_1 (SAVE-THE-DAY)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -17,7 +18,8 @@
 	{ //StageId_1_2 (glitched-gem)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -33,7 +35,8 @@
 	{ //StageId_1_3 (my-friends)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_spinel_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_spinel_New, FIXED_DEC(-230,1),  FIXED_DEC(80,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -51,6 +54,7 @@
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
 		{NULL},
+		{NULL},
 		
 		//Stage background
 		Back_Week2_New,
@@ -65,12 +69,13 @@
 	
 	{ //StageId_2_1 (the-change)
 		//Characters
-		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_spinel_New, FIXED_DEC(-180,1),  FIXED_DEC(80,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},	
 		{NULL},
 		
 		//Stage background
-		Back_Week2_New,
+		Back_Week1_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -83,6 +88,7 @@
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -99,6 +105,7 @@
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -117,6 +124,7 @@
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
+		{NULL},
 		
 		//Stage background
 		Back_Week3_New,
@@ -133,6 +141,7 @@
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
+		{NULL},
 		
 		//Stage background
 		Back_Week3_New,
@@ -148,6 +157,7 @@
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -166,6 +176,7 @@
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
 		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
+		{NULL},
 		
 		//Stage background
 		Back_Week4_New,
@@ -181,6 +192,7 @@
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
 		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
@@ -198,6 +210,7 @@
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
 		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
+		{NULL},
 		
 		//Stage background
 		Back_Week4_New,
@@ -213,6 +226,7 @@
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -230,6 +244,7 @@
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -246,6 +261,7 @@
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
 		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -262,6 +278,7 @@
 		//Characters
 		{Char_BF_New, FIXED_DEC(105,1),  FIXED_DEC(100,1)},
 		{Char_Dad_New,   FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -279,6 +296,7 @@
 		//Characters
 		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
 		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL},
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
@@ -295,6 +313,7 @@
 		//Characters
 		{Char_BF_New,   FIXED_DEC(52,1),  FIXED_DEC(50,1)},
 		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL},
 		{NULL,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
@@ -311,6 +330,7 @@
 		//Characters
 		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
 		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL},
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background

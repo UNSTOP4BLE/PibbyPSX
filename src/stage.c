@@ -29,7 +29,7 @@ u16 switch_note;
 
 int mogus;
 
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -1150,6 +1150,17 @@ static void Stage_LoadOpponent(void)
 	stage.opponent = stage.stage_def->ochar.new(stage.stage_def->ochar.x, stage.stage_def->ochar.y);
 }
 
+static void Stage_LoadOpponent2(void)
+{
+	//Load opponent character
+	Character_Free(stage.opponent2);
+	if (stage.stage_def->ochar2.new != NULL) {
+		stage.opponent2 = stage.stage_def->ochar2.new(stage.stage_def->ochar2.x, stage.stage_def->ochar2.y);
+	}
+	else
+		stage.opponent2 = NULL;
+}
+
 static void Stage_LoadGirlfriend(void)
 {
 	//Load girlfriend character
@@ -1301,6 +1312,8 @@ static void Stage_LoadMusic(void)
 	//Offset sing ends
 	stage.player->sing_end -= stage.note_scroll;
 	stage.opponent->sing_end -= stage.note_scroll;
+	if (stage.opponent2 != NULL)
+	stage.opponent2->sing_end -= stage.note_scroll;
 	if (stage.gf != NULL)
 		stage.gf->sing_end -= stage.note_scroll;
 	
@@ -1317,6 +1330,8 @@ static void Stage_LoadMusic(void)
 	//Offset sing ends again
 	stage.player->sing_end += stage.note_scroll;
 	stage.opponent->sing_end += stage.note_scroll;
+	if (stage.opponent2 != NULL)
+		stage.opponent2->sing_end += stage.note_scroll;
 	if (stage.gf != NULL)
 		stage.gf->sing_end += stage.note_scroll;
 }
@@ -1332,6 +1347,8 @@ static void Stage_LoadState(void)
 	
 	stage.player_state[0].character = stage.player;
 	stage.player_state[1].character = stage.opponent;
+	if (stage.opponent2 != NULL)
+	stage.player_state[1].character = stage.opponent2;
 	for (int i = 0; i < 2; i++)
 	{
 		memset(stage.player_state[i].arrow_hitan, 0, sizeof(stage.player_state[i].arrow_hitan));
@@ -1378,6 +1395,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	//Load characters
 	Stage_LoadPlayer();
 	Stage_LoadOpponent();
+	Stage_LoadOpponent2();	
 	Stage_LoadGirlfriend();
 	Stage_SwapChars();
 	
@@ -1391,7 +1409,11 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	
 	//Initialize camera
 	if (stage.cur_section->flag & SECTION_FLAG_OPPFOCUS)
+	{
 		Stage_FocusCharacter(stage.opponent, FIXED_UNIT);
+		if (stage.opponent2 != NULL)
+		Stage_FocusCharacter(stage.opponent2, FIXED_UNIT);
+	}
 	else
 		Stage_FocusCharacter(stage.player, FIXED_UNIT);
 	stage.camera.x = stage.camera.tx;
@@ -1450,6 +1472,8 @@ void Stage_Unload(void)
 	stage.player = NULL;
 	Character_Free(stage.opponent);
 	stage.opponent = NULL;
+	Character_Free(stage.opponent2);
+	stage.opponent2 = NULL;
 	Character_Free(stage.gf);
 	stage.gf = NULL;
 }
@@ -1493,7 +1517,18 @@ static boolean Stage_NextLoad(void)
 			stage.opponent->x = stage.stage_def->ochar.x;
 			stage.opponent->y = stage.stage_def->ochar.y;
 		}
+		if (load & STAGE_LOAD_OPPONENT2)
+		{
+			Stage_LoadOpponent2();
+		}
+		else if (stage.opponent2 != NULL)
+		{
+			stage.opponent2->x = stage.stage_def->ochar2.x;
+			stage.opponent2->y = stage.stage_def->ochar2.y;
+		}
+
 		Stage_SwapChars();
+
 		if (load & STAGE_LOAD_GIRLFRIEND)
 		{
 			Stage_LoadGirlfriend();
@@ -1913,7 +1948,12 @@ void Stage_Tick(void)
 			
 			//Scroll camera
 			if (stage.cur_section->flag & SECTION_FLAG_OPPFOCUS)
+			{
 				Stage_FocusCharacter(stage.opponent, FIXED_UNIT / 24);
+
+                if (stage.opponent2 != NULL)
+				Stage_FocusCharacter(stage.opponent2, FIXED_UNIT / 24);
+			}
 			else
 				Stage_FocusCharacter(stage.player, FIXED_UNIT / 24);
 			Stage_ScrollCamera();
@@ -1949,9 +1989,17 @@ void Stage_Tick(void)
 					}
 					
 					if (opponent_anote != CharAnim_Idle)
+					{
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
+						if (stage.opponent2 != NULL)
+						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
+					}
 					else if (opponent_snote != CharAnim_Idle)
+					{
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
+						if (stage.opponent2 != NULL)
+						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
+					}
 					break;
 				}
 				case StageMode_2P:
@@ -2460,6 +2508,8 @@ void Stage_Tick(void)
 			
 			//Tick characters
 			stage.player->tick(stage.player);
+			if (stage.opponent2 != NULL)
+			stage.opponent2->tick(stage.opponent2);
 			stage.opponent->tick(stage.opponent);
 			
 			//Draw stage middle
@@ -2499,6 +2549,8 @@ void Stage_Tick(void)
 			Stage_SwapChars();
 			Character_Free(stage.opponent);
 			stage.opponent = NULL;
+			Character_Free(stage.opponent2);
+			stage.opponent2 = NULL;
 			Character_Free(stage.gf);
 			stage.gf = NULL;
 			
