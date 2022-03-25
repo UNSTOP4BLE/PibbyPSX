@@ -28,20 +28,10 @@ SRCS = src/main.c \
        src/animation.c \
        src/character.c \
        src/character/bf.c \
-       src/character/bfweeb.c \
        src/character/speaker.c \
        src/character/dad.c \
-       src/character/spook.c \
-       src/character/pico.c \
-       src/character/mom.c \
-       src/character/xmasp.c \
-       src/character/senpai.c \
-       src/character/senpaim.c \
-       src/character/spirit.c \
-       src/character/tank.c \
+       src/character/spinel.c \
        src/character/gf.c \
-       src/character/gfweeb.c \
-       src/character/clucky.c \
        src/object.c \
        src/object/combo.c \
        src/object/splash.c \

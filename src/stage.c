@@ -71,19 +71,9 @@ static const u8 note_anims[4][3] = {
 boolean noteshake;
 
 #include "character/bf.h"
-#include "character/bfweeb.h"
 #include "character/dad.h"
-#include "character/spook.h"
-#include "character/pico.h"
-#include "character/mom.h"
-#include "character/xmasp.h"
-#include "character/senpai.h"
-#include "character/senpaim.h"
-#include "character/spirit.h"
-#include "character/tank.h"
+#include "character/spinel.h"
 #include "character/gf.h"
-#include "character/gfweeb.h"
-#include "character/clucky.h"
 
 #include "stage/dummy.h"
 #include "stage/week1.h"

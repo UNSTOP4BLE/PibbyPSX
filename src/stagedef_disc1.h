@@ -49,8 +49,8 @@
 	{ //StageId_1_4 (NULL)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,       FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week2_New,
@@ -66,8 +66,8 @@
 	{ //StageId_2_1 (the-change)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,       FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week2_New,
@@ -82,8 +82,8 @@
 	{ //StageId_2_2 (overworked)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,       FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week2_New,
@@ -98,8 +98,8 @@
 	{ //StageId_2_3 (last-spooktober)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,       FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week2_New,
@@ -115,8 +115,8 @@
 	{ //StageId_3_1 (gunshot-hard)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Pico_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,      FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week3_New,
@@ -131,8 +131,8 @@
 	{ //StageId_3_2 (blue-balled)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Pico_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,      FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week3_New,
@@ -147,8 +147,8 @@
 	{ //StageId_3_3 (Corrupted-Hero)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Pico_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
-		{Char_GF_New,      FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week3_New,
@@ -164,8 +164,8 @@
 	{ //StageId_4_1 (Brotherly-Bond)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Mom_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{Char_GF_New,    FIXED_DEC(-6,1),   FIXED_DEC(-5,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week4_New,
@@ -180,8 +180,8 @@
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Mom_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{Char_GF_New,    FIXED_DEC(-6,1),   FIXED_DEC(-5,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week4_New,
@@ -196,8 +196,8 @@
 	{ //StageId_4_3 (together-forever)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Mom_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{Char_GF_New,    FIXED_DEC(-6,1),   FIXED_DEC(-5,1)},
+		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{NULL},
 		
 		//Stage background
 		Back_Week4_New,
@@ -212,7 +212,7 @@
 	{ //StageId_4_4 (NULL)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -229,7 +229,7 @@
 	{ //StageId_5_1 (no-hero-remastered)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -245,7 +245,7 @@
 	{ //StageId_5_2 (lost-legend)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_XmasP_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
@@ -277,9 +277,9 @@
 	
 	{ //StageId_6_1 (glitched-duo)
 		//Characters
-		{Char_BFWeeb_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_Senpai_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
-		{Char_GFWeeb_New,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
+		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
+		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
 		Back_Week6_New,
@@ -293,9 +293,9 @@
 	},
 	{ //StageId_6_2 (NO-HERO)
 		//Characters
-		{Char_BFWeeb_New,   FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_SenpaiM_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
-		{Char_GFWeeb_New,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
+		{Char_BF_New,   FIXED_DEC(52,1),  FIXED_DEC(50,1)},
+		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
 		Back_Week6_New,
@@ -309,9 +309,9 @@
 	},
 	{ //StageId_6_3 (you-can't-save-them)
 		//Characters
-		{Char_BFWeeb_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_Spirit_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
-		{Char_GFWeeb_New,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
+		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
+		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
 		Back_Week6_New,

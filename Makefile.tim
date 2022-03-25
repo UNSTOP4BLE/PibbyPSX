@@ -9,22 +9,8 @@ all: \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
 	iso/dad/main.arc \
-	iso/spook/main.arc \
-	iso/pico/main.arc \
-	iso/mom/main.arc \
-	iso/mom/hair.tim \
-	iso/xmasp/main.arc \
-	iso/senpai/main.arc \
-	iso/senpaim/main.arc \
-	iso/spirit/main.arc \
-	iso/tank/main.arc \
-	iso/tank/ugh.arc \
-	iso/tank/good.arc \
 	iso/gf/main.arc \
-	iso/gf/tut.arc \
-	iso/gf/weeb.arc \
 	iso/gf/speaker.tim \
-	iso/clucky/main.arc \
 	iso/week1/back.arc \
 	iso/week2/back.arc \
 	iso/week3/back.arc \
