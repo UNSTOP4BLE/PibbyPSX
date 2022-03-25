@@ -49,26 +49,26 @@ typedef struct
 
 //spinel character definitions
 static const CharFrame char_spinel_frame[] = {
-	{spinel_ArcMain_Idle0, {  0,   0, 160, 147}, {138,  140}}, //0 idle 1
-	{spinel_ArcMain_Idle1, {  0,   0, 159, 145}, {138,  138}}, //1 idle 2
-	{spinel_ArcMain_Idle2, {  0,   0, 152, 145}, {131,  138}}, //2 idle 3
-	{spinel_ArcMain_Idle3, {  0,   0, 151, 146}, {131,  139}}, //3 idle 4
-	{spinel_ArcMain_Idle4, {  0,   0, 157, 148}, {132,  141}}, //4 idle 5
-	{spinel_ArcMain_Idle5, {  0,   0, 151, 147}, {131,  140}}, //5 idle 6
-	{spinel_ArcMain_Idle6, {  0,   0, 155, 148}, {132,  141}}, //6 idle 7
-	{spinel_ArcMain_Idle7, {  0,   0, 152, 148}, {131,  141}}, //7 idle 8
+	{spinel_ArcMain_Idle0, {  0,   0, 248, 155}, {0,  0}}, //0 idle 1
+	{spinel_ArcMain_Idle1, {  0,   0, 247, 153}, {0,  0}}, //1 idle 2
+	{spinel_ArcMain_Idle2, {  0,   0, 248, 154}, {0,  0}}, //2 idle 3
+	{spinel_ArcMain_Idle3, {  0,   0, 249, 150}, {0,  0}}, //3 idle 4
+	{spinel_ArcMain_Idle4, {  0,   0, 247, 154}, {0,  0}}, //4 idle 5
+	{spinel_ArcMain_Idle5, {  0,   0, 251, 149}, {0,  0}}, //5 idle 6
+	{spinel_ArcMain_Idle6, {  0,   0, 255, 153}, {0,  0}}, //6 idle 7
+	{spinel_ArcMain_Idle7, {  0,   0, 247, 155}, {0,  0}}, //7 idle 8
 
-	{spinel_ArcMain_Left0, {  0,   0, 137, 156}, {137,  154}}, //4 left 1
-	{spinel_ArcMain_Left1, {  0,   0, 140, 161}, {140,  158}}, //5 left 2
+	{spinel_ArcMain_Left0, {  0,   0, 210, 244}, {0,  0}}, //4 left 1
+	{spinel_ArcMain_Left1, {  0,   0, 207, 239}, {0,  0}}, //5 left 2
 
-	{spinel_ArcMain_Down0, {  0,   0, 165, 138}, {136,  112}}, //6 down 1
-	{spinel_ArcMain_Down0, {100, 113, 149, 137}, {132,  111}}, //7 down 2
+	{spinel_ArcMain_Down0, {  0,   0, 242, 194}, {0,  0}}, //6 down 1
+	{spinel_ArcMain_Down0, {  0,   0, 244, 198}, {0,  0}}, //7 down 2
 
-	{spinel_ArcMain_Up0, {  0,   0, 123, 174}, {116,  164}}, //8 up 1
-	{spinel_ArcMain_Up0, {123,   0, 116, 174}, {116,  166}}, //9 up 2
+	{spinel_ArcMain_Up0, {  0,   0, 213, 243}, {0,  0}}, //8 up 1
+	{spinel_ArcMain_Up0, {  0,   0, 201, 250}, {0,  0}}, //9 up 2
 	
-	{spinel_ArcMain_Right0, {  0,   0, 168, 166}, {139,  158}}, //10 right 1
-	{spinel_ArcMain_Right1, {  0,   0, 154, 169}, {134,  162}}, //11 right 2
+	{spinel_ArcMain_Right0, {  0,   0, 185, 246}, {0,  0}}, //10 right 1
+	{spinel_ArcMain_Right1, {  0,   0, 185, 246}, {0,  0}}, //11 right 2
 };
 
 static const Animation char_spinel_anim[CharAnim_Max] = {
