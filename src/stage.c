@@ -22,13 +22,8 @@
 #include "object/combo.h"
 #include "object/splash.h"
 
-u16 switch_note;
-
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-
-int mogus;
-
 //#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
@@ -69,6 +64,13 @@ static const u8 note_anims[4][3] = {
 
 //Stage definitions
 boolean noteshake;
+//check what opponent is singing
+boolean has2opponents;
+boolean opponent2sing;
+boolean opponentsing;
+
+u16 switch_note;
+int mogus;
 
 #include "character/bf.h"
 #include "character/dad.h"
@@ -1355,7 +1357,8 @@ static void Stage_LoadState(void)
 		
 		stage.player_state[i].health = 10000;
 		stage.player_state[i].combo = 0;
-		
+		opponentsing = 1;	
+		opponent2sing = 1;
 		stage.player_state[i].miss = 0;
 		stage.player_state[i].accuracy = 0;
 		stage.player_state[i].max_accuracy = 0;
@@ -1665,6 +1668,55 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{	
+			//opponentsing = spinel
+			//opponentsing2 = dad
+			//does the stage have 2 opponents
+			if (has2opponents == 0)
+			{
+				opponentsing = 1;
+				opponent2sing = 1;
+			}
+			else if (stage.stage_id == StageId_2_1) 
+			{
+				switch (stage.song_step)	
+				{	
+					case 1267:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1343:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1351:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1359:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1368:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;
+					case 1370:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;	
+					case 1372:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;	
+				}
+			}
+			else 
+			{
+				opponentsing = 0;
+				opponent2sing = 0;
+			}
+			
+
 			//randomley shake the screen
 			if(RandomRange(0, 20) == 4)
 				noteshake = 1;	
@@ -1673,6 +1725,7 @@ void Stage_Tick(void)
 
 
 			mogus = 15;
+
 			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
 			{
 				if ((stage.song_step  & 0x3) == 0)
@@ -1710,7 +1763,7 @@ void Stage_Tick(void)
 				
 			}
 
-			FntPrint("%d", mogus);
+			FntPrint("%d %d %d", stage.song_step, opponentsing, opponent2sing);
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
@@ -1763,7 +1816,10 @@ void Stage_Tick(void)
 				note_x[6] = FIXED_DEC(-60,1) - FIXED_DEC(SCREEN_WIDEADD,4);
 				note_x[7] = FIXED_DEC(-26,1) - FIXED_DEC(SCREEN_WIDEADD,4);
 			}
-			
+			if (stage.opponent2 != NULL)
+				has2opponents = 1;
+			else
+				has2opponents = 0;
 			//Clear per-frame flags
 			stage.flag &= ~(STAGE_FLAG_JUST_STEP | STAGE_FLAG_SCORE_REFRESH);
 			
@@ -1990,14 +2046,16 @@ void Stage_Tick(void)
 					
 					if (opponent_anote != CharAnim_Idle)
 					{
+						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
-						if (stage.opponent2 != NULL)
+						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
 					}
 					else if (opponent_snote != CharAnim_Idle)
 					{
+						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
-						if (stage.opponent2 != NULL)
+						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
 					}
 					break;
