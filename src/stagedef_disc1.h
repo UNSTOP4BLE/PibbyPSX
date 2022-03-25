@@ -33,7 +33,7 @@
 	{ //StageId_1_3 (my-friends)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_spinel_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		
 		//Stage background
