@@ -49,7 +49,7 @@ typedef struct Character
 	
 	//Character information
 	CharSpec spec;
-	u8 health_i; //hud1.tim
+	u32 health_i, health_b; //hud1.tim
 	fixed_t focus_x, focus_y, focus_zoom;
 	
 	//Animation state

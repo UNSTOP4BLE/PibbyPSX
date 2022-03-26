@@ -5,6 +5,7 @@ all: \
 	iso/font/arial.tim \
 	iso/stage/hud0.tim \
 	iso/stage/hud1.tim \
+	iso/stage/health.tim \
 	iso/stage/hud0weeb.tim \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \

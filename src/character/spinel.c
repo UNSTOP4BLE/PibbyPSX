@@ -124,7 +124,11 @@ void Char_spinel_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_spinel_SetFrame);
-	Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
+
+	if (stage.stage_id == StageId_2_1 && stage.song_step >= 909)
+		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
+	else if (stage.stage_id != StageId_2_1)
+		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
 }
 
 void Char_spinel_SetAnim(Character *character, u8 anim)
@@ -166,8 +170,8 @@ Character *Char_spinel_New(fixed_t x, fixed_t y)
 	
 	this->character.health_i = 1;
 	
-	this->character.focus_x = FIXED_DEC(65,1);
-	this->character.focus_y = FIXED_DEC(-115,1);
+	this->character.focus_x = (stage.stage_id == StageId_2_1) ? FIXED_DEC(-142 - -180,1) : FIXED_DEC(-142 - -230,1);
+	this->character.focus_y = FIXED_DEC(25 - 80,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art

@@ -19,10 +19,10 @@
 #include "network.h"
 
 //Stage constants
-#define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE)
-#define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS)
-#define INPUT_UP    (PAD_UP    | PAD_TRIANGLE)
-#define INPUT_RIGHT (PAD_RIGHT | PAD_CIRCLE)
+#define INPUT_LEFT  (PAD_LEFT  | PAD_SQUARE | PAD_L2)
+#define INPUT_DOWN  (PAD_DOWN  | PAD_CROSS | PAD_L1)
+#define INPUT_UP    (PAD_UP    | PAD_TRIANGLE | PAD_R1)
+#define INPUT_RIGHT (PAD_RIGHT | PAD_CIRCLE | PAD_R2)
 
 #define STAGE_FLAG_JUST_STEP     (1 << 0) //Song just stepped this frame
 #define STAGE_FLAG_VOCAL_ACTIVE  (1 << 1) //Song's vocal track is currently active
@@ -195,13 +195,13 @@ typedef struct
 typedef struct
 {
 	//Stage settings
-	boolean ghost, downscroll, middlescroll, expsync;
+	boolean ghost, downscroll, middlescroll, expsync, practice;
 	s32 mode;
 	
 	u32 offset;
 	
 	//HUD textures
-	Gfx_Tex tex_hud0, tex_hud1;
+	Gfx_Tex tex_hud0, tex_hud1, tex_health;
 	
 	//Stage data
 	const StageDef *stage_def;

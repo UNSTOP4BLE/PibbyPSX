@@ -18,7 +18,6 @@
 #include "menu.h"
 #include "trans.h"
 #include "loadscr.h"
-
 #include "object/combo.h"
 #include "object/splash.h"
 
@@ -125,6 +124,7 @@ static void Stage_FocusCharacter(Character *ch, fixed_t div)
 static void Stage_ScrollCamera(void)
 {
 	#ifdef STAGE_FREECAM
+		FntPrint("camx%d camy%d", stage.camera.x , stage.camera.y);
 		if (pad_state.held & PAD_LEFT)
 			stage.camera.x -= FIXED_DEC(2,1);
 		if (pad_state.held & PAD_UP)
@@ -800,21 +800,21 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	//Check if we should use 'dying' frame
 	s8 dying;
 	if (ox < 0)
-		dying = (health >= 18000) * 24;
+		dying = (health >= 18000) * 50;
 	else
-		dying = (health <= 2000) * 24;
+		dying = (health <= 2000) * 50;
 	
 	//Get src and dst
 	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - health) / 10000;
 	RECT src = {
-		(i % 5) * 48 + dying,
-		16 + (i / 5) * 24,
-		24,
-		24
+		(i % 2) * 100 + dying,
+		(i / 2) * 50,
+		50,
+		50
 	};
 	RECT_FIXED dst = {
-		hx + ox * FIXED_DEC(11,1) - FIXED_DEC(12,1),
-		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 12, 1),
+		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1),
+		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 25, 1),
 		src.w << FIXED_SHIFT,
 		src.h << FIXED_SHIFT
 	};
@@ -1391,6 +1391,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	else
 		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read("\\STAGE\\HUD1.TIM;1"), GFX_LOADTEX_FREE);
+	Gfx_LoadTex(&stage.tex_health, IO_Read("\\STAGE\\HEALTH.TIM;1"), GFX_LOADTEX_FREE);
 	
 	//Load stage background
 	Stage_LoadStage();
@@ -2503,15 +2504,18 @@ void Stage_Tick(void)
 			
 			if (stage.mode < StageMode_2P)
 			{
-				//Perform health checks
-				if (stage.player_state[0].health <= 0)
+				if (stage.player_state[0].health <= 0 && stage.practice == 0)
 				{
 					//Player has died
 					stage.player_state[0].health = 0;
+						
 					stage.state = StageState_Dead;
 				}
 				if (stage.player_state[0].health > 20000)
 					stage.player_state[0].health = 20000;
+
+				if (stage.player_state[0].health <= 0 && stage.practice)
+					stage.player_state[0].health = 0;
 				
 				//Draw health heads
 				Stage_DrawHealth(stage.player_state[0].health, stage.player->health_i,    1);
@@ -2528,9 +2532,9 @@ void Stage_Tick(void)
 				health_dst.x += stage.noteshakex;
 
 				health_dst.w = health_fill.w << FIXED_SHIFT;
-				Stage_DrawTex(&stage.tex_hud1, &health_fill, &health_dst, stage.bump);
+				Stage_DrawTex(&stage.tex_health, &health_fill, &health_dst, stage.bump);
 				health_dst.w = health_back.w << FIXED_SHIFT;
-				Stage_DrawTex(&stage.tex_hud1, &health_back, &health_dst, stage.bump);
+				Stage_DrawTex(&stage.tex_health, &health_back, &health_dst, stage.bump);
 			}
 			
 			//Hardcoded stage stuff

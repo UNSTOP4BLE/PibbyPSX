@@ -120,7 +120,13 @@ void Char_Dad_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_Dad_SetFrame);
-	Character_Draw(character, &this->tex, &char_dad_frame[this->frame]);
+
+	if (stage.stage_id == StageId_2_1 && stage.song_step <= 775)
+		Character_Draw(character, &this->tex, &char_dad_frame[this->frame]);
+	else if (stage.stage_id == StageId_2_1 && stage.song_step >= 1045)
+		Character_Draw(character, &this->tex, &char_dad_frame[this->frame]);
+	else if (stage.stage_id != StageId_2_1)
+		Character_Draw(character, &this->tex, &char_dad_frame[this->frame]);
 }
 
 void Char_Dad_SetAnim(Character *character, u8 anim)
@@ -162,8 +168,8 @@ Character *Char_Dad_New(fixed_t x, fixed_t y)
 	
 	this->character.health_i = 1;
 	
-	this->character.focus_x = FIXED_DEC(65,1);
-	this->character.focus_y = FIXED_DEC(-115,1);
+	this->character.focus_x = FIXED_DEC(-142 - -120,1);
+	this->character.focus_y = FIXED_DEC(25 - 120,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
