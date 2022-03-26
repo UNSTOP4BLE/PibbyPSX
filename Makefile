@@ -29,7 +29,7 @@ SRCS = src/main.c \
        src/character.c \
        src/character/bf.c \
        src/character/speaker.c \
-       src/character/dad.c \
+       src/character/steven.c \
        src/character/spinel.c \
        src/character/mordecai.c \
        src/character/gf.c \

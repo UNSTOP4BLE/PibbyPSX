@@ -73,7 +73,7 @@ u16 switch_note;
 int mogus;
 
 #include "character/bf.h"
-#include "character/dad.h"
+#include "character/steven.h"
 #include "character/spinel.h"
 #include "character/mordecai.h"
 #include "character/gf.h"

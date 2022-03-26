@@ -1,7 +1,7 @@
 	{ //StageId_1_1 (SAVE-THE-DAY)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
 		{NULL},
 		{NULL},
 		
@@ -18,7 +18,7 @@
 	{ //StageId_1_2 (glitched-gem)
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},
 		{NULL},
 		{NULL},
 		
@@ -52,7 +52,7 @@
 	{ //StageId_1_4 (NULL)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_steven_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -71,7 +71,7 @@
 		//Characters
 		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
 		{Char_spinel_New, FIXED_DEC(-180,1),  FIXED_DEC(80,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},	
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},	
 		{NULL},
 		
 		//Stage background
@@ -104,7 +104,7 @@
 	{ //StageId_2_3 (last-spooktober)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_steven_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -122,7 +122,7 @@
 	{ //StageId_3_1 (gunshot-hard)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_steven_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -139,7 +139,7 @@
 	{ //StageId_3_2 (blue-balled)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_steven_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -156,7 +156,7 @@
 	{ //StageId_3_3 (Corrupted-Hero)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_steven_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -174,7 +174,7 @@
 	{ //StageId_4_1 (Brotherly-Bond)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		
@@ -191,7 +191,7 @@
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		
@@ -208,7 +208,7 @@
 	{ //StageId_4_3 (together-forever)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_Dad_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL},
 		
@@ -225,7 +225,7 @@
 	{ //StageId_4_4 (NULL)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_steven_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -243,7 +243,7 @@
 	{ //StageId_5_1 (no-hero-remastered)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_steven_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -260,7 +260,7 @@
 	{ //StageId_5_2 (lost-legend)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_steven_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
 		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -277,7 +277,7 @@
 	{ //StageId_5_3 (elastic-destruction)
 		//Characters
 		{Char_BF_New, FIXED_DEC(105,1),  FIXED_DEC(100,1)},
-		{Char_Dad_New,   FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_steven_New,   FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
 		{NULL},
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
@@ -295,7 +295,7 @@
 	{ //StageId_6_1 (glitched-duo)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
 		{NULL},
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
@@ -312,7 +312,7 @@
 	{ //StageId_6_2 (NO-HERO)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
 		{NULL},
 		{NULL,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
@@ -329,7 +329,7 @@
 	{ //StageId_6_3 (you-can't-save-them)
 		//Characters
 		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_Dad_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
 		{NULL},
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		

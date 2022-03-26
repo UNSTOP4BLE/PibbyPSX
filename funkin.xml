@@ -133,8 +133,8 @@
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
 				
-				<!-- Dad assets -->
-				<file name = "dad.arc" type = "data" source = "iso/dad/main.arc"/>
+				<!-- steven assets -->
+				<file name = "steven.arc" type = "data" source = "iso/steven/main.arc"/>
 				
 				<!-- spinel assets -->
 				<file name = "spinel.arc" type = "data" source = "iso/spinel/main.arc"/>
