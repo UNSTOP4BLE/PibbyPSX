@@ -170,7 +170,7 @@ Character *Char_Dad_New(fixed_t x, fixed_t y)
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(8,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\DAD.ARC;1");

@@ -139,6 +139,9 @@
 				<!-- spinel assets -->
 				<file name = "spinel.arc" type = "data" source = "iso/spinel/main.arc"/>
 		
+				<!-- mordecai assets -->
+				<file name = "mordecai.arc" type = "data" source = "iso/mordecai/main.arc"/>
+
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
 				<file name = "speaker.tim" type = "data" source = "iso/gf/speaker.tim"/>

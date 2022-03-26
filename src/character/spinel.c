@@ -118,6 +118,17 @@ void Char_spinel_Tick(Character *character)
 {
 	Char_spinel *this = (Char_spinel*)character;
 	
+	if (stage.stage_id == StageId_2_1 && stage.song_step <= 775)
+		this->character.health_i = 1;
+	else if (stage.stage_id == StageId_2_1 && stage.song_step >= 775 && stage.song_step <= 909)
+		this->character.health_i = 10;
+	else if (stage.stage_id == StageId_2_1 && stage.song_step >= 909 && stage.song_step <= 1045)
+		this->character.health_i = 2;
+	else if (stage.stage_id == StageId_2_1 && stage.song_step >= 1045)
+		this->character.health_i = 1;
+	else                     
+		this->character.health_i = 2;
+		
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
@@ -168,11 +179,9 @@ Character *Char_spinel_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 1;
-	
 	this->character.focus_x = (stage.stage_id == StageId_2_1) ? FIXED_DEC(-142 - -180,1) : FIXED_DEC(-142 - -230,1);
 	this->character.focus_y = FIXED_DEC(25 - 80,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(8,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\SPINEL.ARC;1");

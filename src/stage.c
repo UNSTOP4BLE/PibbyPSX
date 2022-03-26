@@ -23,7 +23,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-//#define STAGE_FREECAM //Freecam
+#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -62,6 +62,7 @@ static const u8 note_anims[4][3] = {
 
 
 //Stage definitions
+int healthbary; 
 boolean noteshake;
 //check what opponent is singing
 boolean has2opponents;
@@ -74,6 +75,7 @@ int mogus;
 #include "character/bf.h"
 #include "character/dad.h"
 #include "character/spinel.h"
+#include "character/mordecai.h"
 #include "character/gf.h"
 
 #include "stage/dummy.h"
@@ -124,7 +126,7 @@ static void Stage_FocusCharacter(Character *ch, fixed_t div)
 static void Stage_ScrollCamera(void)
 {
 	#ifdef STAGE_FREECAM
-		FntPrint("camx%d camy%d", stage.camera.x , stage.camera.y);
+		FntPrint("camx%d camy%d zoom%d", stage.camera.x , stage.camera.y, stage.camera.bzoom);
 		if (pad_state.held & PAD_LEFT)
 			stage.camera.x -= FIXED_DEC(2,1);
 		if (pad_state.held & PAD_UP)
@@ -1669,8 +1671,43 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{	
-			//opponentsing = spinel
-			//opponentsing2 = dad
+			//chose witch health bar color to use
+			switch (stage.opponent->health_i)
+			{		
+						case 0: //bf
+							healthbary = 8;
+						break;
+						case 1: //steven
+							healthbary = 0;
+						break;
+						case 2: //spinel
+							healthbary = 0;
+						break;
+						case 3: //pico corrupt
+							healthbary = 32;
+						break;
+						case 4: //mordecai
+							healthbary = 16;
+						break;
+						case 5: //finn
+							healthbary = 48;
+						break;
+						case 6: //jake
+							healthbary = 56;
+						break;
+						case 7: //princess
+							healthbary = 64;
+						break;
+						case 8: //bf corrupt
+							healthbary = 40;
+						break;
+						case 9: //spook corrupt
+							healthbary = 24;
+						break;
+					default: healthbary = 72; //nothing lmao
+				break;	
+			}
+
 			//does the stage have 2 opponents
 			if (has2opponents == 0)
 			{
@@ -2522,7 +2559,7 @@ void Stage_Tick(void)
 				Stage_DrawHealth(stage.player_state[0].health, stage.opponent->health_i, -1);
 				
 				//Draw health bar
-				RECT health_fill = {0, 0, 256 - (256 * stage.player_state[0].health / 20000), 8};
+				RECT health_fill = {0, healthbary, 256 - (256 * stage.player_state[0].health / 20000), 8};
 				RECT health_back = {0, 8, 256, 8};
 				RECT_FIXED health_dst = {FIXED_DEC(-128,1), (SCREEN_HEIGHT2 - 32) << FIXED_SHIFT, 0, FIXED_DEC(8,1)};
 				if (stage.downscroll)

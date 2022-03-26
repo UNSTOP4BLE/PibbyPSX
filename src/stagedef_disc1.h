@@ -87,7 +87,7 @@
 	{ //StageId_2_2 (overworked)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Dad_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_mordecai_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		

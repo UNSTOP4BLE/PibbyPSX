@@ -12,6 +12,8 @@
 #include "../random.h"
 #include "../main.h"
 
+Gfx_Tex tex_pibby; //pibby
+
 //Boyfriend skull fragments
 static SkullFragment char_bf_skull[15] = {
 	{ 1 * 8, -87 * 8, -13, -13},
@@ -167,6 +169,37 @@ void Char_BF_Tick(Character *character)
 {
 	Char_BF *this = (Char_BF*)character;
 	
+	fixed_t fx, fy;
+	fx = stage.camera.x;
+	fy = stage.camera.y;
+
+	fixed_t beat_bop;
+	if ((stage.song_step & 0x3) == 0)
+		beat_bop = FIXED_UNIT - ((stage.note_scroll / 24) & FIXED_LAND);
+	else
+		beat_bop = 0;
+
+	//Draw boppers
+	static const struct pibby
+	{
+		RECT src;
+		RECT_FIXED dst;
+	} lbop_piece[] = {
+		{{0, 0, 76, 85}, {FIXED_DEC(10,1), FIXED_DEC(-70,1), FIXED_DEC(76,1), FIXED_DEC(85,1)}},
+	};
+	
+	const struct pibby *lbop_p = lbop_piece;
+	for (size_t i = 0; i < COUNT_OF(lbop_piece); i++, lbop_p++)
+	{
+		RECT_FIXED lbop_dst = {
+			lbop_p->dst.x - fx - (beat_bop << 1) + character->x,
+			lbop_p->dst.y - fy + (beat_bop << 3) + character->y,
+			lbop_p->dst.w + (beat_bop << 2),
+			lbop_p->dst.h - (beat_bop << 3),
+		};
+		Stage_DrawTex(&tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
+	}
+
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
@@ -384,6 +417,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\BF.ARC;1");
+	Gfx_LoadTex(&tex_pibby, Archive_Find(this->arc_main, "pibby.tim"), 0);
 	this->arc_dead = NULL;
 	IO_FindFile(&this->file_dead_arc, "\\CHAR\\BFDEAD.ARC;1");
 	
@@ -395,6 +429,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		"bf4.tim",   //BF_ArcMain_BF4
 		"bf5.tim",   //BF_ArcMain_BF5
 		"dead0.tim", //BF_ArcMain_Dead0
+		"pibby.tim", //BF_ArcMain_Dead0
 		NULL
 	};
 	IO_Data *arc_ptr = this->arc_ptr;

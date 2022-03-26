@@ -11,6 +11,7 @@ all: \
 	iso/bf/dead.arc \
 	iso/dad/main.arc \
 	iso/spinel/main.arc \
+	iso/mordecai/main.arc \
 	iso/gf/main.arc \
 	iso/gf/speaker.tim \
 	iso/week1/back.arc \
@@ -33,7 +34,7 @@ iso/%.arc:
 iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu/title.tim
 
 # BF
-iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/dead0.tim
+iso/bf/main.arc: iso/bf/pibby.tim iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/dead0.tim
 iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 
 # Dad
@@ -41,6 +42,9 @@ iso/dad/main.arc: iso/dad/idle0.tim iso/dad/idle1.tim iso/dad/idle2.tim iso/dad/
 
 # Spinel
 iso/spinel/main.arc: iso/spinel/idle0.tim iso/spinel/idle1.tim iso/spinel/idle2.tim iso/spinel/idle3.tim iso/spinel/idle4.tim iso/spinel/idle5.tim iso/spinel/idle6.tim iso/spinel/idle7.tim iso/spinel/left0.tim iso/spinel/left1.tim iso/spinel/down0.tim iso/spinel/down1.tim iso/spinel/up0.tim iso/spinel/up1.tim iso/spinel/right0.tim iso/spinel/right1.tim
+
+# Mordecai
+iso/mordecai/main.arc: iso/mordecai/idle0.tim iso/mordecai/idle1.tim iso/mordecai/idle2.tim iso/mordecai/idle3.tim iso/mordecai/idle4.tim iso/mordecai/idle5.tim iso/mordecai/idle6.tim iso/mordecai/idle7.tim iso/mordecai/left0.tim iso/mordecai/left1.tim iso/mordecai/left2.tim iso/mordecai/left3.tim iso/mordecai/down0.tim iso/mordecai/down1.tim iso/mordecai/down2.tim iso/mordecai/down3.tim iso/mordecai/up0.tim iso/mordecai/up1.tim iso/mordecai/up2.tim iso/mordecai/right0.tim iso/mordecai/right1.tim iso/mordecai/right2.tim iso/mordecai/right3.tim
 
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
