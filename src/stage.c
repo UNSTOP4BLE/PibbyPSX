@@ -72,6 +72,8 @@ boolean opponentsing;
 u16 switch_note;
 int noteypos;
 int noteswap;
+fixed_t week3_fade;
+fixed_t week3_fadespd = FIXED_DEC(150,1);
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -835,7 +837,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	};
 	RECT_FIXED dst = {
 		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1),
-		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 25, 1),
+		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 32, 1),
 		src.w << FIXED_SHIFT,
 		src.h << FIXED_SHIFT
 	};
@@ -2646,30 +2648,6 @@ void Stage_Tick(void)
 				Stage_DrawTex(&stage.tex_health, &health_back, &health_dst, stage.bump);
 			}
 			
-			//Hardcoded stage stuff
-			switch (stage.stage_id)
-			{
-				case StageId_1_2: //Fresh GF bop
-					switch (stage.song_step)
-					{
-						case 16 << 2:
-							stage.gf_speed = 2 << 2;
-							break;
-						case 48 << 2:
-							stage.gf_speed = 1 << 2;
-							break;
-						case 80 << 2:
-							stage.gf_speed = 2 << 2;
-							break;
-						case 112 << 2:
-							stage.gf_speed = 1 << 2;
-							break;
-					}
-					break;
-				default:
-					break;
-			}
-			
 			//Draw stage foreground
 			if (stage.back->draw_fg != NULL)
 				stage.back->draw_fg(stage.back);
@@ -2677,6 +2655,34 @@ void Stage_Tick(void)
 			//Tick foreground objects
 			ObjectList_Tick(&stage.objlist_fg);
 			
+
+			RECT screen_src = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+			//Draw white week3_fade
+			if (week3_fade > 0)
+			{
+				static const RECT flash = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+				u8 flash_col = week3_fade >> FIXED_SHIFT;
+				Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+				week3_fade -= FIXED_MUL(week3_fadespd, timer_dt);
+			}
+			
+				
+			
+			//draw the coolio effect
+			if (stage.stage_id == StageId_1_1)
+			{
+				if (stage.song_step >= 760 && stage.song_step <= 1152) {
+					stage.fade = 1;
+					Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
+				}
+				else 
+					stage.fade = 0;
+				if (stage.song_step == 760)
+					week3_fade = FIXED_DEC(255,1);
+				if (stage.song_step == 1152)
+					week3_fade = FIXED_DEC(255,1);
+			}	
+		
 			//Tick characters
 			stage.player->tick(stage.player);
 			if (stage.opponent2 != NULL)

@@ -62,7 +62,8 @@ void Back_Week1_DrawBG(StageBack *back)
 		FIXED_DEC(700,1),
 		FIXED_DEC(320,1)
 	};
-	Stage_DrawTex(&this->tex_beach, &beach_src, &beach_dst, stage.camera.bzoom);
+	if (stage.fade == 0)
+		Stage_DrawTex(&this->tex_beach, &beach_src, &beach_dst, stage.camera.bzoom);
 }
 
 void Back_Week1_Free(StageBack *back)
@@ -85,7 +86,9 @@ StageBack *Back_Week1_New(void)
 	this->back.draw_md = NULL;
 	this->back.draw_bg = Back_Week1_DrawBG;
 	this->back.free = Back_Week1_Free;
-	
+		
+	Gfx_SetClear(0, 0, 0);
+
 	//Load background textures
 	IO_Data arc_back = IO_Read("\\WEEK1\\BACK.ARC;1");
 	Gfx_LoadTex(&this->tex_beach, Archive_Find(arc_back, "beach.tim"), 0);
