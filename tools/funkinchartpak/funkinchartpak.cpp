@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
 				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			if (sustain >= 0)
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;
-			if (((uint8_t)j[1]) & 8)
+			if (j[3] == "Glitch")
 				new_note.type |= NOTE_FLAG_MINE;
 			
 			if (note_fudge.count(*((uint32_t*)&new_note)))
