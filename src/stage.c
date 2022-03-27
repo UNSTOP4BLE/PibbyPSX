@@ -347,7 +347,25 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
 			
+			if (stage.mode == StageMode_Swap)
+			{
+			if (opponentsing)
+			stage.player->set_anim(stage.player,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			if (stage.opponent2 != NULL && opponent2sing)
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			}
+
+			if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
+			{
+			if (opponentsing)
+			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			if (stage.opponent2 != NULL && opponent2sing)
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			}
+			
+			else 
 			this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 			this->arrow_hitan[type & 0x3] = stage.step_time;
 			
@@ -989,7 +1007,7 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 28 - (clip >> FIXED_SHIFT);
 						
-						note_dst.x = stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (note_src.h << FIXED_SHIFT);
@@ -1020,7 +1038,7 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 16;
 						
-						note_dst.x = stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (next_y - y) - clip;
@@ -1047,7 +1065,7 @@ static void Stage_DrawNotes(void)
 				note_src.w = 32;
 				note_src.h = 32;
 				
-				note_dst.x = stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
 				note_dst.w = note_src.w << FIXED_SHIFT;
 				note_dst.h = note_src.h << FIXED_SHIFT;
@@ -1113,7 +1131,7 @@ static void Stage_DrawNotes(void)
 				note_src.w = 32;
 				note_src.h = 32;
 				
-				note_dst.x = stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
 				note_dst.w = note_src.w << FIXED_SHIFT;
 				note_dst.h = note_src.h << FIXED_SHIFT;
@@ -1352,8 +1370,7 @@ static void Stage_LoadState(void)
 	
 	stage.player_state[0].character = stage.player;
 	stage.player_state[1].character = stage.opponent;
-	if (stage.opponent2 != NULL)
-	stage.player_state[1].character = stage.opponent2;
+
 	for (int i = 0; i < 2; i++)
 	{
 		memset(stage.player_state[i].arrow_hitan, 0, sizeof(stage.player_state[i].arrow_hitan));
@@ -2135,15 +2152,21 @@ void Stage_Tick(void)
 					{
 						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
+						if (stage.mode == StageMode_Normal)
+			            {
 						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
+			            }
 					}
 					else if (opponent_snote != CharAnim_Idle)
 					{
 						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
+						if (stage.mode != StageMode_Normal)
+			            {
 						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
+			            }
 					}
 					break;
 				}
@@ -2183,7 +2206,7 @@ void Stage_Tick(void)
 			for (u8 i = 0; i < 4; i++)
 			{
 				//BF
-				note_dst.x = stage.noteshakex + note_x[i ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[i ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + note_y[i ^ stage.note_swap] - FIXED_DEC(16,1);
 				if (stage.downscroll)
 					note_dst.y = -note_dst.y - note_dst.h;
@@ -2193,7 +2216,7 @@ void Stage_Tick(void)
 				Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 				
 				//Opponent
-				note_dst.x = stage.noteshakex + note_x[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + note_y[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
 				
 				if (stage.downscroll)
