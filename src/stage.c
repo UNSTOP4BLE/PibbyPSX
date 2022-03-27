@@ -70,7 +70,8 @@ boolean opponent2sing;
 boolean opponentsing;
 
 u16 switch_note;
-int mogus;
+int noteypos;
+int noteswap;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -988,7 +989,7 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 28 - (clip >> FIXED_SHIFT);
 						
-						note_dst.x = mogus + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (note_src.h << FIXED_SHIFT);
@@ -1019,7 +1020,7 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 16;
 						
-						note_dst.x = mogus + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (next_y - y) - clip;
@@ -1046,7 +1047,7 @@ static void Stage_DrawNotes(void)
 				note_src.w = 32;
 				note_src.h = 32;
 				
-				note_dst.x = mogus + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
 				note_dst.w = note_src.w << FIXED_SHIFT;
 				note_dst.h = note_src.h << FIXED_SHIFT;
@@ -1112,7 +1113,7 @@ static void Stage_DrawNotes(void)
 				note_src.w = 32;
 				note_src.h = 32;
 				
-				note_dst.x = mogus + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
 				note_dst.w = note_src.w << FIXED_SHIFT;
 				note_dst.h = note_src.h << FIXED_SHIFT;
@@ -1761,44 +1762,92 @@ void Stage_Tick(void)
 			else 
 				noteshake = 0;
 
+			noteypos = 15;
+			if (noteswap == 1)
+				noteypos ++;
+			else if (noteswap == 2)
+				noteypos --;
 
-			mogus = 15;
-
+			if (stage.song_step < 0)
+			{
+				//BF
+				note_y[4] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+				note_y[5] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);//+34
+				note_y[6] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+				note_y[7] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+				//Opponent
+				note_y[0] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+				note_y[1] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);//+34
+				note_y[2] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+				note_y[3] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+			}
 			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
 			{
 				if ((stage.song_step  & 0x3) == 0)
 				switch_note++;
 				
-				//first beat
-				if (switch_note == 0)
+				if (stage.middlescroll) 
 				{
-					note_y[4] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[5] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[6] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[7] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-
-					note_y[0] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[1] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[2] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[3] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					//first beat
+					if (switch_note == 0)
+					{
+						noteswap = 1;
+						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					}
+					//2nd beat
+					else if (switch_note == 1)
+					{
+						noteswap = 2;
+						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					}
 				}
-				//2nd beat
-				else if (switch_note == 1)
+				else
 				{
-					note_y[4] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[5] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[6] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[7] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					
-					note_y[0] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[1] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[2] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-					note_y[3] = FIXED_DEC(32,1) + (mogus * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-				}
+					//first beat
+					if (switch_note == 0)
+					{
+						noteswap = 1;
+						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 
+						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					}
+					//2nd beat
+					else if (switch_note == 1)
+					{
+						noteswap = 2;
+						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						
+						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+					}
+				}
 				while (switch_note > 1)
 				switch_note = 0;
-				
 			}
 
 			FntPrint("%d %d %d", stage.song_step, opponentsing, opponent2sing);
@@ -2134,7 +2183,7 @@ void Stage_Tick(void)
 			for (u8 i = 0; i < 4; i++)
 			{
 				//BF
-				note_dst.x = mogus + stage.noteshakex + note_x[i ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[i ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + note_y[i ^ stage.note_swap] - FIXED_DEC(16,1);
 				if (stage.downscroll)
 					note_dst.y = -note_dst.y - note_dst.h;
@@ -2144,7 +2193,7 @@ void Stage_Tick(void)
 				Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 				
 				//Opponent
-				note_dst.x = mogus + stage.noteshakex + note_x[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.x = noteypos + stage.noteshakex + note_x[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
 				note_dst.y = stage.noteshakey + note_y[(i | 0x4) ^ stage.note_swap] - FIXED_DEC(16,1);
 				
 				if (stage.downscroll)
