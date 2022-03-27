@@ -23,7 +23,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -81,14 +81,8 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "character/mordecai.h"
 #include "character/gf.h"
 
-#include "stage/dummy.h"
 #include "stage/week1.h"
-#include "stage/week2.h"
-#include "stage/week3.h"
-#include "stage/week4.h"
-#include "stage/week5.h"
-#include "stage/week6.h"
-#include "stage/week7.h"
+#include "stage/park.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"
@@ -1381,6 +1375,7 @@ static void Stage_LoadState(void)
 		stage.player_state[i].combo = 0;
 		opponentsing = 1;	
 		opponent2sing = 1;
+		stage.fade = 0;
 		stage.player_state[i].miss = 0;
 		stage.player_state[i].accuracy = 0;
 		stage.player_state[i].max_accuracy = 0;
@@ -1869,7 +1864,7 @@ void Stage_Tick(void)
 				switch_note = 0;
 			}
 
-			FntPrint("%d %d %d", stage.song_step, opponentsing, opponent2sing);
+			FntPrint("%d %d %d", stage.song_step, opponentsing, stage.fade);
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
@@ -2666,22 +2661,83 @@ void Stage_Tick(void)
 				week3_fade -= FIXED_MUL(week3_fadespd, timer_dt);
 			}
 			
-				
-			
-			//draw the coolio effect
-			if (stage.stage_id == StageId_1_1)
+			switch (stage.stage_id)
 			{
-				if (stage.song_step >= 760 && stage.song_step <= 1152) {
-					stage.fade = 1;
-					Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
-				}
-				else 
-					stage.fade = 0;
-				if (stage.song_step == 760)
-					week3_fade = FIXED_DEC(255,1);
-				if (stage.song_step == 1152)
-					week3_fade = FIXED_DEC(255,1);
-			}	
+						case StageId_1_1:
+							if (stage.song_step >= 760 && stage.song_step <= 1152) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 760)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 1152)
+								week3_fade = FIXED_DEC(255,1);
+						break;
+						case StageId_1_2:
+							if (stage.song_step >= 387 && stage.song_step <= 760) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
+							}
+							else if (stage.song_step >= 1024) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 387)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 760)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 1024)
+								week3_fade = FIXED_DEC(255,1);
+						break;
+						case StageId_1_3:
+							if (stage.song_step >= 383 && stage.song_step <= 641) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 383)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 641)
+								week3_fade = FIXED_DEC(255,1);		
+						break;
+						case StageId_2_1:
+							if (stage.song_step >= 1046 && stage.song_step <= 1145) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 1046)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 1145)
+								week3_fade = FIXED_DEC(255,1);	
+						break;	
+						case StageId_2_2:
+							if (stage.song_step >= 774 && stage.song_step <= 1280) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
+							}
+							else if (stage.song_step >= 1536) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 774)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 1280)
+								week3_fade = FIXED_DEC(255,1);	
+							if (stage.song_step == 1536)
+								week3_fade = FIXED_DEC(255,1);		
+						break;
+					default:
+				break;
+			}
 		
 			//Tick characters
 			stage.player->tick(stage.player);

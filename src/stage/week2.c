@@ -1,3 +1,4 @@
+
 /*
   This Source Code Form is subject to the terms of the Mozilla Public
   License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -29,7 +30,7 @@ void Back_Week2_DrawBG(StageBack *back)
 	fixed_t fx, fy;
 	fx = stage.camera.x;
 	fy = stage.camera.y;
-	
+
 	//Draw window
 	RECT window_src = {0, 0, 228, 128};
 	RECT_FIXED window_dst = {

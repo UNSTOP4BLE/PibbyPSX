@@ -13,8 +13,6 @@
 
 #include "speaker.h"
 
-#include "../stage/week7.h"
-
 //GF character structure
 enum
 {
@@ -115,10 +113,6 @@ void Char_GF_SetFrame(void *user, u8 frame)
 void Char_GF_Tick(Character *character)
 {
 	Char_GF *this = (Char_GF*)character;
-	
-	//Initialize Pico test
-	if (stage.stage_id == StageId_7_3 && stage.back != NULL && this->pico_p == NULL)
-		this->pico_p = ((Back_Week7*)stage.back)->pico_chart;
 	
 	if (this->pico_p != NULL)
 	{
@@ -268,12 +262,6 @@ Character *Char_GF_New(fixed_t x, fixed_t y)
 	
 	//Initialize speaker
 	Speaker_Init(&this->speaker);
-	
-	//Initialize Pico test
-	if (stage.stage_id == StageId_7_3 && stage.back != NULL)
-		this->pico_p = ((Back_Week7*)stage.back)->pico_chart;
-	else
-		this->pico_p = NULL;
 	
 	return (Character*)this;
 }

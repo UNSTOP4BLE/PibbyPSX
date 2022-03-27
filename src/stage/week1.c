@@ -9,10 +9,7 @@
 #include "../archive.h"
 #include "../mem.h"
 #include "../stage.h"
-/*
-#include "../pad.h"
-int x, y, w, h;
-*/
+
 //Week 1 background structure
 typedef struct
 {
@@ -30,27 +27,6 @@ void Back_Week1_DrawBG(StageBack *back)
 	
 	fixed_t fx, fy;
 
-/*
-	FntPrint("x%d y%d w%d h%d", x, y, w, h);
-	
-	if (pad_state.held & PAD_L1)
-		x ++;
-	if (pad_state.held & PAD_R1)
-		x --;
-	if (pad_state.held & PAD_L2)
-		y ++;
-	if (pad_state.held & PAD_R2)
-		y --;
-	if (pad_state.held & PAD_LEFT)
-		w ++;
-	if (pad_state.held & PAD_RIGHT)
-		w --;
-	if (pad_state.held & PAD_SQUARE)
-		h ++;
-	if (pad_state.held & PAD_CIRCLE)
-		h --;
-*/
-
 	//Draw bg
 	fx = stage.camera.x;
 	fy = stage.camera.y;
@@ -62,7 +38,7 @@ void Back_Week1_DrawBG(StageBack *back)
 		FIXED_DEC(700,1),
 		FIXED_DEC(320,1)
 	};
-	if (stage.fade == 0)
+	if (stage.fade != 1)
 		Stage_DrawTex(&this->tex_beach, &beach_src, &beach_dst, stage.camera.bzoom);
 }
 

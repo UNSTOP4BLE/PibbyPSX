@@ -54,6 +54,11 @@
 				<file name = "1.3n.cht" type = "data" source = "iso/chart/my-friends-hard.json.cht"/>
 			</dir>
 			
+			<dir name = "park">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/park/back.arc"/>
+			</dir>
+
 			<!-- Week 2 assets -->
 			<dir name = "week2">
 				<!-- Background art -->
@@ -82,10 +87,6 @@
 			
 			<!-- Week 4 assets -->
 			<dir name = "week4">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week4/back.arc"/>
-				<file name = "hench.arc" type = "data" source = "iso/week4/hench.arc"/>
-				
 				<!-- Satin Panties charts -->
 				<file name = "4.1n.cht" type = "data" source = "iso/chart/Brotherly-Bond-hard.json.cht"/>
 				<!-- High charts -->
@@ -96,9 +97,6 @@
 			
 			<!-- Week 5 assets -->
 			<dir name = "week5">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week5/back.arc"/>
-				
 				<!-- Cocoa charts -->
 				<file name = "5.1n.cht" type = "data" source = "iso/chart/no-hero-remastered-hard.json.cht"/>
 				<!-- Eggnog charts -->
@@ -109,22 +107,12 @@
 			
 			<!-- Week 6 assets -->
 			<dir name = "week6">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week6/back.arc"/>
-				<file name = "back3.tim" type = "data" source = "iso/week6/back3.tim"/>
-				
 				<!-- Senpai charts -->
 				<file name = "6.1n.cht" type = "data" source = "iso/chart/glitched-duo-hard.json.cht"/>
 				<!-- Roses charts -->
 				<file name = "6.2n.cht" type = "data" source = "iso/chart/NO-HERO-hard.json.cht"/>
 				<!-- Thorns charts -->
 				<file name = "6.3n.cht" type = "data" source = "iso/chart/you-cant-save-them.json.cht"/>
-			</dir>
-			
-			<!-- Week 7 assets -->
-			<dir name = "week7">
-				<!-- Background art -->
-				<file name = "back.arc" type = "data" source = "iso/week7/back.arc"/>
 			</dir>
 	
 			<!-- Character assets -->
