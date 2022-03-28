@@ -80,6 +80,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "character/spinel.h"
 #include "character/mordecai.h"
 #include "character/spook.h"
+#include "character/pico.h"
 #include "character/gf.h"
 
 #include "stage/week1.h"

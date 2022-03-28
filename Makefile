@@ -28,6 +28,7 @@ SRCS = src/main.c \
        src/character/spinel.c \
        src/character/mordecai.c \
        src/character/spook.c \
+       src/character/pico.c \
        src/character/gf.c \
        src/object.c \
        src/object/combo.c \

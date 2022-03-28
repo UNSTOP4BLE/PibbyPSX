@@ -122,7 +122,7 @@
 	{ //StageId_3_1 (gunshot-hard)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_steven_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_pico_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
