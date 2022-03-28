@@ -119,7 +119,7 @@
 		StageId_2_3, 0
 	},
 	
-	{ //StageId_3_1 (gunshot-hard)
+	{ //StageId_3_1 (gunshot)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_pico_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
@@ -127,7 +127,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_Week3_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},

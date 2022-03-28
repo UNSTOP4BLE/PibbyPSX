@@ -22,7 +22,6 @@
 #include "loadscr.h"
 
 #include "stage.h"
-#include "character/gf.h"
 
 //Menu messages
 static const char *funny_messages[][2] = {
@@ -136,8 +135,7 @@ static struct
 	//Menu assets
 	Gfx_Tex tex_back, tex_ng, tex_story, tex_title;
 	FontData font_bold, font_arial;
-	
-	Character *gf; //Title Girlfriend
+
 } menu;
 
 #ifdef PSXF_NETWORK
@@ -281,7 +279,6 @@ void Menu_Load(MenuPage page)
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
 	
-	menu.gf = Char_GF_New(FIXED_DEC(62,1), FIXED_DEC(-12,1));
 	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
 	stage.camera.bzoom = FIXED_UNIT;
 	stage.gf_speed = 4;
@@ -316,12 +313,6 @@ void Menu_Load(MenuPage page)
 	
 	//Set background colour
 	Gfx_SetClear(0, 0, 0);
-}
-
-void Menu_Unload(void)
-{
-	//Free title Girlfriend
-	Character_Free(menu.gf);
 }
 
 void Menu_ToStage(StageId id, StageDiff diff, boolean story)
@@ -507,8 +498,6 @@ void Menu_Tick(void)
 				Gfx_BlitTex(&menu.tex_title, &press_src, (SCREEN_WIDTH - 256) / 2, SCREEN_HEIGHT - 48);
 			}
 			
-			//Draw Girlfriend
-			menu.gf->tick(menu.gf);
 			break;
 		}
 		case MenuPage_Main:
@@ -1667,9 +1656,6 @@ void Menu_Tick(void)
 	#endif
 		case MenuPage_Stage:
 		{
-			//Unload menu state
-			Menu_Unload();
-			
 			//Load new stage
 			LoadScr_Start();
 			Stage_Load(menu.page_param.stage.id, menu.page_param.stage.diff, menu.page_param.stage.story);

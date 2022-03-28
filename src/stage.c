@@ -86,6 +86,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "stage/week1.h"
 #include "stage/park.h"
 #include "stage/week2.h"
+#include "stage/week3.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"

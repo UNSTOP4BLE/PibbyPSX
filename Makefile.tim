@@ -63,4 +63,4 @@ iso/park/back.arc: iso/park/park.tim
 iso/week2/back.arc: iso/week2/back0.tim
 
 # Week 3
-iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim iso/week3/back3.tim iso/week3/back4.tim iso/week3/back5.tim
+iso/week3/back.arc: iso/week3/bg.tim iso/week3/fg.tim iso/week3/sky.tim
