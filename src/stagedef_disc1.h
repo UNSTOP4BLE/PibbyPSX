@@ -104,7 +104,7 @@
 	{ //StageId_2_3 (last-spooktober)
 		//Characters
 		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_steven_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		

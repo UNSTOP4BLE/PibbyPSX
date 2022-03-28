@@ -12,6 +12,7 @@ all: \
 	iso/steven/main.arc \
 	iso/spinel/main.arc \
 	iso/mordecai/main.arc \
+	iso/spook/main.arc \
 	iso/gf/main.arc \
 	iso/gf/speaker.tim \
 	iso/week1/back.arc \
@@ -41,6 +42,9 @@ iso/spinel/main.arc: iso/spinel/idle0.tim iso/spinel/idle1.tim iso/spinel/idle2.
 # Mordecai
 iso/mordecai/main.arc: iso/mordecai/idle0.tim iso/mordecai/idle1.tim iso/mordecai/idle2.tim iso/mordecai/idle3.tim iso/mordecai/idle4.tim iso/mordecai/idle5.tim iso/mordecai/idle6.tim iso/mordecai/idle7.tim iso/mordecai/left0.tim iso/mordecai/left1.tim iso/mordecai/left2.tim iso/mordecai/left3.tim iso/mordecai/down0.tim iso/mordecai/down1.tim iso/mordecai/down2.tim iso/mordecai/down3.tim iso/mordecai/up0.tim iso/mordecai/up1.tim iso/mordecai/up2.tim iso/mordecai/right0.tim iso/mordecai/right1.tim iso/mordecai/right2.tim iso/mordecai/right3.tim
 
+# Spookeez
+iso/spook/main.arc: iso/spook/idle0.tim iso/spook/idle1.tim iso/spook/hit0.tim iso/spook/hit1.tim iso/spook/hit2.tim
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 
@@ -51,7 +55,7 @@ iso/week1/back.arc: iso/week1/beach.tim
 iso/park/back.arc: iso/park/park.tim
 
 # Week 2
-iso/week2/back.arc: iso/week2/back0.tim iso/week2/back1.tim iso/week2/back2.tim
+iso/week2/back.arc: iso/week2/back0.tim
 
 # Week 3
 iso/week3/back.arc: iso/week3/back0.tim iso/week3/back1.tim iso/week3/back2.tim iso/week3/back3.tim iso/week3/back4.tim iso/week3/back5.tim

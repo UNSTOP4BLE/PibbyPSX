@@ -19,6 +19,7 @@ SRCS = src/main.c \
        src/psx/movie.c \
        src/stage/week1.c \
        src/stage/park.c \
+       src/stage/week2.c \
        src/animation.c \
        src/character.c \
        src/character/bf.c \
@@ -26,6 +27,7 @@ SRCS = src/main.c \
        src/character/steven.c \
        src/character/spinel.c \
        src/character/mordecai.c \
+       src/character/spook.c \
        src/character/gf.c \
        src/object.c \
        src/object/combo.c \
