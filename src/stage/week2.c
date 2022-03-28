@@ -10,6 +10,9 @@
 #include "../mem.h"
 #include "../archive.h"
 
+
+//#include "../pad.h"
+//int x, y, w, h;
 //Week 2 background structure
 typedef struct
 {
@@ -29,14 +32,34 @@ void Back_Week2_DrawBG(StageBack *back)
 	fixed_t fx, fy;
 	fx = stage.camera.x;
 	fy = stage.camera.y;
-	
+/*	
+	FntPrint("x%d y%d w%d h%d", x, y, w, h);
+
+	if (pad_state.held & PAD_LEFT)
+		x++;
+	if (pad_state.held & PAD_RIGHT)
+		x--;
+	if (pad_state.held & PAD_UP)
+		y++;
+	if (pad_state.held & PAD_DOWN)
+		y--;
+
+	if (pad_state.held & PAD_SQUARE)
+		w++;
+	if (pad_state.held & PAD_CIRCLE)
+		w--;
+	if (pad_state.held & PAD_TRIANGLE)
+		h++;
+	if (pad_state.held & PAD_CROSS)
+		h--;
+ */
 	//Draw background
 	RECT back_src = {0, 0, 256, 256};
 	RECT_FIXED back_dst = {
-		FIXED_DEC(-185,1) - fx,
-		FIXED_DEC(-125,1) - fy,
-		FIXED_DEC(353,1),
-		FIXED_DEC(267,1)
+		FIXED_DEC(-227,1) - fx,
+		FIXED_DEC(-111,1) - fy,
+		FIXED_DEC(523,1),
+		FIXED_DEC(304,1)
 	};
 	
 	Stage_DrawTex(&this->tex_back0, &back_src, &back_dst, stage.camera.bzoom);

@@ -103,13 +103,13 @@
 	},
 	{ //StageId_2_3 (last-spooktober)
 		//Characters
-		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
+		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(120,1)},
+		{Char_Spook_New,  FIXED_DEC(-90,1),   FIXED_DEC(120,1)},
 		{NULL},
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_Week2_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
