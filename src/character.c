@@ -44,17 +44,6 @@ void Character_DrawParallax(Character *this, Gfx_Tex *tex, const CharFrame *cfra
 	Stage_DrawTex(tex, &src, &dst, stage.camera.bzoom);
 }
 
-void Character_CharacterFlip(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax)
-{
-	//Draw character
-	fixed_t x = this->x - FIXED_MUL(stage.camera.x, parallax) - FIXED_DEC(-cframe->off[0],1);
-	fixed_t y = this->y - FIXED_MUL(stage.camera.y, parallax) - FIXED_DEC(cframe->off[1],1);
-	
-	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
-	RECT_FIXED dst = {x, y, -src.w << FIXED_SHIFT, src.h << FIXED_SHIFT};
-	Stage_DrawTex(tex, &src, &dst, stage.camera.bzoom);
-}
-
 void Character_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
 {
 	Character_DrawParallax(this, tex, cframe, FIXED_UNIT);

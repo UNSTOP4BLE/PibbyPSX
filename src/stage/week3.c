@@ -64,7 +64,7 @@ void Back_Week3_DrawBG(StageBack *back)
 		FIXED_DEC(571,1),
 		FIXED_DEC(343,1)
 	};
-	
+	if (stage.fade == 0)
 	Stage_DrawTex(&this->tex_fg, &fg_src, &fg_dst, stage.camera.bzoom);
 
 	//Draw bg
@@ -78,7 +78,7 @@ void Back_Week3_DrawBG(StageBack *back)
 		FIXED_DEC(445,1),
 		FIXED_DEC(255,1)
 	};
-	
+	if (stage.fade == 0)
 	Stage_DrawTex(&this->tex_bg, &bg_src, &bg_dst, stage.camera.bzoom);
 
 	//Draw sky
@@ -93,9 +93,11 @@ void Back_Week3_DrawBG(StageBack *back)
 		FIXED_DEC(120,1) + FIXED_DEC(SCREEN_WIDEOADD,2)
 	};
 	
+	if (stage.fade == 0)
 	Stage_DrawTex(&this->tex_sky, &sky_src, &sky_dst, stage.camera.bzoom);
 	sky_dst.x += sky_dst.w;
 	sky_src.y += sky_src.h;
+	if (stage.fade == 0)
 	Stage_DrawTex(&this->tex_sky, &sky_src, &sky_dst, stage.camera.bzoom);
 }
 

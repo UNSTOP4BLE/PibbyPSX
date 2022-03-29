@@ -40,44 +40,44 @@ typedef struct
 
 //pico character definitions
 static const CharFrame char_pico_frame[] = {
-	{pico_ArcMain_Idle0, {  0,   0, 120, 117}, {0,  117}}, //0 idle 1
-	{pico_ArcMain_Idle0, {120,   0, 122, 120}, {0,  120}}, //1 idle 2
-	{pico_ArcMain_Idle0, {  0, 117, 123, 120}, {0,  119}}, //2 idle 3
-	{pico_ArcMain_Idle0, {123, 120, 124, 121}, {0,  121}}, //3 idle 4
-	{pico_ArcMain_Idle1, {  0,   0, 125, 121}, {0,  121}}, //4 idle 5
-	{pico_ArcMain_Idle1, {125,   0, 124, 121}, {0,  121}}, //5 idle 6
-	{pico_ArcMain_Idle1, {  0, 121, 124, 123}, {0,  122}}, //6 idle 7
+	{pico_ArcMain_Idle0, {  0,   0,  120,  117}, { 95,  117}}, //0 idle 1
+	{pico_ArcMain_Idle0, {120,   0,  122,  120}, { 96,  120}}, //1 idle 2
+	{pico_ArcMain_Idle0, {  0, 117,  123,  120}, { 96,  119}}, //2 idle 3
+	{pico_ArcMain_Idle0, {123, 120,  124,  121}, { 97,  121}}, //3 idle 4
+	{pico_ArcMain_Idle1, {  0,   0,  125,  121}, { 98,  121}}, //4 idle 5
+	{pico_ArcMain_Idle1, {125,   0,  124,  121}, { 98,  120}}, //5 idle 6
+	{pico_ArcMain_Idle1, {  0, 121,  124,  123}, { 98,  122}}, //6 idle 7
 
-	{pico_ArcMain_Hit2, { 91,  123, 106,  121}, {0,  121}}, //4 left 1
-	{pico_ArcMain_Hit3, {  0,   0,  102,  120}, {0,  120}}, //5 left 2
-	{pico_ArcMain_Hit3, {102,   0,  100,  120}, {0,  120}}, //4 left 1
-	{pico_ArcMain_Hit3, {  0, 120,  100,  122}, {0,  121}}, //5 left 2
+	{pico_ArcMain_Hit2, { 91, 123, 106,  121}, {106,  121}}, //4 left 1
+	{pico_ArcMain_Hit3, {  0,   0, 102,  120}, {102,  120}}, //5 left 2
+	{pico_ArcMain_Hit3, {102,   0, 100,  120}, {102,  120}}, //4 left 1
+	{pico_ArcMain_Hit3, {  0, 120, 100,  122}, { 99,  121}}, //5 left 2
 
-	{pico_ArcMain_Hit0, {  0,   0, 146,  97}, {0,  97}}, //6 down 1
-	{pico_ArcMain_Hit0, {  0,  97, 148,  99}, {0,  99}}, //7 down 2
-	{pico_ArcMain_Hit1, {  0,   0, 147,  99}, {0,  99}}, //6 down 1
-	{pico_ArcMain_Hit1, {  0,  99, 147,  101}, {0,  101}}, //7 down 2
+	{pico_ArcMain_Hit0, {  0,   0,  146,  97}, {115,  97}}, //6 down 1
+	{pico_ArcMain_Hit0, {  0,  97,  148,  99}, {115,  99}}, //7 down 2
+	{pico_ArcMain_Hit1, {  0,   0,  147,  99}, {113,  99}}, //6 down 1
+	{pico_ArcMain_Hit1, {  0,  99,  147, 101}, {113, 101}}, //7 down 2
 
-	{pico_ArcMain_Hit3, {100, 120, 112,  123}, {0, 123}}, //8 up 1
-	{pico_ArcMain_Hit4, {  0,   0, 114,  123}, {0,  122}}, //9 up 2
-	{pico_ArcMain_Hit4, {114,   0, 115,  121}, {0,  121}}, //8 up 1
-	{pico_ArcMain_Hit4, {  0, 123, 114,  121}, {0,  0}}, //9 up 2
+	{pico_ArcMain_Hit3, {100, 120, 112, 123}, { 92,  123}}, //8 up 1
+	{pico_ArcMain_Hit4, {  0,   0, 113, 123}, { 92,  122}}, //9 up 2
+	{pico_ArcMain_Hit4, {114,   0, 115, 121}, { 93,  121}}, //8 up 1
+	{pico_ArcMain_Hit4, {  0, 123, 114, 121}, { 93,  121}}, //9 up 2
 	
-	{pico_ArcMain_Idle1,  {124, 121, 87, 123}, {0,  117}}, //10 right 1
-	{pico_ArcMain_Hit2, {  0,   0, 91, 122}, {0,  119}}, //11 right 2
-	{pico_ArcMain_Hit2, { 91,   0, 93, 120}, {0,  118}}, //10 right 1
-	{pico_ArcMain_Hit2, {  0, 122, 91, 125}, {0,  120}}, //11 right 2
+	{pico_ArcMain_Idle1,{125,  121, 87,  123}, {82,  117}}, //10 right 1
+	{pico_ArcMain_Hit2, {  0,   0,  91,  122}, {81,  118}}, //11 right 2
+	{pico_ArcMain_Hit2, {104,   0,  93,  120}, {81,  119}}, //10 right 1
+	{pico_ArcMain_Hit2, {  0, 122,  91,  125}, {81,  120}}, //11 right 2
 };
 
 static const Animation char_pico_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, 4, 5, 6, 7, ASCR_BACK, 0}}, //CharAnim_Idle
-	{2, (const u8[]){ 8, 9, 10, 11, ASCR_BACK, 0}},         //CharAnim_Left
+	{2, (const u8[]){ 0, 1, 2, 3, 4, 5, 6, ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){ 7, 8, 9, 10, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 12, 13, 14, 15, ASCR_BACK, 0}},         //CharAnim_Down
+	{2, (const u8[]){ 11, 12, 13, 14, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 16, 17, 18, 19, ASCR_BACK, 0}},         //CharAnim_Up
+	{2, (const u8[]){ 15, 16, 17, 18, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){ 20, 21, 22, 23, ASCR_BACK, 0}},         //CharAnim_Right
+	{2, (const u8[]){ 19, 20, 21, 22 , ASCR_BACK, 0}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
@@ -106,7 +106,7 @@ void Char_pico_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_pico_SetFrame);
-	Character_CharacterFlip(character, &this->tex, &char_pico_frame[this->frame], FIXED_UNIT);
+	Character_Draw(character, &this->tex, &char_pico_frame[this->frame]);
 }
 
 void Char_pico_SetAnim(Character *character, u8 anim)
@@ -146,7 +146,7 @@ Character *Char_pico_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 1;
+	this->character.health_i = 3;
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);

@@ -411,10 +411,11 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
 			
-			if (stage.stage_id == StageId_Clwn_4)
-				this->health = -0x7000;
+			if (stage.mode == StageMode_Swap)
+				this->health += 230;
 			else
 				this->health -= 2000;
+
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
 			else
@@ -976,6 +977,7 @@ static void Stage_DrawNotes(void)
 		{
 			//Don't draw if below screen
 			RECT note_src;
+			RECT note_mine_src;
 			RECT_FIXED note_dst;
 			if (y > (FIXED_DEC(SCREEN_HEIGHT,2) + scroll.size) || note->pos == 0xFFFF)
 				break;
@@ -1007,6 +1009,11 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 28 - (clip >> FIXED_SHIFT);
 						
+						note_mine_src.x = note_src.x;
+						note_mine_src.y = 128;
+						note_mine_src.w = note_src.w;
+						note_mine_src.h = note_src.h;
+
 						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
@@ -1020,6 +1027,8 @@ static void Stage_DrawNotes(void)
 						//draw for opponent
 						if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
+						else if (note->type & NOTE_FLAG_MINE)
+							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
 						else
 							Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					}
@@ -1038,6 +1047,11 @@ static void Stage_DrawNotes(void)
 						note_src.w = 32;
 						note_src.h = 16;
 						
+						note_mine_src.x = note_src.x;
+						note_mine_src.y = 128;
+						note_mine_src.w = note_src.w;
+						note_mine_src.h = note_src.h;
+
 						note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
@@ -1048,6 +1062,8 @@ static void Stage_DrawNotes(void)
 						//draw for opponent
 						if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
+						else if (note->type & NOTE_FLAG_MINE)
+							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
 						else
 							Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					}
@@ -2738,6 +2754,18 @@ void Stage_Tick(void)
 								week3_fade = FIXED_DEC(255,1);	
 							if (stage.song_step == 1536)
 								week3_fade = FIXED_DEC(255,1);		
+						break;
+						case StageId_3_1:
+							if (stage.song_step >= 640 && stage.song_step <= 768) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 128, 0, 255, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 640)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 768)
+								week3_fade = FIXED_DEC(255,1);	
 						break;
 					default:
 				break;
