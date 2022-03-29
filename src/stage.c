@@ -412,7 +412,10 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			note->type |= NOTE_FLAG_HIT;
 			
 			if (stage.mode == StageMode_Swap)
+		{      
+			    u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 				this->health += 230;
+		}
 			else
 				this->health -= 2000;
 
