@@ -139,7 +139,7 @@
 	{ //StageId_3_2 (blue-balled)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_steven_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_bfc_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		

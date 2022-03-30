@@ -24,13 +24,12 @@ SRCS = src/main.c \
        src/animation.c \
        src/character.c \
        src/character/bf.c \
-       src/character/speaker.c \
        src/character/steven.c \
        src/character/spinel.c \
        src/character/mordecai.c \
        src/character/spook.c \
        src/character/pico.c \
-       src/character/gf.c \
+       src/character/bfc.c \
        src/object.c \
        src/object/combo.c \
        src/object/splash.c \

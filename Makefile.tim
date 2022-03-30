@@ -14,8 +14,7 @@ all: \
 	iso/mordecai/main.arc \
 	iso/spook/main.arc \
 	iso/pico/main.arc \
-	iso/gf/main.arc \
-	iso/gf/speaker.tim \
+	iso/bfc/main.arc \
 	iso/week1/back.arc \
 	iso/park/back.arc \
 	iso/week2/back.arc \
@@ -49,9 +48,8 @@ iso/spook/main.arc: iso/spook/idle0.tim iso/spook/idle1.tim iso/spook/hit0.tim i
 # Pico
 iso/pico/main.arc: iso/pico/idle0.tim iso/pico/idle1.tim iso/pico/hit0.tim iso/pico/hit1.tim iso/pico/hit2.tim iso/pico/hit3.tim iso/pico/hit4.tim 
 
-
-# GF
-iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
+# bfc
+iso/bfc/main.arc: iso/bfc/idle0.tim iso/bfc/idle1.tim iso/bfc/left.tim iso/bfc/right.tim iso/bfc/up.tim iso/bfc/down.tim
 
 # Week 1
 iso/week1/back.arc: iso/week1/beach.tim

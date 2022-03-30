@@ -81,7 +81,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "character/mordecai.h"
 #include "character/spook.h"
 #include "character/pico.h"
-#include "character/gf.h"
+#include "character/bfc.h"
 
 #include "stage/week1.h"
 #include "stage/park.h"
@@ -2848,13 +2848,16 @@ void Stage_Tick(void)
 				Stage_ScrollCamera();
 			stage.player->tick(stage.player);
 			
+			Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);
 			//Drop mic and change state if CD has finished reading and animation has ended
 			if (IO_IsReading() || stage.player->animatable.anim != PlayerAnim_Dead1)
 				break;
 			
 			stage.player->set_anim(stage.player, PlayerAnim_Dead2);
 			stage.camera.td = FIXED_DEC(25, 1000);
+			
 			stage.state = StageState_DeadDrop;
+			
 			break;
 		}
 		case StageState_DeadDrop:
@@ -2864,29 +2867,14 @@ void Stage_Tick(void)
 			stage.player->tick(stage.player);
 			
 			//Enter next state once mic has been dropped
-			if (stage.player->animatable.anim == PlayerAnim_Dead3)
-			{
-				stage.state = StageState_DeadRetry;
-				Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);
-			}
-			break;
-		}
-		case StageState_DeadRetry:
-		{
-			//Randomly twitch
-			if (stage.player->animatable.anim == PlayerAnim_Dead3)
-			{
-				if (RandomRange(0, 29) == 0)
-					stage.player->set_anim(stage.player, PlayerAnim_Dead4);
-				if (RandomRange(0, 29) == 0)
-					stage.player->set_anim(stage.player, PlayerAnim_Dead5);
-			}
+			
 			
 			//Scroll camera and tick player
 			Stage_ScrollCamera();
 			stage.player->tick(stage.player);
 			break;
 		}
+			break;
 		default:
 			break;
 	}

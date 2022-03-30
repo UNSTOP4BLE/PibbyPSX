@@ -141,13 +141,8 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
 	
 	{5, (const u8[]){28-7, 29-7, 30-7, 31-7, 31-7, 31-7, 31-7, 31-7, 31-7, 31-7, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
 	{5, (const u8[]){31-7, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
-	{3, (const u8[]){32-7, 33-7, 34-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
-	{3, (const u8[]){35-7, ASCR_REPEAT}},                                                       //PlayerAnim_Dead3
-	{3, (const u8[]){36-7, 37-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead4
-	{3, (const u8[]){38-7, 39-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead5
-	
-	{10, (const u8[]){35-7, 35-7, 35-7, ASCR_BACK, 1}}, //PlayerAnim_Dead4
-	{ 3, (const u8[]){38-7, 39-7, 35-7, ASCR_REPEAT}},  //PlayerAnim_Dead5
+	{3, (const u8[]){32-7, 33-7, 34-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead2}}, //PlayerAnim_Dead2
+
 };
 
 //Boyfriend player functions
@@ -197,7 +192,8 @@ void Char_BF_Tick(Character *character)
 			lbop_p->dst.w + (beat_bop << 2),
 			lbop_p->dst.h - (beat_bop << 3),
 		};
-		Stage_DrawTex(&tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
+		if (stage.player_state[0].health != 0 && stage.mode != StageMode_2P)
+			Stage_DrawTex(&tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
 	}
 
 	//Handle animation updates
@@ -233,7 +229,7 @@ void Char_BF_Tick(Character *character)
 	}
 	
 	//Retry screen
-	if (character->animatable.anim >= PlayerAnim_Dead3)
+	if (character->animatable.anim >= PlayerAnim_Dead1)
 	{
 		//Tick skull fragments
 		if (this->skull_scale)
@@ -294,7 +290,7 @@ void Char_BF_Tick(Character *character)
 		//Draw 'RETRY'
 		u8 retry_frame;
 		
-		if (character->animatable.anim == PlayerAnim_Dead6)
+		if (character->animatable.anim == PlayerAnim_Dead1)
 		{
 			//Selected retry
 			retry_frame = 2 - (this->retry_bump >> 3);
