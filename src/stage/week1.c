@@ -10,6 +10,11 @@
 #include "../mem.h"
 #include "../stage.h"
 
+
+
+#include "../pad.h"
+int x, y, w, h;
+
 //Week 1 background structure
 typedef struct
 {
@@ -17,7 +22,8 @@ typedef struct
 	StageBack back;
 	
 	//Textures
-	Gfx_Tex tex_beach; //bg
+	Gfx_Tex tex_back0; //Stage and back
+	Gfx_Tex tex_back1; //Curtains
 } Back_Week1;
 
 //Week 1 background functions
@@ -27,19 +33,89 @@ void Back_Week1_DrawBG(StageBack *back)
 	
 	fixed_t fx, fy;
 
-	//Draw bg
-	fx = stage.camera.x;
-	fy = stage.camera.y;
+		FntPrint("x%dy%dw%dh%d", x, y, w, h);
+
+	if (pad_state.held & PAD_LEFT)
+		x--;
+	if (pad_state.held & PAD_RIGHT)
+		x ++;
+	if (pad_state.held & PAD_UP)
+		y--;
+	if (pad_state.held & PAD_DOWN)
+		y++;
+
+	if (pad_state.held & PAD_SQUARE)
+		w--;
+	if (pad_state.held & PAD_CIRCLE)
+		w ++;
+	if (pad_state.held & PAD_TRIANGLE)
+		h--;
+	if (pad_state.held & PAD_CROSS)
+		h++;
+
+
 	
-	RECT beach_src = {0, 0, 256, 256};
-	RECT_FIXED beach_dst = {
-		FIXED_DEC(-390,1) - fx,
-		FIXED_DEC(-131,1) - fy,
-		FIXED_DEC(700,1),
-		FIXED_DEC(320,1)
+	//Draw curtains
+	fx = (stage.camera.x * 5) >> 2;
+	fy = (stage.camera.y * 5) >> 2;
+	
+	RECT curtainl_src = {0, 0, 107, 221};
+	RECT_FIXED curtainl_dst = {
+		FIXED_DEC(-200,1) - FIXED_DEC(SCREEN_WIDEOADD,2) - fx,
+		FIXED_DEC(-150,1) - fy,
+		FIXED_DEC(107,1),
+		FIXED_DEC(221,1)
 	};
-	if (stage.fade != 1)
-		Stage_DrawTex(&this->tex_beach, &beach_src, &beach_dst, stage.camera.bzoom);
+	RECT curtainr_src = {122, 0, 134, 256};
+	RECT_FIXED curtainr_dst = {
+		FIXED_DEC(110,1) + FIXED_DEC(SCREEN_WIDEOADD,2) - fx,
+		FIXED_DEC(-150,1) - fy,
+		FIXED_DEC(134,1),
+		FIXED_DEC(256,1)
+	};
+	if (stage.fade == 0){
+		Stage_DrawTex(&this->tex_back1, &curtainl_src, &curtainl_dst, stage.camera.bzoom);
+		Stage_DrawTex(&this->tex_back1, &curtainr_src, &curtainr_dst, stage.camera.bzoom);
+	}
+	//Draw stage
+	fx = stage.camera.x * 3 / 2;
+	fy = stage.camera.y * 3 / 2;
+	
+	POINT_FIXED stage_d2 = {
+		FIXED_DEC(-230,1) - fx,
+		FIXED_DEC(50,1) + FIXED_DEC(123,1) - fy,
+	};
+	POINT_FIXED stage_d3 = {
+		FIXED_DEC(-230,1) + FIXED_DEC(410,1) - fx,
+		FIXED_DEC(50,1) + FIXED_DEC(123,1) - fy,
+	};
+	
+	fx = stage.camera.x >> 1;
+	fy = stage.camera.y >> 1;
+	
+	POINT_FIXED stage_d0 = {
+		FIXED_DEC(-230,1) - fx,
+		FIXED_DEC(50,1) - fy,
+	};
+	POINT_FIXED stage_d1 = {
+		FIXED_DEC(-230,1) + FIXED_DEC(410,1) - fx,
+		FIXED_DEC(50,1) - fy,
+	};
+	
+	RECT stage_src = {0, 0, 255, 59};
+	if (stage.fade == 0)
+	Stage_DrawTexArb(&this->tex_back0, &stage_src, &stage_d0, &stage_d1, &stage_d2, &stage_d3, stage.camera.bzoom);
+	
+	//Draw back
+	RECT back_src = {0, 59, 256, 197};
+	RECT_FIXED back_dst = {
+		FIXED_DEC(-223,1) - fx,
+		FIXED_DEC(-129,1) - fy,
+		FIXED_DEC(391,1),
+		FIXED_DEC(182,1)
+	};
+	if (stage.fade == 0)
+	Stage_DrawTex(&this->tex_back0, &back_src, &back_dst, stage.camera.bzoom);
 }
 
 void Back_Week1_Free(StageBack *back)
@@ -62,12 +138,13 @@ StageBack *Back_Week1_New(void)
 	this->back.draw_md = NULL;
 	this->back.draw_bg = Back_Week1_DrawBG;
 	this->back.free = Back_Week1_Free;
-		
+	
 	Gfx_SetClear(0, 0, 0);
 
 	//Load background textures
 	IO_Data arc_back = IO_Read("\\WEEK1\\BACK.ARC;1");
-	Gfx_LoadTex(&this->tex_beach, Archive_Find(arc_back, "beach.tim"), 0);
+	Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
+	Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
 	Mem_Free(arc_back);
 	
 	return (StageBack*)this;

@@ -8,15 +8,15 @@ all: \
 	iso/stage/health.tim \
 	iso/stage/hud0weeb.tim \
 	iso/bf/main.arc \
-	iso/bf/dead.arc \
 	iso/steven/main.arc \
 	iso/spinel/main.arc \
 	iso/mordecai/main.arc \
 	iso/spook/main.arc \
 	iso/pico/main.arc \
 	iso/bfc/main.arc \
-	iso/week1/back.arc \
+	iso/beach/back.arc \
 	iso/park/back.arc \
+	iso/week1/back.arc \
 	iso/week2/back.arc \
 	iso/week3/back.arc 
 
@@ -30,8 +30,7 @@ iso/%.arc:
 iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu/title.tim
 
 # BF
-iso/bf/main.arc: iso/bf/pibby.tim iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/dead0.tim
-iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
+iso/bf/main.arc: iso/bf/pibby.tim iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/dead0.tim iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 
 # steven
 iso/steven/main.arc: iso/steven/idle0.tim iso/steven/idle1.tim iso/steven/idle2.tim iso/steven/idle3.tim iso/steven/idle4.tim iso/steven/idle5.tim iso/steven/idle6.tim iso/steven/idle7.tim iso/steven/left0.tim iso/steven/left1.tim iso/steven/left2.tim iso/steven/left3.tim iso/steven/down0.tim iso/steven/down1.tim iso/steven/up0.tim iso/steven/up1.tim iso/steven/right0.tim iso/steven/right1.tim iso/steven/right2.tim iso/steven/right3.tim
@@ -51,11 +50,14 @@ iso/pico/main.arc: iso/pico/idle0.tim iso/pico/idle1.tim iso/pico/hit0.tim iso/p
 # bfc
 iso/bfc/main.arc: iso/bfc/idle0.tim iso/bfc/idle1.tim iso/bfc/left.tim iso/bfc/right.tim iso/bfc/up.tim iso/bfc/down.tim
 
-# Week 1
-iso/week1/back.arc: iso/week1/beach.tim
+# Beach
+iso/beach/back.arc: iso/beach/beach.tim
 
 # Park
 iso/park/back.arc: iso/park/park.tim
+
+# Week 1
+iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
 
 # Week 2
 iso/week2/back.arc: iso/week2/back0.tim

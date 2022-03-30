@@ -83,8 +83,9 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "character/pico.h"
 #include "character/bfc.h"
 
-#include "stage/week1.h"
+#include "stage/beach.h"
 #include "stage/park.h"
+#include "stage/week1.h"
 #include "stage/week2.h"
 #include "stage/week3.h"
 
@@ -127,7 +128,7 @@ static void Stage_FocusCharacter(Character *ch, fixed_t div)
 static void Stage_ScrollCamera(void)
 {
 	#ifdef STAGE_FREECAM
-		FntPrint("camx%d camy%d zoom%d", stage.camera.x , stage.camera.y, stage.camera.bzoom);
+		FntPrint("camx%d camy%d zoom%d", stage.camera.x / 1024, stage.camera.y / 1024, stage.camera.bzoom / 1024);
 		if (pad_state.held & PAD_LEFT)
 			stage.camera.x -= FIXED_DEC(2,1);
 		if (pad_state.held & PAD_UP)
@@ -2770,6 +2771,18 @@ void Stage_Tick(void)
 							if (stage.song_step == 768)
 								week3_fade = FIXED_DEC(255,1);	
 						break;
+						case StageId_3_2:
+							if (stage.song_step >= 385 && stage.song_step <= 640) {
+								stage.fade = 1;
+								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
+							}
+							else 
+								stage.fade = 0;
+							if (stage.song_step == 385)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 640)
+								week3_fade = FIXED_DEC(255,1);	
+						break;
 					default:
 				break;
 			}
@@ -2862,6 +2875,9 @@ void Stage_Tick(void)
 		}
 		case StageState_DeadDrop:
 		{
+			if (stage.player->animatable.anim == PlayerAnim_Dead2) 
+				stage.player->set_anim(stage.player, PlayerAnim_Dead3);
+
 			//Scroll camera and tick player
 			Stage_ScrollCamera();
 			stage.player->tick(stage.player);

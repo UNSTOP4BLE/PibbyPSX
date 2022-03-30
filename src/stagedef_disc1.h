@@ -6,7 +6,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},
@@ -23,7 +23,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(27,10),FIXED_DEC(1,1)},
@@ -40,7 +40,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -57,7 +57,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
@@ -75,7 +75,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -118,7 +118,6 @@
 		
 		StageId_2_3, 0
 	},
-	
 	{ //StageId_3_1 (gunshot)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
@@ -139,7 +138,7 @@
 	{ //StageId_3_2 (blue-balled)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_bfc_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_bfc_New, FIXED_DEC(-70,1),   FIXED_DEC(85,1)},
 		{NULL},
 		{NULL},
 		
@@ -161,7 +160,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -179,7 +178,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -196,7 +195,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -213,7 +212,7 @@
 		{NULL},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},
@@ -230,7 +229,7 @@
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
@@ -248,7 +247,7 @@
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},
@@ -265,7 +264,7 @@
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -282,7 +281,7 @@
 		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -300,7 +299,7 @@
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(31,10),FIXED_DEC(1,1)},
@@ -317,7 +316,7 @@
 		{NULL,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -334,7 +333,7 @@
 		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
-		Back_Week1_New,
+		Back_beach_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(33,10),FIXED_DEC(1,1)},

@@ -46,18 +46,15 @@ enum
 	BF_ArcMain_BF4,
 	BF_ArcMain_BF5,
 	BF_ArcMain_Dead0, //BREAK
-	
+	BF_ArcMain_Dead1, //Mic Drop
+	BF_ArcMain_Dead2, //Twitch
+	BF_ArcMain_Retry, //Retry prompt
+
 	BF_ArcMain_Max,
 };
 
-enum
-{
-	BF_ArcDead_Dead1, //Mic Drop
-	BF_ArcDead_Dead2, //Twitch
-	BF_ArcDead_Retry, //Retry prompt
+
 	
-	BF_ArcDead_Max,
-};
 
 #define BF_Arc_Max BF_ArcMain_Max
 
@@ -67,7 +64,7 @@ typedef struct
 	Character character;
 	
 	//Render data and state
-	IO_Data arc_main, arc_dead;
+	IO_Data arc_main;
 	CdlFILE file_dead_arc; //dead.arc file position
 	IO_Data arc_ptr[BF_Arc_Max];
 	
@@ -114,13 +111,13 @@ static const CharFrame char_bf_frame[] = {
 
 	{BF_ArcMain_Dead0, {  0,   0, 133, 108}, { 89,  107}}, //21 dead0 0
 	{BF_ArcMain_Dead0, {  0, 108, 131, 108}, { 85,  107}}, //22 dead0 1
-	{BF_ArcDead_Dead1, {  0,   0, 138, 107}, { 92,  107}}, //23 dead1 0
-	{BF_ArcDead_Dead1, {  0, 107, 138, 108}, { 83,  107}}, //24 dead1 1
+	{BF_ArcMain_Dead1, {  0,   0, 138, 107}, { 92,  107}}, //23 dead1 0
+	{BF_ArcMain_Dead1, {  0, 107, 138, 108}, { 83,  107}}, //24 dead1 1
 	
-	{BF_ArcDead_Dead2, {  0,   0, 128, 128}, { 53,  98}}, //25 dead2 body twitch 0
-	{BF_ArcDead_Dead2, {128,   0, 128, 128}, { 53,  98}}, //26 dead2 body twitch 1
-	{BF_ArcDead_Dead2, {  0, 128, 128, 128}, { 53,  98}}, //27 dead2 balls twitch 0
-	{BF_ArcDead_Dead2, {128, 128, 128, 128}, { 53,  98}}, //28 dead2 balls twitch 1
+	{BF_ArcMain_Dead2, {  0,   0, 119, 108}, {108 - 42,  107}}, //25 dead2 body twitch 0
+	{BF_ArcMain_Dead2, {119,   0, 123, 107}, {110 - 42,  106}}, //26 dead2 body twitch 1
+	{BF_ArcMain_Dead2, {  0, 108, 122, 108}, {112 - 42,  107}}, //27 dead2 balls twitch 0
+	{BF_ArcMain_Dead2, {122, 107, 122, 107}, {112 - 42,  106}}, //28 dead2 balls twitch 1
 };
 
 static const Animation char_bf_anim[PlayerAnim_Max] = {
@@ -141,7 +138,9 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
 	
 	{5, (const u8[]){28-7, 29-7, 30-7, 31-7, 31-7, 31-7, 31-7, 31-7, 31-7, 31-7, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
 	{5, (const u8[]){31-7, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
-	{3, (const u8[]){32-7, 33-7, 34-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead2}}, //PlayerAnim_Dead2
+	{3, (const u8[]){32-7, 33-7, 34-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
+	
+	{4, (const u8[]){ 33-7, 34-7, 35-7, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
 
 };
 
@@ -290,7 +289,7 @@ void Char_BF_Tick(Character *character)
 		//Draw 'RETRY'
 		u8 retry_frame;
 		
-		if (character->animatable.anim == PlayerAnim_Dead1)
+		if (character->animatable.anim == PlayerAnim_Dead2)
 		{
 			//Selected retry
 			retry_frame = 2 - (this->retry_bump >> 3);
@@ -305,7 +304,7 @@ void Char_BF_Tick(Character *character)
 		else
 		{
 			//Idle
-			retry_frame = 1 +  (this->retry_bump >> 2);
+			retry_frame = 1 +  (this->retry_bump >> 3);
 			if (retry_frame >= 3)
 				retry_frame = 0;
 			
@@ -341,31 +340,13 @@ void Char_BF_SetAnim(Character *character, u8 anim)
 	switch (anim)
 	{
 		case PlayerAnim_Dead0:
-			//Begin reading dead.arc and adjust focus
-			this->arc_dead = IO_AsyncReadFile(&this->file_dead_arc);
 			character->focus_x = FIXED_DEC(0,1);
 			character->focus_y = FIXED_DEC(-40,1);
 			character->focus_zoom = FIXED_DEC(125,100);
 			break;
 		case PlayerAnim_Dead2:
-			//Unload main.arc
-			Mem_Free(this->arc_main);
-			this->arc_main = this->arc_dead;
-			this->arc_dead = NULL;
-			
-			//Find dead.arc files
-			const char **pathp = (const char *[]){
-				"dead1.tim", //BF_ArcDead_Dead1
-				"dead2.tim", //BF_ArcDead_Dead2
-				"retry.tim", //BF_ArcDead_Retry
-				NULL
-			};
-			IO_Data *arc_ptr = this->arc_ptr;
-			for (; *pathp != NULL; pathp++)
-				*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-			
 			//Load retry art
-			Gfx_LoadTex(&this->tex_retry, this->arc_ptr[BF_ArcDead_Retry], 0);
+			Gfx_LoadTex(&this->tex_retry, this->arc_ptr[BF_ArcMain_Retry], 0);
 			break;
 	}
 	
@@ -380,7 +361,6 @@ void Char_BF_Free(Character *character)
 	
 	//Free art
 	Mem_Free(this->arc_main);
-	Mem_Free(this->arc_dead);
 }
 
 Character *Char_BF_New(fixed_t x, fixed_t y)
@@ -414,8 +394,6 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\BF.ARC;1");
 	Gfx_LoadTex(&tex_pibby, Archive_Find(this->arc_main, "pibby.tim"), 0);
-	this->arc_dead = NULL;
-	IO_FindFile(&this->file_dead_arc, "\\CHAR\\BFDEAD.ARC;1");
 	
 	const char **pathp = (const char *[]){
 		"bf0.tim",   //BF_ArcMain_BF0
@@ -425,7 +403,9 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		"bf4.tim",   //BF_ArcMain_BF4
 		"bf5.tim",   //BF_ArcMain_BF5
 		"dead0.tim", //BF_ArcMain_Dead0
-		"pibby.tim", //BF_ArcMain_Dead0
+		"dead1.tim", //BF_ArcDead_Dead1
+		"dead2.tim", //BF_ArcDead_Dead2
+		"retry.tim", //BF_ArcDead_Retry
 		NULL
 	};
 	IO_Data *arc_ptr = this->arc_ptr;

@@ -17,8 +17,9 @@ SRCS = src/main.c \
        src/psx/pad.c \
        src/psx/timer.c \
        src/psx/movie.c \
-       src/stage/week1.c \
+       src/stage/beach.c \
        src/stage/park.c \
+       src/stage/week1.c \
        src/stage/week2.c \
        src/stage/week3.c \
        src/animation.c \

@@ -39,18 +39,18 @@ typedef struct
 
 //bfc character definitions
 static const CharFrame char_bfc_frame[] = {
-	{bfc_ArcMain_Idle0, {  0,   0,  0,  0}, { 0,   0}}, //0 idle 1
-	{bfc_ArcMain_Idle0, {  0,   0,  0,  0}, { 0,   0}}, //1 idle 2
-	{bfc_ArcMain_Idle0, {  0,   0,  0,  0}, { 0,   0}}, //2 idle 3
-	{bfc_ArcMain_Idle0, {  0,   0,  0,  0}, { 0,   0}}, //3 idle 4
-	{bfc_ArcMain_Idle1, {  0,   0,  0,  0}, { 0,   0}}, //4 idle 5
-	{bfc_ArcMain_Idle1, {  0,   0,  0,  0}, { 0,   0}}, //5 idle 6
-	{bfc_ArcMain_Idle1, {  0,   0,  0,  0}, { 0,   0}}, //6 idle 7
+	{bfc_ArcMain_Idle0, {  0,   0, 104, 100}, { 90,   92}}, //0 idle 1
+	{bfc_ArcMain_Idle0, {104,   0, 104, 100}, { 90,   92}}, //1 idle 2
+	{bfc_ArcMain_Idle0, {  0, 100, 103, 103}, { 90,   93}}, //2 idle 3
+	{bfc_ArcMain_Idle0, {103, 100, 103, 105}, { 91,   96}}, //3 idle 4
+	{bfc_ArcMain_Idle1, {  0,   0, 102, 106}, { 90,   96}}, //4 idle 5
+	{bfc_ArcMain_Idle1, {102,   0, 102, 105}, { 90,   96}}, //5 idle 6
+	{bfc_ArcMain_Idle1, {  0, 106, 103, 106}, { 91,   97}}, //6 idle 7
 
-	{bfc_ArcMain_Left, {  0,   0,  0,  0}, { 0,   0}}, //4 left 1
-	{bfc_ArcMain_Left, {  0,   0,  0,  0}, { 0,   0}}, //5 left 2
-	{bfc_ArcMain_Left, {  0,   0,  0,  0}, { 0,   0}}, //4 left 1
-	{bfc_ArcMain_Left, {  0,   0,  0,  0}, { 0,   0}}, //5 left 2
+	{bfc_ArcMain_Left, {  0,   0, 102,  104}, {101,   96}}, //4 left 1
+	{bfc_ArcMain_Left, {102,   0, 102,  105}, {101,   96}}, //5 left 2
+	{bfc_ArcMain_Left, {  0, 104,  99,  106}, { 99,   96}}, //4 left 1
+	{bfc_ArcMain_Left, { 99, 105,  99,  105}, { 99,   96}}, //5 left 2
 
 	{bfc_ArcMain_Down, {  0,   0,  94,  92}, { 89,   84}}, //6 down 1
 	{bfc_ArcMain_Down, { 94,   0,  94,  94}, { 88,   85}}, //7 down 2
@@ -60,12 +60,12 @@ static const CharFrame char_bfc_frame[] = {
 	{bfc_ArcMain_Up, {  0,   0,  93,  113}, { 92,   104}}, //8 up 1
 	{bfc_ArcMain_Up, { 93,   0,  94,  112}, { 93,   103}}, //9 up 2
 	{bfc_ArcMain_Up, {  0, 113,  95,  114}, { 93,   103}}, //8 up 1
-	{bfc_ArcMain_Up, { 95, 112,  94,  113}, { 92,   113}}, //9 up 2
+	{bfc_ArcMain_Up, { 95, 112,  94,  113}, { 92,   103}}, //9 up 2
 	
-	{bfc_ArcMain_Right, {  0,   0,  0,  0}, { 0,   0}}, //10 right 1
-	{bfc_ArcMain_Right, {  0,   0,  0,  0}, { 0,   0}}, //11 right 2
-	{bfc_ArcMain_Right, {  0,   0,  0,  0}, { 0,   0}}, //10 right 1
-	{bfc_ArcMain_Right, {  0,   0,  0,  0}, { 0,   0}}, //11 right 2
+	{bfc_ArcMain_Right, {  0,   0,  97, 103}, { 85,   95}}, //10 right 1
+	{bfc_ArcMain_Right, { 97,   0,  95, 103}, { 84,   94}}, //11 right 2
+	{bfc_ArcMain_Right, {  0, 103,  93, 104}, { 83,   94}}, //10 right 1
+	{bfc_ArcMain_Right, { 93, 103,  94, 103}, { 84,   94}}, //11 right 2
 };
 
 static const Animation char_bfc_anim[CharAnim_Max] = {
@@ -135,7 +135,7 @@ Character *Char_bfc_New(fixed_t x, fixed_t y)
 	}
 	
 	//Initialize character
-	this->character.tick = Char_bfc_Tick;
+	this->character.tick = Char_bfc_Tick; 
 	this->character.set_anim = Char_bfc_SetAnim;
 	this->character.free = Char_bfc_Free;
 	
@@ -145,10 +145,10 @@ Character *Char_bfc_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 3;
+	this->character.health_i = 8;
 	
-	this->character.focus_x = FIXED_DEC(-142 - -120,1);
-	this->character.focus_y = FIXED_DEC(25 - 120,1);
+	this->character.focus_x = FIXED_DEC(-39 - -85,1);
+	this->character.focus_y = FIXED_DEC(-65,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art

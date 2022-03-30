@@ -41,6 +41,12 @@
 				<file name = "hud0weeb.tim" type = "data" source = "iso/stage/hud0weeb.tim"/>
 			</dir>
 			
+			<dir name = "beach">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/beach/back.arc"/>
+			</dir>
+
+
 			<!-- Week 1 assets -->
 			<dir name = "week1">
 				<!-- Background art -->
@@ -119,7 +125,6 @@
 			<dir name = "char">
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
-				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
 				
 				<!-- steven assets -->
 				<file name = "steven.arc" type = "data" source = "iso/steven/main.arc"/>

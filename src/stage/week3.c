@@ -11,9 +11,6 @@
 #include "../random.h"
 #include "../timer.h"
 
-#include "../pad.h"
-int x, y, w, h;
-
 //Week 3 background structure
 typedef struct
 {
@@ -32,27 +29,7 @@ void Back_Week3_DrawBG(StageBack *back)
 	Back_Week3 *this = (Back_Week3*)back;
 	
 	fixed_t fx, fy;
-
-	FntPrint("x%dy%dw%dh%d", x, y, w, h);
-
-	if (pad_state.held & PAD_LEFT)
-		x--;
-	if (pad_state.held & PAD_RIGHT)
-		x ++;
-	if (pad_state.held & PAD_UP)
-		y--;
-	if (pad_state.held & PAD_DOWN)
-		y++;
-
-	if (pad_state.held & PAD_SQUARE)
-		w--;
-	if (pad_state.held & PAD_CIRCLE)
-		w ++;
-	if (pad_state.held & PAD_TRIANGLE)
-		h--;
-	if (pad_state.held & PAD_CROSS)
-		h++;
-
+	
 	//Draw fg
 	fx = stage.camera.x;
 	fy = stage.camera.y;
