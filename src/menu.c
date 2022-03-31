@@ -23,6 +23,10 @@
 
 #include "stage.h"
 
+#define mordecai ((void *)1)
+#define week3 ((void *)2)
+#define finnjake ((void *)3)
+
 //Menu messages
 static const char *funny_messages[][2] = {
 	{"PSX PORT BY CUCKYDEV", "YOU KNOW IT"},
@@ -214,54 +218,69 @@ static void Menu_DrawBack(boolean flash, s32 scroll, u8 r0, u8 g0, u8 b0, u8 r1,
 		Gfx_DrawTexCol(&menu.tex_back, &back_src, &back_dst, r1, g1, b1);
 }
 
-static void Menu_DifficultySelector(s32 x, s32 y)
-{	
-	//Draw difficulty arrows
-	static const RECT arrow_src[2][2] = {
-		{{224, 64, 16, 32}, {224, 96, 16, 32}}, //left
-		{{240, 64, 16, 32}, {240, 96, 16, 32}}, //right
-	};
-	
-	Gfx_BlitTex(&menu.tex_story, &arrow_src[0][(pad_state.held & PAD_LEFT) != 0], x - 40 - 16, y - 16);
-	Gfx_BlitTex(&menu.tex_story, &arrow_src[1][(pad_state.held & PAD_RIGHT) != 0], x + 40, y - 16);
-	
-	//Draw difficulty
-	static const RECT diff_srcs[] = {
-		{  0, 96, 64, 18},
-		{ 64, 96, 80, 18},
-		{144, 96, 64, 18},
-	};
-	
-	const RECT *diff_src = &diff_srcs[menu.page_param.stage.diff];
-	Gfx_BlitTex(&menu.tex_story, diff_src, x - (diff_src->w >> 1), y - 9 + ((pad_state.press & (PAD_LEFT | PAD_RIGHT)) != 0));
-}
+int ax, ay;
 
+static void Menu_DifficultySelector()
+{	
+	menu.font_arial.draw(&menu.font_arial, 
+		"CORRUPTED",
+		294, 
+		15, 
+		FontAlign_Right
+	);
+
+	RECT bracketl_src = {242, 105, 6, 10}; //left
+	RECT bracketl_dst = {216, 15, 6, 10}; //left
+	RECT bracketr_src = {249, 105, 6, 10}; //right
+	RECT bracketr_dst = {295, 15, 6, 10}; //right
+
+	Gfx_DrawTex(&menu.tex_story, &bracketl_src, &bracketl_dst);
+	Gfx_DrawTex(&menu.tex_story, &bracketr_src, &bracketr_dst);
+
+	RECT black_src = {113, 65, 33, 13}; 
+	RECT black_dst = {198, -22, 143, 65};
+
+	Gfx_BlendTex(&menu.tex_story, &black_src, &black_dst, 1);
+	
+
+	FntPrint("x%d y%d", ax,ay);
+
+	if (pad_state.press & PAD_LEFT)
+		ax--;
+	if (pad_state.press & PAD_RIGHT)
+		ax ++;
+	if (pad_state.press & PAD_UP)
+		ay--;
+	if (pad_state.press & PAD_DOWN)
+		ay++;
+	
+}
 static void Menu_DrawWeek(const char *week, s32 x, s32 y)
 {
 	//Draw label
 	if (week == NULL)
 	{
-		//Tutorial
-		RECT label_src = {0, 0, 112, 32};
+		//steven
+		RECT label_src = {0, 0, 95, 24};
 		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
 	}
-	else
+	else if (week == mordecai)
 	{
-		//Week
-		RECT label_src = {0, 32, 80, 32};
+		//mordecai
+		RECT label_src = {0, 27, 94, 24};
 		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
-		
-		//Number
-		x += 80;
-		for (; *week != '\0'; week++)
-		{
-			//Draw number
-			u8 i = *week - '0';
-			
-			RECT num_src = {128 + ((i & 3) << 5), ((i >> 2) << 5), 32, 32};
-			Gfx_BlitTex(&menu.tex_story, &num_src, x, y);
-			x += 32;
-		}
+	}
+	else if (week == week3)
+	{
+		//Week 3
+		RECT label_src = {0, 51, 92, 24};
+		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
+	}
+	else if (week == finnjake)
+	{
+		//finn and jake
+		RECT label_src = {100, 0, 90, 30};
+		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
 	}
 }
 
@@ -643,16 +662,12 @@ void Menu_Tick(void)
 				const char *week;
 				StageId stage;
 				const char *name;
-				const char *tracks[3];
+				const char *tracks[4];
 			} menu_options[] = {
-				{NULL, StageId_1_4, "TUTORIAL", {"TUTORIAL", NULL, NULL}},
-				{"1", StageId_1_1, "DADDY DEAREST", {"BOPEEBO", "FRESH", "DADBATTLE"}},
-				{"2", StageId_2_1, "SPOOKY MONTH", {"SPOOKEEZ", "SOUTH", "MONSTER"}},
-				{"3", StageId_3_1, "PICO", {"PICO", "PHILLY NICE", "BLAMMED"}},
-				{"4", StageId_4_1, "MOMMY MUST MURDER", {"SATIN PANTIES", "HIGH", "MILF"}},
-				{"5", StageId_5_1, "RED SNOW", {"COCOA", "EGGNOG", "WINTER HORRORLAND"}},
-				{"6", StageId_6_1, "HATING SIMULATOR", {"SENPAI", "ROSES", "THORNS"}},
-				{"7", StageId_7_1, "TANKMAN", {"UGH", "GUNS", "STRESS"}},
+				{NULL, StageId_1_1, "HERE WE ARE IN THE FUTURE", {"SAVE THE DAY", "GLITCHED GEM", "MY FRIENDS", "THE CHANGE"}},
+				{mordecai, StageId_1_1, "GOING BACK TO WORK", {"OVERWORKED", NULL, NULL, NULL}},
+				{week3, StageId_2_1, "FUNKY CORRUPTION", {"LAST SPOOKTOBER", "GUNSHOT", "BLUE BALLED", NULL}},
+				{finnjake, StageId_3_1, "ITS ADVENTURE TIME", {"CORRUPTED HERO", "BROTHERLEY BOND", "GUMMY SUBSTANCE", "TOGETHER FOREVER"}},
 			};
 			
 			//Initialize page
@@ -729,12 +744,20 @@ void Menu_Tick(void)
 			const char * const *trackp = menu_options[menu.select].tracks;
 			for (size_t i = 0; i < COUNT_OF(menu_options[menu.select].tracks); i++, trackp++)
 			{
+				RECT tracks_src = {204, 116, 52, 12};
+				RECT tracks_dst = {32, 126, 52, 12};
+
+				Gfx_DrawTex(&menu.tex_story, &tracks_src, &tracks_dst);
+
 				if (*trackp != NULL)
-					menu.font_bold.draw(&menu.font_bold,
+					menu.font_arial.draw_col(&menu.font_arial,
 						*trackp,
-						SCREEN_WIDTH - 16,
+						62,
 						SCREEN_HEIGHT - (4 * 24) + (i * 24),
-						FontAlign_Right
+						FontAlign_Center,
+						209 >> 1,
+						87  >> 1,
+						119 >> 1
 					);
 			}
 			
@@ -756,7 +779,7 @@ void Menu_Tick(void)
 						continue;
 					if (y >= SCREEN_HEIGHT)
 						break;
-					Menu_DrawWeek(menu_options[i].week, 48, y);
+					Menu_DrawWeek(menu_options[i].week, SCREEN_WIDTH / 3, y);
 				}
 			}
 			else if (animf_count & 2)

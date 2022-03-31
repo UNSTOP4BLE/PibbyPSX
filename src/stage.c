@@ -1046,10 +1046,13 @@ static void Stage_DrawNotes(void)
 							note_dst.h = -note_dst.h;
 						}
 						//draw for opponent
-						if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
-						else if (note->type & NOTE_FLAG_MINE)
+						
+						if (stage.middlescroll == 0 && note->type & NOTE_FLAG_MINE)
 							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
+						else if (stage.middlescroll && note->type & NOTE_FLAG_MINE)
+							Stage_BlendTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump, 1);
+						else if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
+							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
 						else
 							Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					}
@@ -1078,13 +1081,12 @@ static void Stage_DrawNotes(void)
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (next_y - y) - clip;
 						
-						if (stage.downscroll)
-							note_dst.y = -note_dst.y - note_dst.h;
-						//draw for opponent
-						if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
-						else if (note->type & NOTE_FLAG_MINE)
+						if (stage.middlescroll == 0 && note->type & NOTE_FLAG_MINE)
 							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
+						else if (stage.middlescroll && note->type & NOTE_FLAG_MINE)
+							Stage_BlendTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump, 1);
+						else if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
+							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
 						else
 							Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					}
