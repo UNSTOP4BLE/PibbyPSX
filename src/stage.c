@@ -348,7 +348,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
 			
-			if (stage.mode == StageMode_Swap)
+			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
 			if (opponentsing)
 			stage.player->set_anim(stage.player,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
@@ -413,10 +413,10 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			note->type |= NOTE_FLAG_HIT;
 			
 			if (stage.mode == StageMode_Swap)
-		{      
+		    {      
 			    u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 				this->health += 230;
-		}
+		    }
 			else
 				this->health -= 2000;
 
@@ -507,7 +507,24 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 		//Hit the note
 		note->type |= NOTE_FLAG_HIT;
 		
-		this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+		if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
+			{
+			if (opponentsing)
+			stage.player->set_anim(stage.player,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			if (stage.opponent2 != NULL && opponent2sing)
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			}
+
+		else if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
+			{
+			if (opponentsing)
+			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			if (stage.opponent2 != NULL && opponent2sing)
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			}
+			
+			else 
+			this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
 		
 		Stage_StartVocal();
 		this->health += 230;
@@ -2183,7 +2200,7 @@ void Stage_Tick(void)
 					{
 						if (opponentsing)
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
-						if (stage.mode != StageMode_Normal)
+						if (stage.mode == StageMode_Normal)
 			            {
 						if (stage.opponent2 != NULL && opponent2sing)
 						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
