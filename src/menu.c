@@ -1055,6 +1055,7 @@ void Menu_Tick(void)
 				{OptType_Boolean, "GHOST TAP", &stage.ghost, {.spec_boolean = {0}}},
 				{OptType_Boolean, "DOWNSCROLL", &stage.downscroll, {.spec_boolean = {0}}},
 				{OptType_Boolean, "MIDDLESCROLL", &stage.middlescroll, {.spec_boolean = {0}}},
+				{OptType_Boolean, "HEALTH DRAIN", &stage.drain, {.spec_boolean = {0}}},
 				{OptType_Boolean, "BOTPLAY", &stage.botplay, {.spec_boolean = {0}}},
 				{OptType_Boolean, "PRACTICE MODE", &stage.practice, {.spec_boolean = {0}}},
 			};
