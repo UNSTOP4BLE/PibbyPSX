@@ -2178,6 +2178,8 @@ void Stage_Tick(void)
 						//Opponent note hits
 						if (playing && (note->type & NOTE_FLAG_OPPONENT) && !(note->type & NOTE_FLAG_HIT))
 						{
+							if (stage.player_state[0].health >= 2000 && stage.drain == 1)
+								stage.player_state[0].health -= 230;
 							//Opponent hits note
 							Stage_StartVocal();
 							if (note->type & NOTE_FLAG_SUSTAIN)
