@@ -143,6 +143,9 @@
 
 				<!-- Bfc assets -->
 				<file name = "bfc.arc" type = "data" source = "iso/bfc/main.arc"/>
+
+				<!-- finn assets -->
+				<file name = "finn.arc" type = "data" source = "iso/finn/main.arc"/>
 			</dir>
 			
 			<!-- Music -->

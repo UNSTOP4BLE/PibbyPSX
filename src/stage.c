@@ -82,6 +82,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 #include "character/spook.h"
 #include "character/pico.h"
 #include "character/bfc.h"
+#include "character/finn.h"
 
 #include "stage/beach.h"
 #include "stage/park.h"

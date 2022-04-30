@@ -14,6 +14,7 @@ all: \
 	iso/spook/main.arc \
 	iso/pico/main.arc \
 	iso/bfc/main.arc \
+	iso/finn/main.arc \
 	iso/beach/back.arc \
 	iso/park/back.arc \
 	iso/week1/back.arc \
@@ -49,6 +50,9 @@ iso/pico/main.arc: iso/pico/idle0.tim iso/pico/idle1.tim iso/pico/hit0.tim iso/p
 
 # bfc
 iso/bfc/main.arc: iso/bfc/idle0.tim iso/bfc/idle1.tim iso/bfc/left.tim iso/bfc/right.tim iso/bfc/up.tim iso/bfc/down.tim
+
+# finn
+iso/finn/main.arc: iso/finn/idle0.tim iso/finn/idle1.tim iso/finn/idle2.tim iso/finn/idle3.tim iso/finn/idle4.tim iso/finn/left0.tim iso/finn/left1.tim iso/finn/right0.tim iso/finn/right1.tim iso/finn/up0.tim iso/finn/up1.tim iso/finn/down0.tim iso/finn/down1.tim
 
 # Beach
 iso/beach/back.arc: iso/beach/beach.tim
