@@ -958,9 +958,9 @@ static void Stage_DrawNotes(void)
 							note_dst.h = -note_dst.h;
 						}
 						//draw for opponent
-						if (stage.middlescroll == 0 && ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT)))
+						if (stage.middlescroll == 0 && (note->type & (NOTE_FLAG_MINE | NOTE_FLAG_HURT)))
 							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
-						else if (stage.middlescroll && note->type & ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT)))
+						else if (stage.middlescroll && note->type & (note->type & (NOTE_FLAG_MINE | NOTE_FLAG_HURT)))
 							Stage_BlendTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump, 1);
 						else if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -992,9 +992,9 @@ static void Stage_DrawNotes(void)
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (next_y - y) - clip;
 						
-						if (stage.middlescroll == 0 && note->type & ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT)))
+						if (stage.middlescroll == 0 && note->type & (note->type & (NOTE_FLAG_MINE | NOTE_FLAG_HURT)))
 							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
-						else if (stage.middlescroll && note->type & ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT)))
+						else if (stage.middlescroll && note->type & (note->type & (NOTE_FLAG_MINE | NOTE_FLAG_HURT)))
 							Stage_BlendTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump, 1);
 						else if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 							Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
@@ -1566,7 +1566,16 @@ void Stage_Tick(void)
 			}
 			else if (stage.stage_id == StageId_2_1) 
 			{
-				switch (stage.song_step)	
+            
+            //    if (stage.song_step >= 1267 &&  stage.song_step <= 1419)
+              //  {
+                //    if (stage.cur_note->type & NOTE_FLAG_HIT && !(stage.cur_note->type & NOTE_FLAG_MINE))
+             //           opponentsing = 1;	
+             //       else if (stage.cur_note->type & NOTE_FLAG_MINE)
+             //           opponent2sing = 1;	
+             //   }    
+                
+                switch (stage.song_step)	
 				{	
 					case 1267:
 						opponentsing = 1;	
@@ -1580,24 +1589,24 @@ void Stage_Tick(void)
 						opponentsing = 1;	
 						opponent2sing = 0;
 						break;
-					case 1359:
+					case 1360:
 						opponentsing = 0;	
 						opponent2sing = 1;
 						break;
-					case 1368:
-						opponentsing = 1;	
-						opponent2sing = 1;
-						break;
-					case 1370:
-						opponentsing = 0;	
-						opponent2sing = 1;
-						break;	
 					case 1372:
 						opponentsing = 1;	
 						opponent2sing = 1;
-						break;	
-				}
-			}
+						break;
+                    case 1374:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+                    case 1406:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;
+				} 
+            }
 			else 
 			{
 				opponentsing = 0;

@@ -22,10 +22,15 @@ void LoadScr_Start(void)
 	Gfx_Flip();
 	
 	//Load loading screen texture
-	RECT loading_src = {0, 0, 255, 255};
-	RECT loading_dst = {(SCREEN_WIDTH - 320) >> 1, (SCREEN_HEIGHT - 240) >> 1, 320, 240};
 	Gfx_Tex loading_tex;
-	Gfx_SetClear(202, 255, 77);
+	RECT back_src = {0, 0, 179, 170};
+	RECT back_dst = {(SCREEN_WIDTH - 320) >> 1, (SCREEN_HEIGHT - 240) >> 1, 320, 240};
+
+    RECT loading_src = {41, 171, 137, 66};
+	RECT loading_dst = {320 - 290, 240 - 66 - 20, 137 + 30, 66};
+
+
+    Gfx_SetClear(0, 0, 0);
 	Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING.TIM;1"), GFX_LOADTEX_FREE);
 	Timer_Reset();
 	
@@ -38,12 +43,14 @@ void LoadScr_Start(void)
 		Timer_Tick();
 		Trans_Tick();
 		Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
+        Gfx_DrawTex(&loading_tex, &back_src, &back_dst);
 		Network_Process();
 		Gfx_Flip();
 	}
 	
 	//Draw an extra frame to avoid double buffering issues
-	Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
+    Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
+	Gfx_DrawTex(&loading_tex, &back_src, &back_dst);
 	Network_Process();
 	Gfx_Flip();
 }
