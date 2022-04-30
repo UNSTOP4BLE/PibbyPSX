@@ -13,6 +13,8 @@
 #include "trans.h"
 #include "network.h"
 
+bop_height = 0;
+
 //Loading screen functions
 void LoadScr_Start(void)
 {
@@ -29,6 +31,10 @@ void LoadScr_Start(void)
     RECT loading_src = {41, 171, 137, 66};
 	RECT loading_dst = {320 - 290, 240 - 66 - 20, 137 + 30, 66};
 
+    RECT pibby_src = {41, 171, 137, 66};
+	RECT pibby_dst = {320 - 290, 240 - 66 - 20, 137 + 30, 66 - bop_height};
+
+    bop_height ++;
 
     Gfx_SetClear(0, 0, 0);
 	Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING.TIM;1"), GFX_LOADTEX_FREE);
@@ -42,6 +48,8 @@ void LoadScr_Start(void)
 		//Draw loading screen and end frame
 		Timer_Tick();
 		Trans_Tick();
+
+        Gfx_DrawTex(&loading_tex, &pibby_src, &pibby_dst);
 		Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
         Gfx_DrawTex(&loading_tex, &back_src, &back_dst);
 		Network_Process();
@@ -49,6 +57,7 @@ void LoadScr_Start(void)
 	}
 	
 	//Draw an extra frame to avoid double buffering issues
+    Gfx_DrawTex(&loading_tex, &pibby_src, &pibby_dst);
     Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
 	Gfx_DrawTex(&loading_tex, &back_src, &back_dst);
 	Network_Process();
