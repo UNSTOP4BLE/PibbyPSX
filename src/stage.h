@@ -158,7 +158,8 @@ typedef struct
 #define NOTE_FLAG_SUSTAIN_END (1 << 4) //Is either end of sustain
 #define NOTE_FLAG_ALT_ANIM    (1 << 5) //Note plays alt animation
 #define NOTE_FLAG_MINE        (1 << 6) //Note is a mine
-#define NOTE_FLAG_HIT         (1 << 7) //Note has been hit
+#define NOTE_FLAG_HURT        (1 << 7) //Note is a hurt note
+#define NOTE_FLAG_HIT         (1 << 8) //Note has been hit
 
 typedef struct
 {

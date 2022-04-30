@@ -46,23 +46,23 @@ typedef struct
 
 //finn character definitions
 static const CharFrame char_finn_frame[] = {
-	{finn_ArcMain_Idle0, {  0,   0, 138, 144}, {  0,   0}}, //0 idle 1
-	{finn_ArcMain_Idle1, {  0,   0, 138, 144}, {  0,   0}}, //1 idle 2
-	{finn_ArcMain_Idle2, {  0,   0, 134, 150}, {  0,   0}}, //2 idle 3
-	{finn_ArcMain_Idle3, {  0,   0, 128, 157}, {  0,   0}}, //3 idle 4
-	{finn_ArcMain_Idle4, {  0,   0, 124, 166}, {  0,   0}}, //4 idle 5
+	{finn_ArcMain_Idle0, {  0,   0, 138, 144}, {138, 144}}, //0 idle 1
+	{finn_ArcMain_Idle1, {  0,   0, 138, 144}, {138 + 1, 144}}, //1 idle 2
+	{finn_ArcMain_Idle2, {  0,   0, 134, 150}, {134 + 2, 150}}, //2 idle 3
+	{finn_ArcMain_Idle3, {  0,   0, 128, 157}, {128 + 3, 157}}, //3 idle 4
+	{finn_ArcMain_Idle4, {  0,   0, 124, 166}, {124 + 4, 166}}, //4 idle 5
 
-	{finn_ArcMain_Left0, {  0,   0, 176, 137}, {  0,   0}}, //6 left 1
-	{finn_ArcMain_Left1, {  0,   0, 178, 150}, {  0,   0}}, //7 left 2
+	{finn_ArcMain_Left0, {  0,   0, 176, 137}, {170, 128}}, //6 left 1
+	{finn_ArcMain_Left1, {  0,   0, 178, 150}, {153, 135}}, //7 left 2
 	
-	{finn_ArcMain_Down0, {  0,   0, 142, 140}, {  0,   0}}, //8 down 1
-	{finn_ArcMain_Down1, {  0,   0, 144, 153}, {  0,   0}}, //9 down 2
+	{finn_ArcMain_Down0, {  0,   0, 142, 140}, {141, 140}}, //8 down 1
+	{finn_ArcMain_Down1, {  0,   0, 144, 153}, {144, 153}}, //9 down 2
 	
-	{finn_ArcMain_Up0, {  0,   0, 182, 180}, {  0,   0}}, //10 up 1gud
-	{finn_ArcMain_Up1, {  0,   0, 188, 175}, {  0,   0}}, //11 up 2 gud
+	{finn_ArcMain_Up0, {  0,   0, 182, 180}, {178 - 10, 175}}, //10 up 1
+	{finn_ArcMain_Up1, {  0,   0, 188, 175}, {180 - 10, 170}}, //11 up 2
 	
-	{finn_ArcMain_Right0, {  0,   0, 212, 154}, {  0,   0}}, //12 right 1 gud
-	{finn_ArcMain_Right1, {  0,   0, 206, 156}, {  0,   0}}, //13 right 2 gud
+	{finn_ArcMain_Right0, {  0,   0, 212, 154}, {153, 154}}, //12 right 1
+	{finn_ArcMain_Right1, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
 };
 
 static const Animation char_finn_anim[CharAnim_Max] = {
@@ -142,7 +142,7 @@ Character *Char_finn_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 3;
+	this->character.health_i = 5;
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);
