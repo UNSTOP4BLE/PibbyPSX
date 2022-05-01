@@ -328,7 +328,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 	//Perform note check
 	for (Note *note = stage.cur_note;; note++)
 	{
-		if (!(note->type & NOTE_FLAG_MINE) || !(note->type & NOTE_FLAG_HURT))
+		if (!(note->type & NOTE_FLAG_MINE) || !(note->type & NOTE_FLAG_HURT)  || !(note->type & NOTE_FLAG_SWORD))
 		{
 			//Check if note can be hit
 			fixed_t note_fp = (fixed_t)note->pos << FIXED_SHIFT;
@@ -387,6 +387,30 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 		    }
 			else
 				this->health -= 2000;
+
+			if (this->character->spec & CHAR_SPEC_MISSANIM)
+				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
+			else
+				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
+			this->arrow_hitan[type & 0x3] = -1;
+			
+			return;
+		}
+		else if (note->type & NOTE_FLAG_SWORD)
+        {
+			//Check if hurt note can be hit
+			fixed_t note_fp = (fixed_t)note->pos << FIXED_SHIFT;
+			if (note_fp - (stage.late_safe * 3 / 5) > stage.note_scroll)
+				break;
+			if (note_fp + (stage.late_safe * 2 / 5) < stage.note_scroll)
+				continue;
+			if ((note->type & NOTE_FLAG_HIT) || (note->type & (NOTE_FLAG_OPPONENT | 0x3)) != type || (note->type & NOTE_FLAG_SUSTAIN))
+				continue;
+			
+			//Hit the hurt note
+			note->type |= NOTE_FLAG_HIT;
+			
+			stage.player->set_anim(stage.player, CharAnim_LeftAlt);
 
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
@@ -1049,6 +1073,31 @@ static void Stage_DrawNotes(void)
 					note_dst.y = -note_dst.y - note_dst.h;
 				
                 //draw for opponent
+				if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
+					Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
+				else
+					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
+			}
+			else if (note->type & NOTE_FLAG_SWORD)
+			{
+				//Don't draw if already hit
+				if (note->type & NOTE_FLAG_HIT)
+					continue;
+				
+				//Draw note body
+				note_src.x = 192 + ((note->type & 0x1) << 5);
+				note_src.y = 50 + ((note->type & 0x2) << 4);
+				note_src.w = 32;
+				note_src.h = 32;
+				
+				note_dst.x = noteypos + stage.noteshakex + note_x[(note->type & 0x7) ^ stage.note_swap] - FIXED_DEC(16,1);
+				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
+				note_dst.w = note_src.w << FIXED_SHIFT;
+				note_dst.h = note_src.h << FIXED_SHIFT;
+				
+				if (stage.downscroll)
+					note_dst.y = -note_dst.y - note_dst.h;
+				//draw for opponent
 				if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
 					Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
 				else

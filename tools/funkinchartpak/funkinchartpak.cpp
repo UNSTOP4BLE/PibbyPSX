@@ -27,8 +27,9 @@ struct Section
 #define NOTE_FLAG_SUSTAIN_END (1 << 4) //Is either end of sustain
 #define NOTE_FLAG_ALT_ANIM    (1 << 5) //Note plays alt animation
 #define NOTE_FLAG_MINE        (1 << 6) //Note is a mine
-#define NOTE_FLAG_HURT        (1 << 7) //Note is a mine
-#define NOTE_FLAG_HIT         (1 << 8) //Note has been hit
+#define NOTE_FLAG_HURT        (1 << 7) //Note is a hurt note
+#define NOTE_FLAG_SWORD       (1 << 8) //Note is a sword note
+#define NOTE_FLAG_HIT         (1 << 9) //Note has been hit
 
 struct Note
 {
@@ -129,6 +130,8 @@ int main(int argc, char *argv[])
 				new_note.type |= NOTE_FLAG_MINE;
             if (j[3] == "Hurt Note")
 				new_note.type |= NOTE_FLAG_HURT;
+			if (j[3] == "Sword")
+				new_note.type |= NOTE_FLAG_SWORD;
 			
 			if (note_fudge.count(*((uint32_t*)&new_note)))
 			{
