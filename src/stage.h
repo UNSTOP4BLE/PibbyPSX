@@ -203,7 +203,7 @@ typedef struct
 	u32 offset;
 	
 	//HUD textures
-	Gfx_Tex tex_hud0, tex_hud1, tex_health;
+	Gfx_Tex tex_pibby, tex_hud0, tex_hud1, tex_health;
 	
 	//Stage data
 	const StageDef *stage_def;

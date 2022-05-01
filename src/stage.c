@@ -1099,9 +1099,9 @@ static void Stage_DrawNotes(void)
 					note_dst.y = -note_dst.y - note_dst.h;
 				//draw for opponent
 				if (stage.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-					Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
+					Stage_BlendTex(&stage.tex_pibby, &note_src, &note_dst, stage.bump, 1);
 				else
-					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
+					Stage_DrawTex(&stage.tex_pibby, &note_src, &note_dst, stage.bump);
 			}
 			else
 			{
@@ -1338,12 +1338,11 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	stage.story = story;
 	
 	//Load HUD textures
-	if (id >= StageId_6_1 && id <= StageId_6_3)
-		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0WEEB.TIM;1"), GFX_LOADTEX_FREE);
-	else
-		Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
+	Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
 	Gfx_LoadTex(&stage.tex_hud1, IO_Read("\\STAGE\\HUD1.TIM;1"), GFX_LOADTEX_FREE);
 	Gfx_LoadTex(&stage.tex_health, IO_Read("\\STAGE\\HEALTH.TIM;1"), GFX_LOADTEX_FREE);
+	Gfx_LoadTex(&stage.tex_pibby, IO_Read("\\STAGE\\PIBBY.TIM;1"), GFX_LOADTEX_FREE);
+	
 	
 	//Load stage background
 	Stage_LoadStage();

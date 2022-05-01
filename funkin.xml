@@ -38,7 +38,7 @@
 				<file name = "hud0.tim" type = "data" source = "iso/stage/hud0.tim"/>
 				<file name = "hud1.tim" type = "data" source = "iso/stage/hud1.tim"/>
 				<file name = "health.tim" type = "data" source = "iso/stage/health.tim"/>
-				<file name = "hud0weeb.tim" type = "data" source = "iso/stage/hud0weeb.tim"/>
+				<file name = "pibby.tim" type = "data" source = "iso/stage/pibby.tim"/>
 			</dir>
 			
 			<dir name = "beach">

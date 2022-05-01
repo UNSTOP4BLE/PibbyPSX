@@ -12,8 +12,6 @@
 #include "../random.h"
 #include "../main.h"
 
-Gfx_Tex tex_pibby; //pibby
-
 //Boyfriend skull fragments
 static SkullFragment char_bf_skull[15] = {
 	{ 1 * 8, -87 * 8, -13, -13},
@@ -192,7 +190,7 @@ void Char_BF_Tick(Character *character)
 			lbop_p->dst.h - (beat_bop << 3),
 		};
 		if (stage.player_state[0].health != 0 && stage.mode != StageMode_2P)
-			Stage_DrawTex(&tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
+			Stage_DrawTex(&stage.tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
 	}
 
 	//Handle animation updates
@@ -393,8 +391,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\BF.ARC;1");
-	Gfx_LoadTex(&tex_pibby, Archive_Find(this->arc_main, "pibby.tim"), 0);
-	
+
 	const char **pathp = (const char *[]){
 		"bf0.tim",   //BF_ArcMain_BF0
 		"bf1.tim",   //BF_ArcMain_BF1
