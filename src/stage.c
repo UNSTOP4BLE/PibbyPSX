@@ -75,7 +75,8 @@ int noteypos;
 int noteswap;
 fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
-u8 hudangle;
+u8 hudangle; 
+int icony;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -846,11 +847,12 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 		50
 	};
 	RECT_FIXED dst = {
-		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1),
-		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 32, 1),
+		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1) + FIXED_DEC(24,1),
+		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 32, 1) + FIXED_DEC(27,1) - FIXED_DEC(icony,1),
 		src.w << FIXED_SHIFT,
 		src.h << FIXED_SHIFT
 	};
+
 	if (stage.downscroll)
 		dst.y = -dst.y - dst.h;
 	
@@ -1610,7 +1612,13 @@ void Stage_Tick(void)
 	switch (stage.state)
 	{
 		case StageState_Play:
-		{	
+		{
+			//if (stage.player_state[0].health < 10000)
+			//	icony = -stage.player_state[0].health / 1024; 
+			//else                    
+				icony = stage.player_state[0].health / 1024;
+			 
+			FntPrint("icony %d o", icony);
             //chose witch health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
 			{		
@@ -1703,15 +1711,24 @@ void Stage_Tick(void)
 
 			noteypos = 15;
             hudangle = 0;
+
 			if (noteswap == 1)
             {
 				noteypos ++;
                 hudangle -= 2;
+				if (stage.player_state[0].health < 10000)
+					icony = icony;
+				else 
+					icony = -icony;
             }
             else if (noteswap == 2)
 			{	
                 noteypos --;
                 hudangle += 2;
+				if (stage.player_state[0].health < 10000)
+					icony = -icony;
+				else 
+					icony = icony;
             }
 			if (stage.song_step < 0)
 			{
@@ -1800,7 +1817,7 @@ void Stage_Tick(void)
 			{
 				//Draw botplay
 				RECT bot_src = {174, 225, 67, 16};
-				RECT_FIXED bot_dst = {FIXED_DEC(-33,1), FIXED_DEC(-60,1), FIXED_DEC(67,1), FIXED_DEC(16,1)};
+				RECT_FIXED bot_dst = {FIXED_DEC(-33 + 33,1), FIXED_DEC(-60 + 9,1), FIXED_DEC(67,1), FIXED_DEC(16,1)};
 
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
@@ -2525,7 +2542,7 @@ void Stage_Tick(void)
 				//Draw health bar
 				RECT health_fill = {0, healthbary, 256 - (256 * stage.player_state[0].health / 20000), 8};
 				RECT health_back = {0, 8, 256, 8};
-				RECT_FIXED health_dst = {FIXED_DEC(-128,1), (SCREEN_HEIGHT2 - 32) << FIXED_SHIFT, 0, FIXED_DEC(8,1)};
+				RECT_FIXED health_dst = {FIXED_DEC(-128,1) + FIXED_DEC(126,1), (SCREEN_HEIGHT2 - 32 + 4) << FIXED_SHIFT, 0, FIXED_DEC(8,1)};
 				if (stage.downscroll)
 					health_dst.y = -health_dst.y - health_dst.h;
 				
@@ -2534,6 +2551,7 @@ void Stage_Tick(void)
 
 				health_dst.w = health_fill.w << FIXED_SHIFT;
 				Stage_DrawTexRotate(&stage.tex_health, &health_fill, &health_dst, stage.bump, hudangle);
+				
 				health_dst.w = health_back.w << FIXED_SHIFT;
 				Stage_DrawTexRotate(&stage.tex_health, &health_back, &health_dst, stage.bump, hudangle);
 			}
