@@ -1085,8 +1085,8 @@ static void Stage_DrawNotes(void)
 					continue;
 				
 				//Draw note body
-				note_src.x = 192 + ((note->type & 0x1) << 5);
-				note_src.y = 50 + ((note->type & 0x2) << 4);
+				note_src.x = 79 + ((note->type & 0x1) << 5);
+				note_src.y = 2 + ((note->type & 0x2) << 4);
 				note_src.w = 32;
 				note_src.h = 32;
 				
