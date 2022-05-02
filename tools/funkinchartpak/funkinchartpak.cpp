@@ -25,16 +25,15 @@ struct Section
 #define NOTE_FLAG_OPPONENT    (1 << 2) //Note is opponent's
 #define NOTE_FLAG_SUSTAIN     (1 << 3) //Note is a sustain note
 #define NOTE_FLAG_SUSTAIN_END (1 << 4) //Is either end of sustain
-#define NOTE_FLAG_ALT_ANIM    (1 << 5) //Note plays alt animation
-#define NOTE_FLAG_MINE        (1 << 6) //Note is a mine
-#define NOTE_FLAG_HURT        (1 << 7) //Note is a hurt note
-#define NOTE_FLAG_SWORD       (1 << 8) //Note is a sword note
-#define NOTE_FLAG_HIT         (1 << 9) //Note has been hit
+#define NOTE_FLAG_MINE        (1 << 5) //Note is a mine
+#define NOTE_FLAG_HURT        (1 << 6) //Note is a hurt note
+#define NOTE_FLAG_SWORD       (1 << 7) //Note is a sword note
+#define NOTE_FLAG_HIT         (1 << 8) //Note has been hit
 
 struct Note
 {
 	uint16_t pos; //1/12 steps
-	uint8_t type, pad = 0;
+	uint16_t type, pad = 0;
 };
 
 uint16_t PosRound(double pos, double crochet)
@@ -105,7 +104,6 @@ int main(int argc, char *argv[])
 		}
 		new_section.end = (section_end += 16) * 12; //(uint16_t)i["lengthInSteps"]) * 12; //I had to do this for compatibility
 		new_section.flag = PosRound(bpm, 1.0 / 24.0) & SECTION_FLAG_BPM_MASK; 
-		bool is_alt = i["altAnim"] == true;
 		if (is_opponent)
 			new_section.flag |= SECTION_FLAG_OPPFOCUS;
 		sections.push_back(new_section);
@@ -120,10 +118,6 @@ int main(int argc, char *argv[])
 			new_note.type = (uint8_t)j[1] & (3 | NOTE_FLAG_OPPONENT);
 			if (is_opponent)
 				new_note.type ^= NOTE_FLAG_OPPONENT;
-			if (j[3] == true)
-				new_note.type |= NOTE_FLAG_ALT_ANIM;
-			else if ((new_note.type & NOTE_FLAG_OPPONENT) && is_alt)
-				new_note.type |= NOTE_FLAG_ALT_ANIM;
 			if (sustain >= 0)
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;
 			if (j[3] == "Glitch")

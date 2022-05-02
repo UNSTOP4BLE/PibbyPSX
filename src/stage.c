@@ -23,7 +23,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -345,21 +345,21 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
 			if (opponentsing)
-			stage.player->set_anim(stage.player,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 
 			if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
 			{
 			if (opponentsing)
-			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 			
 			else 
-			this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 			
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 			this->arrow_hitan[type & 0x3] = stage.step_time;
@@ -407,10 +407,20 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			if ((note->type & NOTE_FLAG_HIT) || (note->type & (NOTE_FLAG_OPPONENT | 0x3)) != type || (note->type & NOTE_FLAG_SUSTAIN))
 				continue;
 			
-			//Hit the hurt note
+			//Hit the sword note
 			note->type |= NOTE_FLAG_HIT;
 			
-			stage.player->set_anim(stage.player, CharAnim_LeftAlt);
+            if (note->type & NOTE_FLAG_SWORD)
+			{
+                stage.opponent->set_anim(stage.opponent, CharAnim_Down); //slash anim
+                stage.player->set_anim(stage.player, CharAnim_Down); //dodge anim
+            }
+            else
+			{ 
+                stage.opponent->set_anim(stage.opponent, CharAnim_Down); //slash anim
+                this->health -= 5000;
+                //stage.player_state[0].health = 0;
+            }
 
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
@@ -488,21 +498,21 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 		if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
 			if (opponentsing)
-			stage.player->set_anim(stage.player,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 
 		else if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
 			{
 			if (opponentsing)
-			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 			
 			else 
-			this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
+			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 		
 		Stage_StartVocal();
 		this->health += 230;
@@ -1569,7 +1579,7 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{	
-			//chose witch health bar color to use
+            //chose witch health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
 			{		
 						case 0: //bf
@@ -2012,9 +2022,9 @@ void Stage_Tick(void)
 							//Opponent hits note
 							Stage_StartVocal();
 							if (note->type & NOTE_FLAG_SUSTAIN)
-								opponent_snote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
+								opponent_snote = note_anims[note->type & 0x3][0];
 							else
-								opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
+								opponent_anote = note_anims[note->type & 0x3][0];
 							note->type |= NOTE_FLAG_HIT;
 						}
 					}
