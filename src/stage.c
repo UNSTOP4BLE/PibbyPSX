@@ -1656,15 +1656,6 @@ void Stage_Tick(void)
 			}
 			else if (stage.stage_id == StageId_2_1) 
 			{
-            
-            //    if (stage.song_step >= 1267 &&  stage.song_step <= 1419)
-              //  {
-                //    if (stage.cur_note->type & NOTE_FLAG_HIT && !(stage.cur_note->type & NOTE_FLAG_MINE))
-             //           opponentsing = 1;	
-             //       else if (stage.cur_note->type & NOTE_FLAG_MINE)
-             //           opponent2sing = 1;	
-             //   }    
-                
                 switch (stage.song_step)	
 				{	
 					case 1267:
@@ -1697,11 +1688,11 @@ void Stage_Tick(void)
 						break;
 				} 
             }
-			else 
-			{
-				opponentsing = 0;
-				opponent2sing = 0;
-			}
+		//	else 
+		//	{
+		//		opponentsing = 0;
+		//		opponent2sing = 0;
+		//	}
 			
 
 			//randomley shake the screen
@@ -1711,11 +1702,17 @@ void Stage_Tick(void)
 				noteshake = 0;
 
 			noteypos = 15;
+            hudangle = 0;
 			if (noteswap == 1)
+            {
 				noteypos ++;
-			else if (noteswap == 2)
-				noteypos --;
-
+                hudangle -= 2;
+            }
+            else if (noteswap == 2)
+			{	
+                noteypos --;
+                hudangle += 2;
+            }
 			if (stage.song_step < 0)
 			{
 				//BF
@@ -1731,7 +1728,7 @@ void Stage_Tick(void)
 			}
 			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
 			{
-				if ((stage.song_step  & 0x3) == 0)
+				if ((stage.song_step & 0x3) == 0)
 				switch_note++;
 				
 				if (stage.middlescroll) 
@@ -1802,15 +1799,13 @@ void Stage_Tick(void)
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
-				RECT bot_fill = {174, 225, 67, 16};
+				RECT bot_src = {174, 225, 67, 16};
 				RECT_FIXED bot_dst = {FIXED_DEC(-33,1), FIXED_DEC(-60,1), FIXED_DEC(67,1), FIXED_DEC(16,1)};
-				
-				bot_dst.w = bot_fill.w << FIXED_SHIFT;
 
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
 				
-				Stage_DrawTexRotate(&stage.tex_hud0, &bot_fill, &bot_dst, stage.bump, hudangle);
+				Stage_DrawTexRotate(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump, hudangle);
 			}
 
 			if (noteshake) 
