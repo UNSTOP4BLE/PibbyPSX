@@ -13,6 +13,7 @@
 #include "main.h"
 #include "random.h"
 #include "movie.h"
+#include "mutil.h"
 #include "network.h"
 
 #include "menu.h"
@@ -68,12 +69,13 @@ boolean noteshake;
 boolean has2opponents;
 boolean opponent2sing;
 boolean opponentsing;
-
+//hud shit
 u16 switch_note;
 int noteypos;
 int noteswap;
 fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
+u8 hudangle;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -410,23 +412,10 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the sword note
 			note->type |= NOTE_FLAG_HIT;
 			
-            if (note->type & NOTE_FLAG_SWORD)
-			{
-                stage.opponent->set_anim(stage.opponent, CharAnim_Down); //slash anim
-                stage.player->set_anim(stage.player, CharAnim_Down); //dodge anim
-            }
-            else
-			{ 
-                stage.opponent->set_anim(stage.opponent, CharAnim_Down); //slash anim
-                this->health -= 5000;
-                //stage.player_state[0].health = 0;
-            }
-
-			if (this->character->spec & CHAR_SPEC_MISSANIM)
-				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
-			else
-				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
-			this->arrow_hitan[type & 0x3] = -1;
+            stage.opponent->set_anim(stage.opponent, CharAnim_Left); //slash anim
+            stage.player->set_anim(stage.player, CharAnim_Left); //dodge anim
+			
+            this->arrow_hitan[type & 0x3] = -1;
 			
 			return;
 		}
@@ -695,6 +684,46 @@ void Stage_DrawTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_t
 	Stage_DrawTexCol(tex, src, dst, zoom, 0x80, 0x80, 0x80);
 }
 
+void Stage_DrawTexRotate(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_t zoom, u8 angle)
+{	
+	s16 sin = MUtil_Sin(angle);
+	s16 cos = MUtil_Cos(angle);
+	int pw = dst->w / 2000;
+    int ph = dst->h / 2000;
+
+	//Get rotated points
+	POINT p0 = {-pw, -ph};
+	MUtil_RotatePoint(&p0, sin, cos);
+	
+	POINT p1 = { pw, -ph};
+	MUtil_RotatePoint(&p1, sin, cos);
+	
+	POINT p2 = {-pw,  ph};
+	MUtil_RotatePoint(&p2, sin, cos);
+	
+	POINT p3 = { pw,  ph};
+	MUtil_RotatePoint(&p3, sin, cos);
+	
+	POINT_FIXED d0 = {
+		dst->x + ((fixed_t)p0.x << FIXED_SHIFT),
+		dst->y + ((fixed_t)p0.y << FIXED_SHIFT)
+	};
+	POINT_FIXED d1 = {
+		dst->x + ((fixed_t)p1.x << FIXED_SHIFT),
+		dst->y + ((fixed_t)p1.y << FIXED_SHIFT)
+	};
+	POINT_FIXED d2 = {
+        dst->x + ((fixed_t)p2.x << FIXED_SHIFT),
+		dst->y + ((fixed_t)p2.y << FIXED_SHIFT)
+	};
+	POINT_FIXED d3 = {
+        dst->x + ((fixed_t)p3.x << FIXED_SHIFT),
+		dst->y + ((fixed_t)p3.y << FIXED_SHIFT)
+	};
+	
+    Stage_DrawTexArb(tex, src, &d0, &d1, &d2, &d3, zoom);
+}
+
 void Stage_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_t zoom, u8 mode)
 {
 	fixed_t xz = dst->x;
@@ -829,7 +858,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	dst.x += stage.noteshakex;
 
 	//Draw health icon
-	Stage_DrawTex(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump));
+	Stage_DrawTexRotate(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump), hudangle);
 }
 
 static void Stage_DrawStrum(u8 i, RECT *note_src, RECT_FIXED *note_dst)
@@ -932,7 +961,10 @@ static void Stage_DrawNotes(void)
                         //Missed note
                         Stage_CutVocal();
                         Stage_MissNote(this);
-                        this->health -= 475;
+                        if (note->type & NOTE_FLAG_SWORD)
+                            this->health -= 0x7000;
+                        else
+                            this->health -= 475;
                     }
                 }
             }
@@ -1778,7 +1810,7 @@ void Stage_Tick(void)
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
 				
-				Stage_DrawTex(&stage.tex_hud0, &bot_fill, &bot_dst, stage.bump);
+				Stage_DrawTexRotate(&stage.tex_hud0, &bot_fill, &bot_dst, stage.bump, hudangle);
 			}
 
 			if (noteshake) 
@@ -2506,9 +2538,9 @@ void Stage_Tick(void)
 				health_dst.x += stage.noteshakex;
 
 				health_dst.w = health_fill.w << FIXED_SHIFT;
-				Stage_DrawTex(&stage.tex_health, &health_fill, &health_dst, stage.bump);
+				Stage_DrawTexRotate(&stage.tex_health, &health_fill, &health_dst, stage.bump, hudangle);
 				health_dst.w = health_back.w << FIXED_SHIFT;
-				Stage_DrawTex(&stage.tex_health, &health_back, &health_dst, stage.bump);
+				Stage_DrawTexRotate(&stage.tex_health, &health_back, &health_dst, stage.bump, hudangle);
 			}
 			
 			//Draw stage foreground

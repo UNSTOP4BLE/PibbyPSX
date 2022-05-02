@@ -7,6 +7,7 @@
 #include "../gfx.h"
 
 #include "../mem.h"
+#include "../mutil.h"
 #include "../main.h"
 
 //Gfx constants
@@ -357,6 +358,46 @@ void Gfx_DrawTexArbCol(Gfx_Tex *tex, const RECT *src, const POINT *p0, const POI
 void Gfx_DrawTexArb(Gfx_Tex *tex, const RECT *src, const POINT *p0, const POINT *p1, const POINT *p2, const POINT *p3)
 {
 	Gfx_DrawTexArbCol(tex, src, p0, p1, p2, p3, 0x80, 0x80, 0x80);
+}
+
+void Gfx_DrawTexRotate(Gfx_Tex *tex, const RECT *src, const RECT *dst, u8 angle)
+{	
+	s16 sin = MUtil_Sin(angle);
+	s16 cos = MUtil_Cos(angle);
+	int pw = dst->w / 2;
+    int ph = dst->h / 2;
+
+	//Get tank rotated points
+	POINT p0 = {-pw, -ph};
+	MUtil_RotatePoint(&p0, sin, cos);
+	
+	POINT p1 = { pw, -ph};
+	MUtil_RotatePoint(&p1, sin, cos);
+	
+	POINT p2 = {-pw,  ph};
+	MUtil_RotatePoint(&p2, sin, cos);
+	
+	POINT p3 = { pw,  ph};
+	MUtil_RotatePoint(&p3, sin, cos);
+	
+	POINT d0 = {
+		dst->x + p0.x,
+		dst->y + p0.y
+	};
+	POINT d1 = {
+		dst->x + p1.x,
+		dst->y + p1.y
+	};
+	POINT d2 = {
+        dst->x + p2.x,
+		dst->y + p2.y
+	};
+	POINT d3 = {
+        dst->x + p3.x,
+		dst->y + p3.y
+	};
+	
+    Gfx_DrawTexArb(tex, src, &d0, &d1, &d2, &d3);
 }
 
 void Gfx_BlendTexArb(Gfx_Tex *tex, const RECT *src, const POINT *p0, const POINT *p1, const POINT *p2, const POINT *p3, u8 mode)
