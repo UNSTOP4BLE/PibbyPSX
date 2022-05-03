@@ -93,21 +93,6 @@ static const Animation char_jake_anim[CharAnim_Max] = {
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
-static void DrawJake(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax)
-{
-	//Draw character
-	fixed_t x = this->x - FIXED_MUL(stage.camera.x, parallax) - FIXED_DEC(cframe->off[0],1);
-	fixed_t y = this->y - FIXED_MUL(stage.camera.y, parallax) - FIXED_DEC(cframe->off[1],1);
-	
-	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
-	RECT_FIXED dst = {x, y, (src.w + 64) << FIXED_SHIFT, (src.h + 45) << FIXED_SHIFT};
-	Stage_DrawTex(tex, &src, &dst, stage.camera.bzoom);
-}
-void Jake_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
-{
-	DrawJake(this, tex, cframe, FIXED_UNIT);
-}
-
 //jake character functions
 void Char_jake_SetFrame(void *user, u8 frame)
 {
