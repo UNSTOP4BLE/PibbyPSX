@@ -86,6 +86,7 @@ int icony;
 #include "character/pico.h"
 #include "character/bfc.h"
 #include "character/finn.h"
+#include "character/jake.h"
 
 #include "stage/beach.h"
 #include "stage/park.h"

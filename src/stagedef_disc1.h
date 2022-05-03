@@ -156,7 +156,7 @@
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56,1),   FIXED_DEC(85,1)},
 		{Char_finn_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
-		{NULL},
+		{Char_jake_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		
 		//Stage background

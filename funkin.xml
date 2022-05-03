@@ -146,6 +146,9 @@
 
 				<!-- finn assets -->
 				<file name = "finn.arc" type = "data" source = "iso/finn/main.arc"/>
+               
+                <!-- jake assets -->
+				<file name = "jake.arc" type = "data" source = "iso/jake/main.arc"/>
 			</dir>
 			
 			<!-- Music -->
