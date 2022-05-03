@@ -342,10 +342,23 @@ void Gfx_DrawTex(Gfx_Tex *tex, const RECT *src, const RECT *dst)
 
 void Gfx_DrawTexArbCol(Gfx_Tex *tex, const RECT *src, const POINT *p0, const POINT *p1, const POINT *p2, const POINT *p3, u8 r, u8 g, u8 b)
 {
+	//Manipulate rects to comply with GPU restrictions
+	RECT csrc;
+	csrc = *src;
+	
+	if ((csrc.x + csrc.w) >= 0x100)
+	{
+		csrc.w = 0xFF - csrc.x;
+	}
+	if ((csrc.y + csrc.h) >= 0x100)
+	{
+		csrc.h = 0xFF - csrc.y;
+	}
+	
 	//Add quad
 	POLY_FT4 *quad = (POLY_FT4*)nextpri;
 	setPolyFT4(quad);
-	setUVWH(quad, src->x, src->y, src->w, src->h);
+	setUVWH(quad, csrc.x, csrc.y, csrc.w, csrc.h);
 	setXY4(quad, p0->x, p0->y, p1->x, p1->y, p2->x, p2->y, p3->x, p3->y);
 	setRGB0(quad, r, g, b);
 	quad->tpage = tex->tpage;
