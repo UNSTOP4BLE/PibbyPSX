@@ -52,13 +52,13 @@ typedef struct
 
 //jake character definitions
 static const CharFrame char_jake_frame[] = {
-	{jake_ArcMain_Idle0, {  0,   0,   0,   0}, {  0,   0}}, //0 idle 1
-	{jake_ArcMain_Idle1, {  0,   0,   0,   0}, {  0,   0}}, //1 idle 2
-	{jake_ArcMain_Idle2, {  0,   0,   0,   0}, {  0,   0}}, //2 idle 3
-	{jake_ArcMain_Idle3, {  0,   0,   0,   0}, {  0,   0}}, //3 idle 4
-	{jake_ArcMain_Idle4, {  0,   0,   0,   0}, {  0,   0}}, //4 idle 5
-    {jake_ArcMain_Idle5, {  0,   0,   0,   0}, {  0,   0}}, //2 idle 3
-	{jake_ArcMain_Idle6, {  0,   0,   0,   0}, {  0,   0}}, //3 idle 4
+	{jake_ArcMain_Idle0, {  0,   0, 148, 134}, {119, 134}}, //0 idle 1
+	{jake_ArcMain_Idle1, {  0,   0, 152, 137}, {120, 137}}, //1 idle 2
+	{jake_ArcMain_Idle2, {  0,   0, 160, 133}, {125, 133}}, //2 idle 3
+	{jake_ArcMain_Idle3, {  0,   0, 168, 137}, {136, 137}}, //3 idle 4
+	{jake_ArcMain_Idle4, {  0,   0, 160, 133}, {120, 133}}, //4 idle 5
+    {jake_ArcMain_Idle5, {  0,   0, 148, 138}, {118, 138}}, //2 idle 3
+	{jake_ArcMain_Idle6, {  0,   0, 156, 133}, {126, 133}}, //3 idle 4
 
 	{jake_ArcMain_Left0, {  0,   0, 252, 174}, {187, 144}}, //6 left 1
 	{jake_ArcMain_Left1, {  0,   0, 248, 176}, {180, 176}}, //7 left 2
