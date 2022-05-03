@@ -24,7 +24,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-//#define STAGE_FREECAM //Freecam
+#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -93,6 +93,7 @@ int icony;
 #include "stage/week1.h"
 #include "stage/week2.h"
 #include "stage/week3.h"
+#include "stage/school.h"
 
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"

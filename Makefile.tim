@@ -20,7 +20,8 @@ all: \
 	iso/park/back.arc \
 	iso/week1/back.arc \
 	iso/week2/back.arc \
-	iso/week3/back.arc 
+	iso/week3/back.arc \
+	iso/school/back.arc 
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -72,3 +73,6 @@ iso/week2/back.arc: iso/week2/back0.tim
 
 # Week 3
 iso/week3/back.arc: iso/week3/bg.tim iso/week3/fg.tim iso/week3/sky.tim
+
+# School
+iso/school/back.arc: iso/school/place.tim 

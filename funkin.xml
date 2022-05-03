@@ -91,6 +91,12 @@
 				<file name = "3.3n.cht" type = "data" source = "iso/chart/Corrupted-Hero-hard.json.cht"/>
 			</dir>
 			
+			<dir name = "school">
+				<!-- Background art -->
+				<file name = "back.arc" type = "data" source = "iso/school/back.arc"/>
+			</dir>
+
+
 			<!-- Week 4 assets -->
 			<dir name = "week4">
 				<!-- Satin Panties charts -->

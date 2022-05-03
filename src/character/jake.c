@@ -52,33 +52,33 @@ typedef struct
 
 //jake character definitions
 static const CharFrame char_jake_frame[] = {
-	{jake_ArcMain_Idle0, {  0,   0, 148, 134}, {119, 134}}, //0 idle 1
-	{jake_ArcMain_Idle1, {  0,   0, 152, 137}, {120, 137}}, //1 idle 2
-	{jake_ArcMain_Idle2, {  0,   0, 160, 133}, {125, 133}}, //2 idle 3
-	{jake_ArcMain_Idle3, {  0,   0, 168, 137}, {136, 137}}, //3 idle 4
-	{jake_ArcMain_Idle4, {  0,   0, 160, 133}, {120, 133}}, //4 idle 5
-    {jake_ArcMain_Idle5, {  0,   0, 148, 138}, {118, 138}}, //2 idle 3
-	{jake_ArcMain_Idle6, {  0,   0, 156, 133}, {126, 133}}, //3 idle 4
+	{jake_ArcMain_Idle0, {  0,   0, 148, 134}, {119, 129}}, //0 idle 1
+	{jake_ArcMain_Idle1, {  0,   0, 152, 137}, {120, 132}}, //1 idle 2
+	{jake_ArcMain_Idle2, {  0,   0, 160, 133}, {125, 128}}, //2 idle 3
+	{jake_ArcMain_Idle3, {  0,   0, 168, 137}, {136, 132}}, //3 idle 4
+	{jake_ArcMain_Idle4, {  0,   0, 160, 133}, {120, 128}}, //4 idle 5
+    {jake_ArcMain_Idle5, {  0,   0, 148, 138}, {118, 132}}, //2 idle 3
+	{jake_ArcMain_Idle6, {  0,   0, 156, 133}, {126, 128}}, //3 idle 4
 
-	{jake_ArcMain_Left0, {  0,   0, 252, 174}, {187, 144}}, //6 left 1
-	{jake_ArcMain_Left1, {  0,   0, 248, 176}, {180, 176}}, //7 left 2
-    {jake_ArcMain_Left2, {  0,   0, 248, 176}, {180, 176}}, //6 left 1
-	{jake_ArcMain_Left3, {  0,   0, 248, 173}, {181, 173}}, //7 left 2
+	{jake_ArcMain_Left0, {  0,   0, 252, 174}, {187, 169}}, //6 left 1
+	{jake_ArcMain_Left1, {  0,   0, 248, 176}, {180, 170}}, //7 left 2
+    {jake_ArcMain_Left2, {  0,   0, 248, 176}, {180, 171}}, //6 left 1
+	{jake_ArcMain_Left3, {  0,   0, 248, 173}, {181, 168}}, //7 left 2
 	
-	{jake_ArcMain_Down, {  0,   0, 119,  84}, {119,  84}}, //8 down 1
-    {jake_ArcMain_Down, {119,   0, 119,  84}, {119,  84}}, //8 down 1
-    {jake_ArcMain_Down, {  0,  84, 125,  84}, {125,  84}}, //8 down 1
-    {jake_ArcMain_Down, {  0, 168, 136,  87}, {136,  84}}, //8 down 1
+	{jake_ArcMain_Down, {  0,   0, 119,  84}, {119,  80}}, //8 down 1
+    {jake_ArcMain_Down, {119,   0, 119,  84}, {119,  80}}, //8 down 1
+    {jake_ArcMain_Down, {  0,  84, 125,  84}, {125,  80}}, //8 down 1
+    {jake_ArcMain_Down, {  0, 168, 136,  87}, {136,  80}}, //8 down 1
 	
-	{jake_ArcMain_Up0, {  0,   0, 119, 143}, {119, 143}}, //10 up 1
-	{jake_ArcMain_Up0, {119,   0, 121, 144}, {119, 144}}, //11 up 2
-    {jake_ArcMain_Up1, {  0,   0, 126, 141}, {126, 141}}, //10 up 1
-	{jake_ArcMain_Up1, {126,   0, 117, 144}, {117, 144}}, //11 up 2
+	{jake_ArcMain_Up0, {  0,   0, 119, 143}, {119, 138}}, //10 up 1
+	{jake_ArcMain_Up0, {119,   0, 121, 144}, {119, 139}}, //11 up 2
+    {jake_ArcMain_Up1, {  0,   0, 126, 141}, {126, 136}}, //10 up 1
+	{jake_ArcMain_Up1, {126,   0, 117, 144}, {117, 139}}, //11 up 2
 	
-	{jake_ArcMain_Right0, {  0,   0, 176, 160}, {115, 160}}, //12 right 1
-	{jake_ArcMain_Right1, {  0,   0, 172, 155}, {115, 155}}, //13 right 2
-    {jake_ArcMain_Right2, {  0,   0, 172, 148}, {116, 148}}, //12 right 1
-	{jake_ArcMain_Right3, {  0,   0, 176, 148}, {115, 148}}, //13 right 2
+	{jake_ArcMain_Right0, {  0,   0, 176, 160}, {115, 155}}, //12 right 1
+	{jake_ArcMain_Right1, {  0,   0, 172, 155}, {115, 150}}, //13 right 2
+    {jake_ArcMain_Right2, {  0,   0, 172, 148}, {116, 143}}, //12 right 1
+	{jake_ArcMain_Right3, {  0,   0, 176, 148}, {115, 143}}, //13 right 2
 };
 
 static const Animation char_jake_anim[CharAnim_Max] = {
