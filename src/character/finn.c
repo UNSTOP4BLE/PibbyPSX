@@ -28,6 +28,12 @@ enum
 	finn_ArcMain_Right0,
 	finn_ArcMain_Right1,
 
+	finn_ArcMain_Slash0,
+	finn_ArcMain_Slash1,
+	finn_ArcMain_Slash2,
+	finn_ArcMain_Slash3,
+	finn_ArcMain_Slash4,
+
 	finn_Arc_Max,
 };
 
@@ -63,6 +69,13 @@ static const CharFrame char_finn_frame[] = {
 	
 	{finn_ArcMain_Right0, {  0,   0, 212, 154}, {153, 154}}, //12 right 1
 	{finn_ArcMain_Right1, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+
+	{finn_ArcMain_Slash0, {  0,   0, 212, 154}, {153, 154}}, //12 right 1
+	{finn_ArcMain_Slash1, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+	{finn_ArcMain_Slash2, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+	{finn_ArcMain_Slash3, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+	{finn_ArcMain_Slash4, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+
 };
 
 static const Animation char_finn_anim[CharAnim_Max] = {
@@ -70,7 +83,7 @@ static const Animation char_finn_anim[CharAnim_Max] = {
 	{2, (const u8[]){ 5, 6, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){ 7, 8, ASCR_BACK, 0}},         //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{2, (const u8[]){ 13, 14, 15, 16, 17, ASCR_BACK, 0}},   //CharAnim_DownAlt
 	{2, (const u8[]){ 9, 10, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){ 11, 12, ASCR_BACK, 0}},         //CharAnim_Right
@@ -165,6 +178,11 @@ Character *Char_finn_New(fixed_t x, fixed_t y)
 		"up1.tim", //finn_ArcMain_Idle1
 		"right0.tim", //finn_ArcMain_Idle1
 		"right1.tim", //finn_ArcMain_Idle1
+		"slash0.tim", //finn_ArcMain_Idle1
+		"slash1.tim", //finn_ArcMain_Idle1
+		"slash2.tim", //finn_ArcMain_Idle1
+		"slash3.tim", //finn_ArcMain_Idle1
+		"slash4.tim", //finn_ArcMain_Idle1
 
 		NULL
 	};

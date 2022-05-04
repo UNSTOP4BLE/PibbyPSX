@@ -420,8 +420,8 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the sword note
 			note->type |= NOTE_FLAG_HIT;
 			
-            stage.opponent->set_anim(stage.opponent, CharAnim_Left); //slash anim
-            stage.player->set_anim(stage.player, CharAnim_Left); //dodge anim
+            stage.opponent->set_anim(stage.opponent, CharAnim_DownAlt); //slash anim
+            stage.player->set_anim(stage.player, CharAnim_DownAlt); //dodge anim
 			
             this->arrow_hitan[type & 0x3] = -1;
 			
