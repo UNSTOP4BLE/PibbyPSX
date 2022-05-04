@@ -172,13 +172,13 @@
 	
 	{ //StageId_4_1 (Brotherly-Bond)
 		//Characters
-		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{NULL},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85,1)},
+		{Char_jake_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
 		{NULL},
 		
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},

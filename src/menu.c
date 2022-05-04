@@ -487,10 +487,10 @@ void Menu_Tick(void)
 			
 			RECT logo_src = {0, 0, 176, 112};
 			RECT logo_dst = {
-				100 - x_rad + (SCREEN_WIDEADD2 >> 1),
+				135 - x_rad + (SCREEN_WIDEADD2 >> 1),
 				68 - y_rad,
-				x_rad << 1,
-				y_rad << 1
+				(x_rad + 35) << 1,
+				(y_rad + 20) << 1
 			};
 			Gfx_DrawTex(&menu.tex_title, &logo_src, &logo_dst);
 			

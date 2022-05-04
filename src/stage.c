@@ -579,7 +579,7 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 					break;
 				if (note_fp + stage.late_safe < stage.note_scroll)
 					continue;
-				if ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_OPPONENT) != i)
+				if ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT) || (note->type & NOTE_FLAG_OPPONENT) != i)
 					continue;
 				
 				//Handle note hit
@@ -1714,6 +1714,12 @@ void Stage_Tick(void)
 						break;
 				} 
             }
+			else if (stage.stage_id == StageId_4_1)
+			{
+				opponentsing = 0;
+				opponent2sing = 1;
+
+			}
 		//	else 
 		//	{
 		//		opponentsing = 0;
@@ -2098,7 +2104,7 @@ void Stage_Tick(void)
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
 						if (stage.mode == StageMode_Normal)
 			            {
-						if (stage.opponent2 != NULL && opponent2sing)
+						if (stage.opponent2 != NULL)
 						if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
 			            }
