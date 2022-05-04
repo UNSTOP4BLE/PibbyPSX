@@ -350,25 +350,25 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
 			if (opponentsing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.player->animatable.anim != CharAnim_DownAlt) 
 			stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.player->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 
 			if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
 			{
 			if (opponentsing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 			
 			else 
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (this->character->animatable.anim != CharAnim_DownAlt) 
 			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 			
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
@@ -399,10 +399,16 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 				this->health -= 2000;
 
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
-				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
-			else
-				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
-			this->arrow_hitan[type & 0x3] = -1;
+            {
+                if (this->character->animatable.anim != CharAnim_DownAlt) 
+                    this->character->set_anim(this->character, note_anims[type & 0x3][2]);
+            }
+            else
+            {
+                if (this->character->animatable.anim != CharAnim_DownAlt) 
+                    this->character->set_anim(this->character, note_anims[type & 0x3][0]);
+            }
+            this->arrow_hitan[type & 0x3] = -1;
 			
 			return;
 		}
@@ -414,7 +420,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 				break;
 			if (note_fp + (stage.late_safe * 2 / 5) < stage.note_scroll)
 				continue;
-			if ((note->type & NOTE_FLAG_HIT) || (note->type & (NOTE_FLAG_OPPONENT | 0x3)) != type || (note->type & NOTE_FLAG_SUSTAIN))
+			if ((note->type & NOTE_FLAG_HIT) || (note->type & (NOTE_FLAG_OPPONENT | 0x3)) != type)
 				continue;
 			
 			//Hit the sword note
@@ -495,25 +501,25 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 		if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
 			if (opponentsing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.player->animatable.anim != CharAnim_DownAlt) 
 			stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 
 		else if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
 			{
 			if (opponentsing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
 			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
 			
 			else 
-			if (stage.player->animatable.anim != CharAnim_LeftAlt) 
+			if (this->character->animatable.anim != CharAnim_DownAlt) 
 			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 		
 		Stage_StartVocal();
@@ -2088,20 +2094,24 @@ void Stage_Tick(void)
 					if (opponent_anote != CharAnim_Idle)
 					{
 						if (opponentsing)
+						if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
 						if (stage.mode == StageMode_Normal)
 			            {
 						if (stage.opponent2 != NULL && opponent2sing)
+						if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
 			            }
 					}
 					else if (opponent_snote != CharAnim_Idle)
 					{
 						if (opponentsing)
+						if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent->set_anim(stage.opponent, opponent_snote);
 						if (stage.mode == StageMode_Normal)
 			            {
 						if (stage.opponent2 != NULL && opponent2sing)
+						if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent2->set_anim(stage.opponent2, opponent_snote);
 			            }
 					}

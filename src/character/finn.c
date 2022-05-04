@@ -70,11 +70,11 @@ static const CharFrame char_finn_frame[] = {
 	{finn_ArcMain_Right0, {  0,   0, 212, 154}, {153, 154}}, //12 right 1
 	{finn_ArcMain_Right1, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
 
-	{finn_ArcMain_Slash0, {  0,   0, 212, 154}, {153, 154}}, //12 right 1
-	{finn_ArcMain_Slash1, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
-	{finn_ArcMain_Slash2, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
-	{finn_ArcMain_Slash3, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
-	{finn_ArcMain_Slash4, {  0,   0, 206, 156}, {139, 156}}, //13 right 2
+	{finn_ArcMain_Slash0, {  0,   0, 174, 189}, { 36 + 70, 189}}, //12 right 1
+	{finn_ArcMain_Slash1, {  0,   0, 228, 181}, { 90 + 70, 181}}, //13 right 2
+	{finn_ArcMain_Slash2, {  0,   0, 216, 157}, { 83 + 70, 157}}, //13 right 2
+	{finn_ArcMain_Slash3, {  0,   0, 200, 157}, { 83 + 70, 157}}, //13 right 2
+	{finn_ArcMain_Slash4, {  0,   0, 190, 173}, { 84 + 70, 173}}, //13 right 2
 
 };
 
