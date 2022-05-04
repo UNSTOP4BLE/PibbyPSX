@@ -665,9 +665,9 @@ void Menu_Tick(void)
 				const char *tracks[4];
 			} menu_options[] = {
 				{NULL, StageId_1_1, "HERE WE ARE IN THE FUTURE", {"SAVE THE DAY", "GLITCHED GEM", "MY FRIENDS", "THE CHANGE"}},
-				{mordecai, StageId_1_1, "GOING BACK TO WORK", {"OVERWORKED", NULL, NULL, NULL}},
-				{week3, StageId_2_1, "FUNKY CORRUPTION", {"LAST SPOOKTOBER", "GUNSHOT", "BLUE BALLED", NULL}},
-				{finnjake, StageId_3_1, "ITS ADVENTURE TIME", {"CORRUPTED HERO", "BROTHERLEY BOND", "GUMMY SUBSTANCE", "TOGETHER FOREVER"}},
+				{mordecai, StageId_2_2, "GOING BACK TO WORK", {"OVERWORKED", NULL, NULL, NULL}},
+				{week3, StageId_2_3, "FUNKY CORRUPTION", {"LAST SPOOKTOBER", "GUNSHOT", "BLUE BALLED", NULL}},
+				{finnjake, StageId_3_3, "ITS ADVENTURE TIME", {"CORRUPTED HERO", "BROTHERLEY BOND", "GUMMY SUBSTANCE", "TOGETHER FOREVER"}},
 			};
 			
 			//Initialize page

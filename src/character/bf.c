@@ -116,6 +116,11 @@ static const CharFrame char_bf_frame[] = {
 	{BF_ArcMain_Dead2, {119,   0, 123, 107}, {110 - 42,  106}}, //26 dead2 body twitch 1
 	{BF_ArcMain_Dead2, {  0, 108, 122, 108}, {112 - 42,  107}}, //27 dead2 balls twitch 0
 	{BF_ArcMain_Dead2, {122, 107, 122, 107}, {112 - 42,  106}}, //28 dead2 balls twitch 1
+
+	{BF_ArcMain_BF3, { 95,   0, 117, 101}, { 71,  100}}, //12 right 2
+	{BF_ArcMain_BF3, {  0, 102, 119, 102}, { 77,  102}}, //12 right 2
+	{BF_ArcMain_BF3, {119, 101, 114, 102}, { 72,  101}}, //12 right 2
+
 };
 
 static const Animation char_bf_anim[PlayerAnim_Max] = {
@@ -123,7 +128,7 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){ 5,  6, ASCR_BACK, 1}},             //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
 	{2, (const u8[]){ 7,  8, ASCR_BACK, 1}},             //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
+	{2, (const u8[]){ 29, 30, 31, ASCR_BACK, 0}},       //CharAnim_DownAlt
 	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},             //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
 	{2, (const u8[]){11, 12, ASCR_BACK, 1}},             //CharAnim_Right
