@@ -1636,6 +1636,8 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{
+            //welcome to the shit show
+        
 			//if (stage.player_state[0].health < 10000)
 			//	icony = -stage.player_state[0].health / 1024; 
 			//else                    
