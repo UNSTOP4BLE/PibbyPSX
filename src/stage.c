@@ -1078,6 +1078,9 @@ static void Stage_DrawNotes(void)
 						note_dst.y = stage.noteshakey + y + clip;
 						note_dst.w = note_src.w << FIXED_SHIFT;
 						note_dst.h = (next_y - y) - clip;
+
+						if (stage.downscroll)
+							note_dst.y = -note_dst.y - note_dst.h;
 						
 						if (stage.middlescroll == 0 && note->type & (note->type & (NOTE_FLAG_MINE | NOTE_FLAG_HURT)))
 							Stage_DrawTex(&stage.tex_hud0, &note_mine_src, &note_dst, stage.bump);
