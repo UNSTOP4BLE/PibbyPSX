@@ -47,34 +47,34 @@ typedef struct
 
 //bubble character definitions
 static const CharFrame char_bubble_frame[] = {
-	{bubble_ArcMain_Idle0, {  0,   0, 148, 134}, {119, 129}}, //0 idle 1
-    {bubble_ArcMain_Idle0, {  0,   0, 148, 134}, {119, 129}}, //0 idle 1
-	{bubble_ArcMain_Idle1, {  0,   0, 152, 137}, {120, 132}}, //1 idle 2
-    {bubble_ArcMain_Idle1, {  0,   0, 152, 137}, {120, 132}}, //1 idle 2
-	{bubble_ArcMain_Idle2, {  0,   0, 160, 133}, {125, 128}}, //2 idle 3
-    {bubble_ArcMain_Idle2, {  0,   0, 160, 133}, {125, 128}}, //2 idle 3
-	{bubble_ArcMain_Idle3, {  0,   0, 168, 137}, {136, 132}}, //3 idle 4
-    {bubble_ArcMain_Idle3, {  0,   0, 168, 137}, {136, 132}}, //3 idle 4
+	{bubble_ArcMain_Idle0, {  0,   0, 136, 143}, {  0,   0}}, //0 idle 1
+    {bubble_ArcMain_Idle0, {107,  87, 137, 144}, {  0,   0}}, //0 idle 1
+	{bubble_ArcMain_Idle1, {  0,   0, 139, 146}, {  0,   0}}, //1 idle 2
+    {bubble_ArcMain_Idle1, {113,  91, 135, 147}, {  0,   0}}, //1 idle 2
+	{bubble_ArcMain_Idle2, {  0,   0, 130, 147}, {  0,   0}}, //2 idle 3
+    {bubble_ArcMain_Idle2, {110,  98, 129, 148}, {  0,   0}}, //2 idle 3
+	{bubble_ArcMain_Idle3, {  0,   0, 137, 148}, {  0,   0}}, //3 idle 4
+    {bubble_ArcMain_Idle3, {121,  87, 129, 148}, {  0,   0}}, //3 idle 4
 
-	{bubble_ArcMain_Left0, {  0,   0, 252, 174}, {187, 169}}, //6 left 1
-	{bubble_ArcMain_Left0, {  0,   0, 248, 176}, {180, 170}}, //7 left 2
-    {bubble_ArcMain_Left1, {  0,   0, 248, 176}, {180, 171}}, //6 left 1
-	{bubble_ArcMain_Left1, {  0,   0, 248, 173}, {181, 168}}, //7 left 2
+	{bubble_ArcMain_Left0, {  0,   0,  78, 154}, {  0,   0}}, //6 left 1
+	{bubble_ArcMain_Left0, { 78,   0, 110, 153}, {  0,   0}}, //7 left 2
+    {bubble_ArcMain_Left1, {  0,   0, 111, 153}, {  0,   0}}, //6 left 1
+	{bubble_ArcMain_Left1, {111,   0, 100, 153}, {  0,   0}}, //7 left 2
 	
-	{bubble_ArcMain_Down0, {  0,   0, 119,  84}, {119,  80}}, //8 down 1
-    {bubble_ArcMain_Down0, {119,   0, 119,  84}, {119,  80}}, //8 down 1
-    {bubble_ArcMain_Down1, {  0,  84, 125,  84}, {125,  80}}, //8 down 1
-    {bubble_ArcMain_Down2, {  0, 168, 136,  87}, {136,  80}}, //8 down 1
+	{bubble_ArcMain_Down0, {  0,   0, 211, 121}, {  0,   0}}, //8 down 1
+    {bubble_ArcMain_Down0, {  0, 121, 178, 135}, {  0,   0}}, //8 down 1
+    {bubble_ArcMain_Down1, {  0,   0, 182, 138}, {  0,   0}}, //8 down 1
+    {bubble_ArcMain_Down2, {  0,   0, 178, 139}, {  0,   0}}, //8 down 1
 	
-	{bubble_ArcMain_Up0, {  0,   0, 119, 143}, {119, 138}}, //10 up 1
-	{bubble_ArcMain_Up0, {119,   0, 121, 144}, {119, 139}}, //11 up 2
-    {bubble_ArcMain_Up1, {  0,   0, 126, 141}, {126, 136}}, //10 up 1
-	{bubble_ArcMain_Up1, {126,   0, 117, 144}, {117, 139}}, //11 up 2
+	{bubble_ArcMain_Up0, {  0,   0,   0,   0}, {  0,   0}}, //10 up 1
+	{bubble_ArcMain_Up0, {  0,   0,   0,   0}, {  0,   0}}, //11 up 2
+    {bubble_ArcMain_Up1, {  0,   0,   0,   0}, {  0,   0}}, //10 up 1
+	{bubble_ArcMain_Up1, {  0,   0,   0,   0}, {  0,   0}}, //11 up 2
 	
-	{bubble_ArcMain_Right0, {  0,   0, 176, 160}, {115, 155}}, //12 right 1
-	{bubble_ArcMain_Right0, {  0,   0, 172, 155}, {115, 150}}, //13 right 2
-    {bubble_ArcMain_Right1, {  0,   0, 172, 148}, {116, 143}}, //12 right 1
-	{bubble_ArcMain_Right1, {  0,   0, 176, 148}, {115, 143}}, //13 right 2
+	{bubble_ArcMain_Right0, {  0,   0,   0,   0}, {  0,   0}}, //12 right 1
+	{bubble_ArcMain_Right0, {  0,   0,   0,   0}, {  0,   0}}, //13 right 2
+    {bubble_ArcMain_Right1, {  0,   0,   0,   0}, {  0,   0}}, //12 right 1
+	{bubble_ArcMain_Right1, {  0,   0,   0,   0}, {  0,   0}}, //13 right 2
 };
 
 static const Animation char_bubble_anim[CharAnim_Max] = {
