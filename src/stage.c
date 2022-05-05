@@ -77,6 +77,7 @@ fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
 u8 hudangle; 
 int icony;
+int fadething;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -2705,42 +2706,67 @@ void Stage_Tick(void)
 								week3_fade = FIXED_DEC(255,1);	
 						break;
                         case StageId_3_3:
-							if (stage.song_step >= 548 && stage.song_step <= 1563) {
+                            if (stage.song_step >= 544 && stage.song_step <= 928) {
 								stage.fade = 1;
-								
-                                
+                                Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+                            }
+                            else if (stage.song_step >= 1311 && stage.song_step <= 1563) {
+								stage.fade = 1;
+
                                 if (stage.song_step >= 1311 && stage.song_step <= 1343) 
                                     Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
                                 else if (stage.song_step >= 1343 && stage.song_step <= 1375) 
-								    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //green
+								    Gfx_BlendRect(&screen_src, 128, 0, 255, 90); //green
                                 else if (stage.song_step >= 1375 && stage.song_step <= 1408) 
-								    Gfx_BlendRect(&screen_src, 255, 0, 0, 90);  //purple
+								    Gfx_BlendRect(&screen_src, 0, 120, 32, 90);  //purple
                                 else if (stage.song_step >= 1408 && stage.song_step <= 1439) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //orange
+                                    Gfx_BlendRect(&screen_src, 0, 128, 128, 90); //orange
                                 else if (stage.song_step >= 1439 && stage.song_step <= 1471) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //yellow
+                                    Gfx_BlendRect(&screen_src, 0, 0, 255, 90); //yellow
                                 else if (stage.song_step >= 1471 && stage.song_step <= 1503) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //green
+                                    Gfx_BlendRect(&screen_src, 128, 0, 255, 90); //green
                                 else if (stage.song_step >= 1503 && stage.song_step <= 1536) 
                                     Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
                                 else if (stage.song_step >= 1536)// && stage.song_step <= 1563) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //orange
+                                    Gfx_BlendRect(&screen_src, 0, 128, 128, 90); //orange
                                 else 
                                     Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+							}                  
+                            else if (stage.song_step >= 1586 && stage.song_step <= 1823) {	
+                                if (fadething == 1)
+                                {
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+                                    stage.fade = 1;
+                                }
+                                else 
+                                    stage.fade = 0;
+                        
+                                if (fadething == 2)
+                                    fadething = 0;
+                                if (stage.flag & STAGE_FLAG_JUST_STEP)
+                                {
+                                    if ((stage.song_step & 0xF) == 0)
+                                    {
+                                        week3_fade = FIXED_DEC(255,1);	
+                                        fadething ++;
+                                    }
+                                }
+
+                                week3_fadespd = FIXED_DEC(200,1);
 							}
-
-
-                            
-                            
-                           
-
-                            //add other flash thing moment
-							else 
+                            else 
+                            {
 								stage.fade = 0;
-							if (stage.song_step == 548)
+                                week3_fadespd = FIXED_DEC(150,1);
+                            }
+							if (stage.song_step == 544)
 								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 929)
-								week3_fade = FIXED_DEC(255,1);		
+							if (stage.song_step == 928)
+								week3_fade = FIXED_DEC(255,1);	
+                            if (stage.song_step == 1311)
+								week3_fade = FIXED_DEC(255,1);
+							if (stage.song_step == 1563)
+								week3_fade = FIXED_DEC(255,1);					
 						break;
 					default:
 				break;
