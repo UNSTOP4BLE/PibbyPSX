@@ -33,7 +33,8 @@ SRCS = src/main.c \
        src/character/pico.c \
        src/character/bfc.c \
        src/character/finn.c \
-	src/character/jake.c \
+	   src/character/jake.c \
+	   src/character/bubble.c \
        src/object.c \
        src/object/combo.c \
        src/object/splash.c \

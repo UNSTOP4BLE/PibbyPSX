@@ -16,6 +16,7 @@ all: \
 	iso/bfc/main.arc \
 	iso/finn/main.arc \
     iso/jake/main.arc \
+    iso/bubble/main.arc \
 	iso/beach/back.arc \
 	iso/park/back.arc \
 	iso/week1/back.arc \
@@ -56,9 +57,11 @@ iso/bfc/main.arc: iso/bfc/idle0.tim iso/bfc/idle1.tim iso/bfc/left.tim iso/bfc/r
 # finn
 iso/finn/main.arc: iso/finn/idle0.tim iso/finn/idle1.tim iso/finn/idle2.tim iso/finn/idle3.tim iso/finn/idle4.tim iso/finn/left0.tim iso/finn/left1.tim iso/finn/right0.tim iso/finn/right1.tim iso/finn/up0.tim iso/finn/up1.tim iso/finn/down0.tim iso/finn/down1.tim iso/finn/slash0.tim iso/finn/slash1.tim iso/finn/slash2.tim iso/finn/slash3.tim iso/finn/slash4.tim
 
-
 # jake
 iso/jake/main.arc: iso/jake/idle0.tim iso/jake/idle1.tim iso/jake/idle2.tim iso/jake/idle3.tim iso/jake/idle4.tim iso/jake/idle5.tim iso/jake/idle6.tim iso/jake/left0.tim iso/jake/left1.tim iso/jake/left2.tim iso/jake/left3.tim iso/jake/right0.tim iso/jake/right1.tim iso/jake/right2.tim iso/jake/right3.tim iso/jake/up0.tim iso/jake/up1.tim iso/jake/down.tim
+
+# bubble
+iso/bubble/main.arc: iso/bubble/idle0.tim iso/bubble/idle1.tim iso/bubble/idle2.tim iso/bubble/idle3.tim iso/bubble/left0.tim iso/bubble/left1.tim iso/bubble/right0.tim iso/bubble/right1.tim iso/bubble/up0.tim iso/bubble/up1.tim iso/bubble/down0.tim iso/bubble/down1.tim iso/bubble/down2.tim
 
 # Beach
 iso/beach/back.arc: iso/beach/beach.tim

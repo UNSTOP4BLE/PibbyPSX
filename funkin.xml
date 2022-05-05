@@ -46,7 +46,6 @@
 				<file name = "back.arc" type = "data" source = "iso/beach/back.arc"/>
 			</dir>
 
-
 			<!-- Week 1 assets -->
 			<dir name = "week1">
 				<!-- Background art -->
@@ -155,6 +154,9 @@
                
                 <!-- jake assets -->
 				<file name = "jake.arc" type = "data" source = "iso/jake/main.arc"/>
+
+                <!-- bubble assets -->
+				<file name = "bubble.arc" type = "data" source = "iso/bubble/main.arc"/>
 			</dir>
 			
 			<!-- Music -->
