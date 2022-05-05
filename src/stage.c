@@ -2707,50 +2707,33 @@ void Stage_Tick(void)
                         case StageId_3_3:
 							if (stage.song_step >= 548 && stage.song_step <= 1563) {
 								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
+								
+                                
+                                if (stage.song_step >= 1311 && stage.song_step <= 1343) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+                                else if (stage.song_step >= 1343 && stage.song_step <= 1375) 
+								    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //green
+                                else if (stage.song_step >= 1375 && stage.song_step <= 1408) 
+								    Gfx_BlendRect(&screen_src, 255, 0, 0, 90);  //purple
+                                else if (stage.song_step >= 1408 && stage.song_step <= 1439) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //orange
+                                else if (stage.song_step >= 1439 && stage.song_step <= 1471) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //yellow
+                                else if (stage.song_step >= 1471 && stage.song_step <= 1503) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //green
+                                else if (stage.song_step >= 1503 && stage.song_step <= 1536) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+                                else if (stage.song_step >= 1536)// && stage.song_step <= 1563) 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //orange
+                                else 
+                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
 							}
 
 
-                            //blue
-                            if (stage.song_step >= 1311 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //green
-                            if (stage.song_step >= 1343 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //purple
-                            if (stage.song_step >= 1375 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //orange
-                            if (stage.song_step >= 1408 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //yellow
-                            if (stage.song_step >= 1439 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //green
-                            if (stage.song_step >= 1471 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //blue
-                            if (stage.song_step >= 1503 && stage.song_step <= ?) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-                            //orange
-                            if (stage.song_step >= 1536 && stage.song_step <= 1563) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
+                            
+                            
+                           
+
                             //add other flash thing moment
 							else 
 								stage.fade = 0;
