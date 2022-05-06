@@ -77,6 +77,7 @@ fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
 u8 hudangle; 
 int icony;
+int iconybar;
 int fadething;
 
 #include "character/bf.h"
@@ -1638,10 +1639,10 @@ void Stage_Tick(void)
 		{
             //welcome to the shit show
         
-			//if (stage.player_state[0].health < 10000)
-			//	icony = -stage.player_state[0].health / 1024; 
-			//else                    
-				icony = stage.player_state[0].health / 1024;
+			if (stage.player_state[0].health < 10000) //bf zone
+				icony = -stage.player_state[0].health / 1024; 
+			else //oppoent zone                   
+			    icony = stage.player_state[0].health / 1024;
 			 
 			FntPrint("icony %d o", icony);
             //chose witch health bar color to use

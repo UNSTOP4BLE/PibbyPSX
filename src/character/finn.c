@@ -109,6 +109,11 @@ void Char_finn_Tick(Character *character)
 {
 	Char_finn *this = (Char_finn*)character;
 	
+    if (stage.stage_id == StageId_4_1)
+    	this->character.health_i = 6; //jake
+    else
+    	this->character.health_i = 5; //finn
+        
 	//Perform idle dance
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
@@ -154,8 +159,6 @@ Character *Char_finn_New(fixed_t x, fixed_t y)
 	
 	//Set character information
 	this->character.spec = 0;
-	
-	this->character.health_i = 5;
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);

@@ -155,7 +155,7 @@
 	{ //StageId_3_3 (Corrupted-Hero)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
-		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
 		{NULL},
 		
@@ -173,8 +173,8 @@
 	{ //StageId_4_1 (Brotherly-Bond)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
-		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85,1)},
-		{Char_jake_New, FIXED_DEC(-105,1),   FIXED_DEC(85,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-105,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
 		
 		//Stage background
@@ -189,9 +189,9 @@
 	},
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
-		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_finn_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{Char_bubble_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_bubble_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{NULL},
 		{NULL},
 		
 		//Stage background
