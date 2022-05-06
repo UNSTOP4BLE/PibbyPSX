@@ -26,7 +26,7 @@ boolean Obj_Combo_Tick(Object *obj)
 		RECT hit_src = {
 			0,
 			128 + (this->hit_type << 5),
-			80,
+			79,
 			clipp << 1
 		};
 
@@ -59,10 +59,10 @@ boolean Obj_Combo_Tick(Object *obj)
 			clipp = 16 - ((this->ct * 60) >> FIXED_SHIFT);
 		
 		RECT combo_src = {
-			80,
+			81,
 			128,
-			80,
-			clipp << 1
+			79,
+			clipp - 2 << 1
 		};
         RECT_FIXED combo_dst = {
 			this->x + FIXED_DEC(77,1),
@@ -102,7 +102,7 @@ boolean Obj_Combo_Tick(Object *obj)
 				80  + ((num % 5) << 5),
 				160 + ((num / 5) << 5),
 				32,
-				clipp << 1
+				clipp - 1 << 1
 			};
             RECT_FIXED num_dst = {
 				this->x - FIXED_DEC(20,1) + (i * FIXED_DEC(16,1)) - FIXED_DEC(12,1),
