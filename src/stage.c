@@ -79,9 +79,6 @@ int icony;
 int iconybar;
 int fadething;
 
-
-int mogus, sogus;
-
 #include "character/bf.h"
 #include "character/steven.h"
 #include "character/spinel.h"
@@ -1639,16 +1636,6 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{
-            if (pad_state.press & PAD_UP)
-                sogus ++;
-            if (pad_state.press & PAD_DOWN)
-                sogus --;
-            if (pad_state.press & PAD_LEFT)
-                mogus --;
-            if (pad_state.press & PAD_RIGHT)
-                mogus ++;
-
-            FntPrint("mogus%dsogus%do", mogus, sogus);
             //welcome to the shit show
         
 			if (stage.player_state[0].health < 10000) //bf zone
@@ -2261,8 +2248,7 @@ void Stage_Tick(void)
 				
 				//Display score
 				RECT score_src = {168, 246, 36, 9};
-				RECT_FIXED score_dsto = {FIXED_DEC(-60,1), (SCREEN_HEIGHT2 - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
-                RECT_FIXED score_dst = {FIXED_DEC(-60 + mogus,1), (SCREEN_HEIGHT2 + sogus - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
+				RECT_FIXED score_dst = {FIXED_DEC(-60,1), (SCREEN_HEIGHT2 - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
 				if (stage.downscroll)
 					score_dst.y = -score_dst.y - score_dst.h;
 
@@ -2271,16 +2257,12 @@ void Stage_Tick(void)
 				score_dst.x += stage.noteshakex;
 				
 				RECT slash_src = {163, 223, 3, 13};
-				RECT_FIXED slash_dsto = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
-
-                RECT_FIXED slash_dst = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
+				RECT_FIXED slash_dst = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
 				//shake slash
 				slash_dst.x += stage.noteshakex;
-				Stage_DrawTex(&stage.tex_hud0, &slash_src, &slash_dsto, stage.bump);
-                Stage_DrawTexRotate(&stage.tex_hud0, &slash_src, &slash_dst, stage.bump, stage.hudangle);
+				Stage_DrawTex(&stage.tex_hud0, &slash_src, &slash_dst, stage.bump);
 				
-				Stage_DrawTex(&stage.tex_hud0, &score_src, &score_dsto, stage.bump);
-                Stage_DrawTexRotate(&stage.tex_hud0, &score_src, &score_dst, stage.bump, stage.hudangle);
+				Stage_DrawTex(&stage.tex_hud0, &score_src, &score_dst, stage.bump);
 				
 				//Draw number
 				score_src.y = 240;
