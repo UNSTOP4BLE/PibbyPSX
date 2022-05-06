@@ -252,6 +252,7 @@ typedef struct
 	s16 noteshakex;
 	s16 noteshakey;
 
+    u8 hudangle; 
 	int fade;
 	s16 song_step;
 

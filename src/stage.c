@@ -75,10 +75,12 @@ int noteypos;
 int noteswap;
 fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
-u8 hudangle; 
 int icony;
 int iconybar;
 int fadething;
+
+
+int mogus, sogus;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -881,7 +883,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	dst.x += stage.noteshakex;
 
 	//Draw health icon
-	Stage_DrawTexRotate(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump), hudangle);
+	Stage_DrawTexRotate(&stage.tex_hud1, &src, &dst, FIXED_MUL(stage.bump, stage.sbump), stage.hudangle);
 }
 
 static void Stage_DrawStrum(u8 i, RECT *note_src, RECT_FIXED *note_dst)
@@ -1637,15 +1639,25 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{
+            if (pad_state.press & PAD_UP)
+                sogus ++;
+            if (pad_state.press & PAD_DOWN)
+                sogus --;
+            if (pad_state.press & PAD_LEFT)
+                mogus --;
+            if (pad_state.press & PAD_RIGHT)
+                mogus ++;
+
+            FntPrint("mogus%dsogus%do", mogus, sogus);
             //welcome to the shit show
         
 			if (stage.player_state[0].health < 10000) //bf zone
 				icony = -stage.player_state[0].health / 1024; 
-			else //oppoent zone                   
+			else //opponent zone                   
 			    icony = stage.player_state[0].health / 1024;
 			 
 			FntPrint("icony %d o", icony);
-            //chose witch health bar color to use
+            //choose which health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
 			{		
 						case 0: //bf
@@ -1742,12 +1754,12 @@ void Stage_Tick(void)
 				noteshake = 0;
 
 			noteypos = 15;
-            hudangle = 0;
+            stage.hudangle = 0;
 
 			if (noteswap == 1)
             {
 				noteypos ++;
-                hudangle -= 2;
+                stage.hudangle -= 2;
 				if (stage.player_state[0].health < 10000)
 					icony = icony;
 				else 
@@ -1756,7 +1768,7 @@ void Stage_Tick(void)
             else if (noteswap == 2)
 			{	
                 noteypos --;
-                hudangle += 2;
+                stage.hudangle += 2;
 				if (stage.player_state[0].health < 10000)
 					icony = -icony;
 				else 
@@ -1854,7 +1866,7 @@ void Stage_Tick(void)
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
 				
-				Stage_DrawTexRotate(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump, hudangle);
+				Stage_DrawTexRotate(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump, stage.hudangle);
 			}
 
 			if (noteshake) 
@@ -2249,7 +2261,8 @@ void Stage_Tick(void)
 				
 				//Display score
 				RECT score_src = {168, 246, 36, 9};
-				RECT_FIXED score_dst = {FIXED_DEC(-60,1), (SCREEN_HEIGHT2 - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
+				RECT_FIXED score_dsto = {FIXED_DEC(-60,1), (SCREEN_HEIGHT2 - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
+                RECT_FIXED score_dst = {FIXED_DEC(-60 + mogus,1), (SCREEN_HEIGHT2 + sogus - 22) << FIXED_SHIFT, FIXED_DEC(36,1), FIXED_DEC(9,1)};
 				if (stage.downscroll)
 					score_dst.y = -score_dst.y - score_dst.h;
 
@@ -2258,12 +2271,16 @@ void Stage_Tick(void)
 				score_dst.x += stage.noteshakex;
 				
 				RECT slash_src = {163, 223, 3, 13};
-				RECT_FIXED slash_dst = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
+				RECT_FIXED slash_dsto = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
+
+                RECT_FIXED slash_dst = {FIXED_DEC(-64,1), score_dst.y - FIXED_DEC(2,1), FIXED_DEC(3,1), FIXED_DEC(13,1)};
 				//shake slash
 				slash_dst.x += stage.noteshakex;
-				Stage_DrawTex(&stage.tex_hud0, &slash_src, &slash_dst, stage.bump);
+				Stage_DrawTex(&stage.tex_hud0, &slash_src, &slash_dsto, stage.bump);
+                Stage_DrawTexRotate(&stage.tex_hud0, &slash_src, &slash_dst, stage.bump, stage.hudangle);
 				
-				Stage_DrawTex(&stage.tex_hud0, &score_src, &score_dst, stage.bump);
+				Stage_DrawTex(&stage.tex_hud0, &score_src, &score_dsto, stage.bump);
+                Stage_DrawTexRotate(&stage.tex_hud0, &score_src, &score_dst, stage.bump, stage.hudangle);
 				
 				//Draw number
 				score_src.y = 240;
@@ -2586,10 +2603,10 @@ void Stage_Tick(void)
 				health_dst.x += stage.noteshakex;
 
 				health_dst.w = health_fill.w << FIXED_SHIFT;
-				Stage_DrawTexRotate(&stage.tex_health, &health_fill, &health_dst, stage.bump, 0);
+				Stage_DrawTexRotate(&stage.tex_health, &health_fill, &health_dst, stage.bump, stage.hudangle);
 				
 				health_dst.w = health_back.w << FIXED_SHIFT;
-				Stage_DrawTexRotate(&stage.tex_health, &health_back, &health_dst, stage.bump, 0);
+				Stage_DrawTexRotate(&stage.tex_health, &health_back, &health_dst, stage.bump, stage.hudangle);
 			}
 			
 			//Draw stage foreground
