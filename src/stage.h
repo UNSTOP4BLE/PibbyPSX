@@ -254,7 +254,7 @@ typedef struct
 
     u8 hudangle; 
 	int fade;
-	s16 song_step;
+	int song_step;
 
 	s16 botplay;
 	

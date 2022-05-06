@@ -190,7 +190,7 @@
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
-		{Char_bubble_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{Char_bubble_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(80- 85 + 40,1)},
 		{NULL},
 		{NULL},
 		
