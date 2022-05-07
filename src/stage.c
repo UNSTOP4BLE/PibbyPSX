@@ -24,7 +24,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -60,13 +60,10 @@ static const u8 note_anims[4][3] = {
 	{CharAnim_Right, CharAnim_RightAlt, PlayerAnim_RightMiss},
 };
 
-
-
 //Stage definitions
 int healthbary; 
 boolean noteshake;
 //check what opponent is singing
-boolean has2opponents;
 boolean opponent2sing;
 boolean opponentsing;
 //hud shit
@@ -348,30 +345,36 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
-			
+
+            if (stage.stage_id == StageId_4_3)
+            {
+                if (note->type & NOTE_FLAG_OPPONENT)
+                    opponentsing = 1;
+                else
+                    opponentsing = 0;
+            }
+
 			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
 			{
-			if (opponentsing)
-			if (stage.player->animatable.anim != CharAnim_DownAlt) 
-			stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
-			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.player->animatable.anim != CharAnim_DownAlt) 
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
+			    if (opponentsing)
+			        if (stage.player->animatable.anim != CharAnim_DownAlt) 
+			            stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
+			    if (stage.opponent2 != NULL && opponent2sing)
+			        if (stage.player->animatable.anim != CharAnim_DownAlt) 
+			            stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
-
 			if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
 			{
-			if (opponentsing)
-			if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
-			stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
-			if (stage.opponent2 != NULL && opponent2sing)
-			if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
-			stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
+			    if (opponentsing)
+                    if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
+                        stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
+                if (stage.opponent2 != NULL && opponent2sing)
+                    if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
+                        stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
 			}
-			
 			else 
-			if (this->character->animatable.anim != CharAnim_DownAlt) 
-			this->character->set_anim(this->character, note_anims[type & 0x3][0]);
+			    if (this->character->animatable.anim != CharAnim_DownAlt) 
+			        this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 			
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
 			this->arrow_hitan[type & 0x3] = stage.step_time;
@@ -456,6 +459,13 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			else
 				this->health -= 2000;
 
+            if (stage.stage_id == StageId_4_3)
+            {
+                if (note->type & NOTE_FLAG_OPPONENT)
+                    opponent2sing = 1;
+                else
+                    opponent2sing = 0;
+            }
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
 			else
@@ -1643,7 +1653,7 @@ void Stage_Tick(void)
 			else //opponent zone                   
 			    icony = stage.player_state[0].health / 1024;
 			 
-			FntPrint("icony %d o", icony);
+			//FntPrint("icony %d o", icony);
             //choose which health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
 			{		
@@ -1682,12 +1692,7 @@ void Stage_Tick(void)
 			}
 
 			//does the stage have 2 opponents
-			if (has2opponents == 0)
-			{
-				opponentsing = 1;
-				opponent2sing = 1;
-			}
-			else if (stage.stage_id == StageId_2_1) 
+			if (stage.stage_id == StageId_2_1) 
 			{
                 switch (stage.song_step)	
 				{	
@@ -1727,11 +1732,11 @@ void Stage_Tick(void)
 				opponent2sing = 1;
 
 			}
-		//	else 
-		//	{
-		//		opponentsing = 0;
-		//		opponent2sing = 0;
-		//	}
+            else if (stage.stage_id == StageId_4_3)
+			{
+				opponentsing = 0;
+				opponent2sing = 0;
+			}
 			
 
 			//randomley shake the screen
@@ -1843,7 +1848,7 @@ void Stage_Tick(void)
 				switch_note = 0;
 			}
 
-			FntPrint("%d %d %d", stage.song_step, opponentsing, stage.fade);
+			FntPrint("%d %d %d", stage.song_step, opponentsing, opponent2sing);
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
@@ -1894,10 +1899,6 @@ void Stage_Tick(void)
 				note_x[6] = FIXED_DEC(-60,1) - FIXED_DEC(SCREEN_WIDEADD,4);
 				note_x[7] = FIXED_DEC(-26,1) - FIXED_DEC(SCREEN_WIDEADD,4);
 			}
-			if (stage.opponent2 != NULL)
-				has2opponents = 1;
-			else
-				has2opponents = 0;
 			//Clear per-frame flags
 			stage.flag &= ~(STAGE_FLAG_JUST_STEP | STAGE_FLAG_SCORE_REFRESH);
 			

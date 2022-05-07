@@ -174,7 +174,7 @@
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
 		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
-		{Char_jake_New, FIXED_DEC(-105,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-150,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
 		
 		//Stage background
@@ -190,7 +190,7 @@
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
 		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
-		{Char_bubble_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(80- 85 + 40,1)},
+		{Char_bubble_New, FIXED_DEC(-105,1),   FIXED_DEC(90,1)},
 		{NULL},
 		{NULL},
 		
@@ -207,8 +207,8 @@
 	{ //StageId_4_3 (together-forever)
 		//Characters
 		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
-		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-		{NULL},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-150,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
 		
 		//Stage background
