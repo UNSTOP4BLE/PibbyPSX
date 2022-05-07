@@ -56,23 +56,21 @@ static const CharFrame char_bubble_frame[] = {
 	{bubble_ArcMain_Idle3, {  0,   0, 137, 148}, { 75, 147}}, //3 idle 4
     {bubble_ArcMain_Idle3, {121,  87, 129, 148}, { 76, 147}}, //3 idle 4
 
-	{bubble_ArcMain_Left0, {  0,   0,  78, 154}, { 76, 143}}, //6 left 1
-	{bubble_ArcMain_Left0, { 78,   0, 110, 153}, { 76, 143}}, //7 left 2
-    {bubble_ArcMain_Left1, {  0,   0, 111, 153}, { 76, 143}}, //6 left 1
-	{bubble_ArcMain_Left1, {111,   0, 100, 153}, { 76, 143}}, //7 left 2
+	{bubble_ArcMain_Left0, {  0,   0,  78, 154}, { 92, 153}}, //6 left 1
+	{bubble_ArcMain_Left0, { 78,   0, 110, 153}, { 92, 153}}, //7 left 2
+    {bubble_ArcMain_Left1, {  0,   0, 111, 153}, {110, 153}}, //6 left 1
+	{bubble_ArcMain_Left1, {111,   0, 100, 153}, { 92, 153}}, //7 left 2
 	
-    //gud
 	{bubble_ArcMain_Down0, {  0,   0, 211, 121}, { 76, 118}}, //8 down 1
     {bubble_ArcMain_Down0, {  0, 121, 178, 135}, { 76, 130}}, //8 down 1
     {bubble_ArcMain_Down1, {  0,   0, 182, 138}, { 76, 132}}, //8 down 1
     {bubble_ArcMain_Down2, {  0,   0, 178, 139}, { 76, 135}}, //8 down 1
 	
-	{bubble_ArcMain_Up0, {  0,   0, 126, 170}, { 76, 143}}, //10 up 1
-	{bubble_ArcMain_Up0, {126,   0, 124, 170}, { 76, 143}}, //11 up 2
-    {bubble_ArcMain_Up1, {  0,   0, 121, 158}, { 76, 143}}, //10 up 1
-	{bubble_ArcMain_Up1, {121,   0, 123, 158}, { 76, 143}}, //11 up 2
+	{bubble_ArcMain_Up0, {  0,   0, 126, 170}, {120, 163}}, //10 up 1
+	{bubble_ArcMain_Up0, {126,   0, 124, 170}, {114, 153}}, //11 up 2
+    {bubble_ArcMain_Up1, {  0,   0, 121, 158}, {115, 153}}, //10 up 1
+	{bubble_ArcMain_Up1, {121,   0, 123, 158}, {116, 150}}, //11 up 2
 	
-    //gud
 	{bubble_ArcMain_Right0, {  0,   0, 135, 144}, { 76, 143}}, //12 right 1 
 	{bubble_ArcMain_Right0, {135,   0,  97, 144}, { 76, 143}}, //13 right 2
     {bubble_ArcMain_Right1, {  0,   0,  96, 144}, { 76, 143}}, //12 right 1
@@ -85,7 +83,7 @@ static const Animation char_bubble_anim[CharAnim_Max] = {
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{1, (const u8[]){ 12, 13, 14, 15, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{1, (const u8[]){ 16, 17, 18, 19, ASCR_BACK, 0}},         //CharAnim_Up
+	{2, (const u8[]){ 16, 17, 18, 19, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{1, (const u8[]){ 20, 21, 22, 23, ASCR_BACK, 0}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
@@ -172,7 +170,7 @@ Character *Char_bubble_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 5;
+	this->character.health_i = 7;
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);
