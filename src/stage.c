@@ -350,8 +350,10 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
             {
                 if (note->type & NOTE_FLAG_OPPONENT)
                     opponentsing = 1;
-                else
-                    opponentsing = 0;
+				else
+				{
+				opponentsing = 0;
+				}
             }
 
 			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
@@ -451,6 +453,13 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
+
+			if (note->type & NOTE_FLAG_OPPONENT)
+                    opponent2sing = 1;
+				else
+				{
+				opponent2sing = 0;
+				}
 			
 			if (stage.mode == StageMode_Swap)
 		    {      
@@ -459,13 +468,6 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			else
 				this->health -= 2000;
 
-            if (stage.stage_id == StageId_4_3)
-            {
-                if (note->type & NOTE_FLAG_OPPONENT)
-                    opponent2sing = 1;
-                else
-                    opponent2sing = 0;
-            }
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
 				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
 			else
@@ -591,7 +593,7 @@ static void Stage_ProcessPlayer(PlayerState *this, Pad *pad, boolean playing)
 					break;
 				if (note_fp + stage.late_safe < stage.note_scroll)
 					continue;
-				if ((note->type & NOTE_FLAG_MINE) || (note->type & NOTE_FLAG_HURT) || (note->type & NOTE_FLAG_OPPONENT) != i)
+				if ((note->type & NOTE_FLAG_MINE && stage.mode == StageMode_Normal) || (note->type & NOTE_FLAG_HURT  && stage.mode == StageMode_Normal) || (note->type & NOTE_FLAG_OPPONENT) != i)
 					continue;
 				
 				//Handle note hit
@@ -1385,8 +1387,17 @@ static void Stage_LoadState(void)
 		
 		stage.player_state[i].health = 10000;
 		stage.player_state[i].combo = 0;
+
+		if (stage.stage_id == StageId_4_3)
+		{
+		opponentsing = 0;	
+		opponent2sing = 0;
+		}
+		else
+		{
 		opponentsing = 1;	
 		opponent2sing = 1;
+		}
 		stage.fade = 0;
 		stage.player_state[i].miss = 0;
 		stage.player_state[i].accuracy = 0;
@@ -1731,11 +1742,6 @@ void Stage_Tick(void)
 				opponentsing = 0;
 				opponent2sing = 1;
 
-			}
-            else if (stage.stage_id == StageId_4_3)
-			{
-				opponentsing = 0;
-				opponent2sing = 0;
 			}
 			
 
@@ -2095,6 +2101,7 @@ void Stage_Tick(void)
 						{
 							if (stage.player_state[0].health >= 2000 && stage.drain == 1 && stage.stage_id != StageId_1_2)
 								stage.player_state[0].health -= 230;
+
 							//Opponent hits note
 							Stage_StartVocal();
 							if (note->type & NOTE_FLAG_SUSTAIN)
@@ -2102,6 +2109,17 @@ void Stage_Tick(void)
 							else
 								opponent_anote = note_anims[note->type & 0x3][0];
 							note->type |= NOTE_FLAG_HIT;
+
+							if (stage.stage_id == StageId_4_3)
+							{
+								if (!(note->type & NOTE_FLAG_MINE))
+									opponentsing = 1;
+								if (note->type & NOTE_FLAG_MINE)
+									opponent2sing = 1;
+
+								else
+								opponent2sing = 0;
+							}
 						}
 					}
 					
@@ -2112,7 +2130,7 @@ void Stage_Tick(void)
 						stage.opponent->set_anim(stage.opponent, opponent_anote);
 						if (stage.mode == StageMode_Normal)
 			            {
-						if (stage.opponent2 != NULL)
+						if (stage.opponent2 != NULL && opponent2sing)
 						if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
 						stage.opponent2->set_anim(stage.opponent2, opponent_anote);
 			            }
