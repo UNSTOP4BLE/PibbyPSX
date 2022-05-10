@@ -1754,6 +1754,112 @@ void Stage_Tick(void)
 						break;
 				} 
             }
+			else if (stage.stage_id == StageId_1_4) 
+			{
+                switch (stage.song_step)	
+				{	
+					case 768:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1072:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;
+					case 1088:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1343:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1373:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1406:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1438:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;
+					case 1485:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1599:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1726:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 1853:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 1983:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 2111:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 2365:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 2623:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 2631:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 2653:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 2663:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+				    case 2691:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+				    case 2705:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 2725:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+				    case 2736:
+						opponentsing = 1;	
+						opponent2sing = 0;
+						break;
+					case 2752:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+					case 2813:
+						opponentsing = 1;	
+						opponent2sing = 1;
+						break;
+					case 2876:
+						opponentsing = 0;	
+						opponent2sing = 1;
+						break;
+				} 
+            }
 			else if (stage.stage_id == StageId_4_1)
 			{
 				opponentsing = 0;
@@ -2665,6 +2771,17 @@ void Stage_Tick(void)
 						case StageId_1_3:
                             Week3fade(383, 641, 255, 0, 0);
 							
+						break;
+						
+						case StageId_1_4:
+							if (stage.song_step >= 768 && stage.song_step <= 831)
+                        	    Week3fade(768, 831, 1, 100, 120);
+							else if (stage.song_step >= 1856 && stage.song_step <= 1983)
+								Week3fade(1856, 1983, 1, 100, 120);
+							else if (stage.song_step >= 2113 && stage.song_step <= 2367)
+								Week3fade(2113, 2367, 1, 100, 120);
+							else
+								Week3fade(2624, 3000, 1, 100, 120);
 						break;
 
 						case StageId_2_1:

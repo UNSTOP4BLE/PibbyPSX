@@ -140,6 +140,8 @@ void Char_spinel_Tick(Character *character)
 		this->character.health_i = 2;
 	else if (stage.stage_id == StageId_2_1 && stage.song_step >= 1045)
 		this->character.health_i = 1;
+	else if (stage.stage_id == StageId_1_4 && stage.song_step <= 768)
+		this->character.health_i = 1;
 	else                     
 		this->character.health_i = 2;
 		
@@ -150,11 +152,17 @@ void Char_spinel_Tick(Character *character)
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_spinel_SetFrame);
 
-	if (stage.stage_id == StageId_2_1 && stage.song_step >= 909 && stage.song_step <= 914)
+	if (stage.stage_id == StageId_2_1 && stage.song_step >= 909 && stage.song_step <= 912)
 		Spinel_DrawClear(character, &this->tex, &char_spinel_frame[this->frame]);
-    else if (stage.stage_id == StageId_2_1 && stage.song_step >= 914)
+    else if (stage.stage_id == StageId_2_1 && stage.song_step >= 912)
 		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);    
-	else if (stage.stage_id != StageId_2_1)
+
+	else if (stage.stage_id == StageId_1_4 && stage.song_step >= 767 && stage.song_step <= 770)
+		Spinel_DrawClear(character, &this->tex, &char_spinel_frame[this->frame]);    
+	else if (stage.stage_id == StageId_1_4 && stage.song_step >= 770)
+		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);    
+
+	else if (stage.stage_id != StageId_2_1 && stage.stage_id != StageId_1_4)
 		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
 }
 
