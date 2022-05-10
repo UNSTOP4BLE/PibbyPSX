@@ -49,23 +49,23 @@
 		
 		StageId_2_1, STAGE_LOAD_OPPONENT | STAGE_LOAD_OPPONENT2
 	},
-	{ //StageId_1_4 (NULL)
+	{ //StageId_1_4 (ILL-BE-FINE)
 		//Characters
-		{Char_BF_New,      FIXED_DEC(56,1),   FIXED_DEC(85,1)},
-		{Char_steven_New,  FIXED_DEC(-90,1),   FIXED_DEC(85,1)},
-		{NULL},
+		{Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
+		{Char_spinel_New, FIXED_DEC(-180,1),  FIXED_DEC(80,1)},
+		{Char_steven_New, FIXED_DEC(-120,1),  FIXED_DEC(120,1)},	
 		{NULL},
 		
 		//Stage background
 		Back_beach_New,
 		
 		//Song info
-		{FIXED_DEC(1,1),FIXED_DEC(1,1),FIXED_DEC(1,1)},
-		2, 1,
-		XA_Spookeez, 0,
+		{FIXED_DEC(1,1),FIXED_DEC(28,10),FIXED_DEC(1,1)},
+		1, 4,
+		XA_Tutorial, 2,
 		
-		StageId_2_2, STAGE_LOAD_FLAG
-	},
+		StageId_1_4, 0
+    },
 	
 	{ //StageId_2_1 (the-change)
 		//Characters

@@ -57,6 +57,8 @@
 				<file name = "1.2n.cht" type = "data" source = "iso/chart/glitched-gem-hard.json.cht"/>
 				<!-- Dadbattle charts -->
 				<file name = "1.3n.cht" type = "data" source = "iso/chart/my-friends-hard.json.cht"/>
+                <!-- Tutorial charts -->
+				<file name = "1.4n.cht" type = "data" source = "iso/chart/ILL-BE-FINE-hard.json.cht"/>
 			</dir>
 			
 			<dir name = "park">
