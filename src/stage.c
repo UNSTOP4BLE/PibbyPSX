@@ -75,6 +75,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 int icony;
 int iconybar;
 int fadething;
+u8 fader, fadeg, fadeb;
 
 #include "character/bf.h"
 #include "character/steven.h"
@@ -1417,6 +1418,22 @@ static void Stage_LoadState(void)
 	ObjectList_Free(&stage.objlist_bg);
 }
 
+RECT screen_src = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+
+void Week3fade(int beginstep, int endstep, u8 r, u8 g, u8 b)
+{
+    if ((stage.song_step == beginstep) || (stage.song_step == endstep))
+        week3_fade = FIXED_DEC(255,1);
+    
+    if (stage.song_step >= beginstep && stage.song_step <= endstep) {
+        stage.fade = 1;
+        Gfx_BlendRect(&screen_src, r, g, b, 90);
+    }
+    else
+        stage.fade = 0;
+}
+
+
 //Stage functions
 void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 {
@@ -2058,6 +2075,10 @@ void Stage_Tick(void)
 				//Check if screen should bump
 				boolean is_bump_step = (stage.song_step & 0xF) == 0;
 			
+                //Gummy Substance bumps
+				if (stage.stage_id == StageId_4_2 && stage.song_step >= 512 && stage.song_step <= 639)
+					is_bump_step = (stage.song_step & 0x5) == 0;
+
 				//Bump screen
 				if (is_bump_step)
 					stage.bump = FIXED_DEC(103,100);
@@ -2618,7 +2639,6 @@ void Stage_Tick(void)
 			ObjectList_Tick(&stage.objlist_fg);
 			
 
-			RECT screen_src = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
 			//Draw white week3_fade
 			if (week3_fade > 0)
 			{
@@ -2628,130 +2648,92 @@ void Stage_Tick(void)
 				week3_fade -= FIXED_MUL(week3_fadespd, timer_dt);
 			}
 			
+
 			switch (stage.stage_id)
 			{
 						case StageId_1_1:
-							if (stage.song_step >= 760 && stage.song_step <= 1152) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 760)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 1152)
-								week3_fade = FIXED_DEC(255,1);
+                            Week3fade(760, 1152, 1, 100, 120);
 						break;
+
 						case StageId_1_2:
-							if (stage.song_step >= 387 && stage.song_step <= 760) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
-							}
-							else if (stage.song_step >= 1024) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 387)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 760)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 1024)
-								week3_fade = FIXED_DEC(255,1);
+                            if (stage.song_step >= 387 && stage.song_step <= 760)
+                                Week3fade(387, 760, 1, 100, 120);
+                            else   
+                                Week3fade(1024, 1338, 1, 100, 120);
 						break;
+
 						case StageId_1_3:
-							if (stage.song_step >= 383 && stage.song_step <= 641) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 383)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 641)
-								week3_fade = FIXED_DEC(255,1);		
+                            Week3fade(383, 641, 255, 0, 0);
+							
 						break;
+
 						case StageId_2_1:
-							if (stage.song_step >= 1046 && stage.song_step <= 1145) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 1, 100, 120, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 1046)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 1145)
-								week3_fade = FIXED_DEC(255,1);	
+                            Week3fade(1046, 1145, 1, 100, 120);
 						break;	
+
 						case StageId_2_2:
-							if (stage.song_step >= 774 && stage.song_step <= 1280) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-							else if (stage.song_step >= 1536) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
+							if (stage.song_step >= 774 && stage.song_step <= 1280) 
+								Week3fade(774, 1280, 255, 0, 0);
 							else 
-								stage.fade = 0;
-							if (stage.song_step == 774)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 1280)
-								week3_fade = FIXED_DEC(255,1);	
-							if (stage.song_step == 1536)
-								week3_fade = FIXED_DEC(255,1);		
+								Week3fade(1536, 1962, 255, 0, 0);
 						break;
+
 						case StageId_3_1:
-							if (stage.song_step >= 640 && stage.song_step <= 768) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 128, 0, 255, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 640)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 768)
-								week3_fade = FIXED_DEC(255,1);	
+                            Week3fade(640, 768, 128, 0, 255);
 						break;
+
 						case StageId_3_2:
-							if (stage.song_step >= 385 && stage.song_step <= 640) {
-								stage.fade = 1;
-								Gfx_BlendRect(&screen_src, 255, 0, 0, 90);
-							}
-							else 
-								stage.fade = 0;
-							if (stage.song_step == 385)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 640)
-								week3_fade = FIXED_DEC(255,1);	
+                            Week3fade(385, 640, 255, 0, 0);
 						break;
+
                         case StageId_3_3:
                             if (stage.song_step >= 544 && stage.song_step <= 928) {
-								stage.fade = 1;
-                                Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+								Week3fade(544, 928, 255, 0, 0); //blue
                             }
                             else if (stage.song_step >= 1311 && stage.song_step <= 1563) {
 								stage.fade = 1;
+                                Week3fade(1311, 1563, fader, fadeg, fadeb);
 
-                                if (stage.song_step >= 1311 && stage.song_step <= 1343) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
-                                else if (stage.song_step >= 1343 && stage.song_step <= 1375) 
-								    Gfx_BlendRect(&screen_src, 128, 0, 255, 90); //green
-                                else if (stage.song_step >= 1375 && stage.song_step <= 1408) 
-								    Gfx_BlendRect(&screen_src, 0, 120, 32, 90);  //purple
-                                else if (stage.song_step >= 1408 && stage.song_step <= 1439) 
-                                    Gfx_BlendRect(&screen_src, 0, 128, 128, 90); //orange
-                                else if (stage.song_step >= 1439 && stage.song_step <= 1471) 
-                                    Gfx_BlendRect(&screen_src, 0, 0, 255, 90); //yellow
-                                else if (stage.song_step >= 1471 && stage.song_step <= 1503) 
-                                    Gfx_BlendRect(&screen_src, 128, 0, 255, 90); //green
-                                else if (stage.song_step >= 1503 && stage.song_step <= 1536) 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
-                                else if (stage.song_step >= 1536)// && stage.song_step <= 1563) 
-                                    Gfx_BlendRect(&screen_src, 0, 128, 128, 90); //orange
-                                else 
-                                    Gfx_BlendRect(&screen_src, 255, 0, 0, 90); //blue
+                                if (stage.song_step >= 1311 && stage.song_step <= 1343) { //blue
+                                    fader = 255;
+                                    fadeg = 0;
+                                    fadeb = 0;
+                                }
+                                else if (stage.song_step >= 1343 && stage.song_step <= 1375) { //green
+                                    fader = 128;
+                                    fadeb = 255;
+                                }
+                                else if (stage.song_step >= 1375 && stage.song_step <= 1408) { //purple
+                                    fader = 0;
+                                    fadeg = 120;
+                                    fadeb = 32;
+                                }
+                                else if (stage.song_step >= 1408 && stage.song_step <= 1439) { //orange
+                                    fadeg = 128;
+                                    fadeb = 128;
+                                }
+                                else if (stage.song_step >= 1439 && stage.song_step <= 1471) { //yellow
+                                    fadeg = 0;
+                                    fadeb = 255;
+                                }
+                                else if (stage.song_step >= 1471 && stage.song_step <= 1503) { //green
+                                    fader = 128;
+                                    fadeb = 255;
+                                }
+                                else if (stage.song_step >= 1503 && stage.song_step <= 1536) { //blue
+                                    fader = 255;
+                                    fadeb = 0;
+                                }
+                                else if (stage.song_step >= 1536) { //orange
+                                    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;
+                                }
+                                else { //blue
+                                    fader = 255;
+                                    fadeg = 0;
+                                    fadeb = 0;
+                                }
 							}                  
                             else if (stage.song_step >= 1586 && stage.song_step <= 1823) {	
                                 if (fadething == 1)
@@ -2780,16 +2762,29 @@ void Stage_Tick(void)
 								stage.fade = 0;
                                 week3_fadespd = FIXED_DEC(150,1);
                             }
-							if (stage.song_step == 544)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 928)
-								week3_fade = FIXED_DEC(255,1);	
-                            if (stage.song_step == 1311)
-								week3_fade = FIXED_DEC(255,1);
-							if (stage.song_step == 1563)
-								week3_fade = FIXED_DEC(255,1);					
+				
 						break;
-					default:
+
+						case StageId_4_2:
+							if (stage.song_step >= 0 && stage.song_step <= 128) {
+                                Week3fade(0, 128, fader, fadeg, fadeb); 
+                                if (stage.song_step >= 0 && stage.song_step <= 112) { //blue
+                                    fader = 255;
+                                    fadeg = 0;
+                                    fadeb = 0;
+                                }
+                                else { //orange
+                                    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;   
+                                }  
+							}
+                            else if (stage.song_step >= 642 && stage.song_step <= 1024) {
+								Week3fade(642, 1024, 1, 100, 120); 
+      						}
+						break;
+                
+                	default:
 				break;
 			}
 		
