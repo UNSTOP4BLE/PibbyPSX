@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 				new_note.type ^= NOTE_FLAG_OPPONENT;
 			if (sustain >= 0)
 				new_note.type |= NOTE_FLAG_SUSTAIN_END;
-			if (j[3] == "Glitch")
+			if ((j[3] == "Glitch") || (j[3] == "Spinel"))
 				new_note.type |= NOTE_FLAG_MINE;
             if (j[3] == "Hurt Note")
 				new_note.type |= NOTE_FLAG_HURT;
