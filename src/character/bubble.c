@@ -104,6 +104,21 @@ void Bubble_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
 	DrawBubble(this, tex, cframe, FIXED_UNIT);
 }
 
+static void DrawBubbleClear(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax)
+{
+	//Draw character
+	fixed_t x = this->x - FIXED_MUL(stage.camera.x, parallax) - FIXED_DEC(cframe->off[0],1);
+	fixed_t y = this->y - FIXED_MUL(stage.camera.y, parallax) - FIXED_DEC(cframe->off[1],1);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, (src.w + 55) << FIXED_SHIFT, (src.h + 32) << FIXED_SHIFT};
+	Stage_BlendTex(tex, &src, &dst, stage.camera.bzoom, 1);
+}
+void Bubble_DrawClear(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
+{
+	DrawBubbleClear(this, tex, cframe, FIXED_UNIT);
+}
+
 //bubble character functions
 void Char_bubble_SetFrame(void *user, u8 frame)
 {
@@ -129,7 +144,10 @@ void Char_bubble_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_bubble_SetFrame);
-	Bubble_Draw(character, &this->tex, &char_bubble_frame[this->frame]);
+    if (stage.song_step >= 113 && stage.song_step <= 116)
+	    Bubble_Draw(character, &this->tex, &char_bubble_frame[this->frame]);
+    if (stage.song_step >= 116)
+	    Bubble_Draw(character, &this->tex, &char_bubble_frame[this->frame]);
 }
 
 

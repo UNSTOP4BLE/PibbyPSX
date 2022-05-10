@@ -98,6 +98,20 @@ void Spinel_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
 	DrawSpinel(this, tex, cframe, FIXED_UNIT);
 }
 
+static void DrawSpinelClear(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax)
+{
+	//Draw character
+	fixed_t x = this->x - FIXED_MUL(stage.camera.x, parallax) - FIXED_DEC(cframe->off[0],1);
+	fixed_t y = this->y - FIXED_MUL(stage.camera.y, parallax) - FIXED_DEC(cframe->off[1],1);
+	
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, (src.w + 64) << FIXED_SHIFT, (src.h + 32) << FIXED_SHIFT};
+	Stage_BlendTex(tex, &src, &dst, stage.camera.bzoom, 1);
+}
+void Spinel_DrawClear(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
+{
+	DrawSpinelClear(this, tex, cframe, FIXED_UNIT);
+}
 
 //spinel character functions
 void Char_spinel_SetFrame(void *user, u8 frame)
@@ -136,8 +150,10 @@ void Char_spinel_Tick(Character *character)
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_spinel_SetFrame);
 
-	if (stage.stage_id == StageId_2_1 && stage.song_step >= 909)
-		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
+	if (stage.stage_id == StageId_2_1 && stage.song_step >= 909 && stage.song_step <= 914)
+		Spinel_DrawClear(character, &this->tex, &char_spinel_frame[this->frame]);
+    else if (stage.stage_id == StageId_2_1 && stage.song_step >= 914)
+		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);    
 	else if (stage.stage_id != StageId_2_1)
 		Spinel_Draw(character, &this->tex, &char_spinel_frame[this->frame]);
 }

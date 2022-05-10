@@ -2078,7 +2078,7 @@ void Stage_Tick(void)
                 //Gummy Substance bumps
 				if (stage.stage_id == StageId_4_2 && stage.song_step >= 512 && stage.song_step <= 639)
 					is_bump_step = (stage.song_step & 0x5) == 0;
-
+            
 				//Bump screen
 				if (is_bump_step)
 					stage.bump = FIXED_DEC(103,100);
@@ -2766,8 +2766,8 @@ void Stage_Tick(void)
 						break;
 
 						case StageId_4_2:
+                            Week3fade(0, 128, fader, fadeg, fadeb); 
 							if (stage.song_step >= 0 && stage.song_step <= 128) {
-                                Week3fade(0, 128, fader, fadeg, fadeb); 
                                 if (stage.song_step >= 0 && stage.song_step <= 112) { //blue
                                     fader = 255;
                                     fadeg = 0;
@@ -2779,9 +2779,8 @@ void Stage_Tick(void)
                                     fadeb = 128;   
                                 }  
 							}
-                            else if (stage.song_step >= 642 && stage.song_step <= 1024) {
+                            else if (stage.song_step >= 642 && stage.song_step <= 1024)
 								Week3fade(642, 1024, 1, 100, 120); 
-      						}
 						break;
                 
                 	default:
