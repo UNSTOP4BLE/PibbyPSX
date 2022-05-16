@@ -137,7 +137,7 @@ static struct
 	} page_param;
 	
 	//Menu assets
-	Gfx_Tex tex_back, tex_ng, tex_story, tex_title;
+	Gfx_Tex tex_back, tex_ng, tex_story, tex_title, tex_icon;
 	FontData font_bold, font_arial;
 
 } menu;
@@ -205,6 +205,26 @@ static const char *Menu_LowerIf(const char *text, boolean lower)
 	//Terminate text
 	*dstp++ = '\0';
 	return menu_text_buffer;
+}
+//draw icons
+static void Menu_DrawHealth(u32 x, u32 y, u8 i)
+{	
+	//Get src and dst
+	RECT src = {
+		(i % 1) * 100,
+	    (i / 1) * 50,
+        50,
+		50
+	};
+	RECT dst = {
+		x,
+		y,
+		38,
+		38
+	};
+	
+	//Draw health icon
+	Gfx_DrawTex(&menu.tex_icon, &src, &dst);
 }
 
 static void Menu_DrawBack(boolean flash, s32 scroll, u8 r0, u8 g0, u8 b0, u8 r1, u8 g1, u8 b1)
@@ -293,6 +313,7 @@ void Menu_Load(MenuPage page)
 	Gfx_LoadTex(&menu.tex_ng,    Archive_Find(menu_arc, "ng.tim"),    0);
 	Gfx_LoadTex(&menu.tex_story, Archive_Find(menu_arc, "story.tim"), 0);
 	Gfx_LoadTex(&menu.tex_title, Archive_Find(menu_arc, "title.tim"), 0);
+    Gfx_LoadTex(&menu.tex_icon, Archive_Find(menu_arc, "icon.tim"), 0);
 	Mem_Free(menu_arc);
 	
 	FontData_Load(&menu.font_bold, Font_Bold);
@@ -890,6 +911,8 @@ void Menu_Tick(void)
 					continue;
 				if (y >= SCREEN_HEIGHT2 + 8)
 					break;
+
+				Menu_DrawHealth(strlen(menu_options[i].text) * 14 + 48 + (y >> 2), SCREEN_HEIGHT2 + y - 20, i + 1);
 				
 				//Draw text
 				menu.font_bold.draw(&menu.font_bold,
