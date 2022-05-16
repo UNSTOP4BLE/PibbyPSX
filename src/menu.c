@@ -211,10 +211,10 @@ static void Menu_DrawHealth(u32 x, u32 y, u8 i)
 {	
 	//Get src and dst
 	RECT src = {
-		(i % 1) * 100,
-	    (i / 1) * 50,
-        50,
-		50
+	     (i % 4) * 50,
+	     (i / 4) * 50,
+             50,
+	     50
 	};
 	RECT dst = {
 		x,
