@@ -213,14 +213,14 @@ static void Menu_DrawHealth(u32 x, u32 y, u8 i)
 	RECT src = {
 	     (i % 4) * 50,
 	     (i / 4) * 50,
-             50,
+         50,
 	     50
 	};
 	RECT dst = {
-		x,
-		y,
-		38,
-		38
+		x - 4,
+		y + 10,
+		20,
+		20
 	};
 	
 	//Draw health icon
@@ -237,9 +237,6 @@ static void Menu_DrawBack(boolean flash, s32 scroll, u8 r0, u8 g0, u8 b0, u8 r1,
 	else
 		Gfx_DrawTexCol(&menu.tex_back, &back_src, &back_dst, r1, g1, b1);
 }
-
-int ax, ay;
-
 static void Menu_DifficultySelector()
 {	
 	menu.font_arial.draw(&menu.font_arial, 
@@ -261,19 +258,6 @@ static void Menu_DifficultySelector()
 	RECT black_dst = {198, -22, 143, 65};
 
 	Gfx_BlendTex(&menu.tex_story, &black_src, &black_dst, 1);
-	
-
-	FntPrint("x%d y%d", ax,ay);
-
-	if (pad_state.press & PAD_LEFT)
-		ax--;
-	if (pad_state.press & PAD_RIGHT)
-		ax ++;
-	if (pad_state.press & PAD_UP)
-		ay--;
-	if (pad_state.press & PAD_DOWN)
-		ay++;
-	
 }
 static void Menu_DrawWeek(const char *week, s32 x, s32 y)
 {
@@ -818,29 +802,29 @@ void Menu_Tick(void)
 				StageId stage;
 				u32 col;
 				const char *text;
+                u8 icon;
 			} menu_options[] = {
 				
-				{StageId_1_1, 0xFF00C7, "SAVE THE DAY"},
-				{StageId_1_2, 0xFF00C7, "GLITCHED GEM"},
-				{StageId_1_3, 0xFF006A, "MY FRIENDS"},
-				{StageId_2_1, 0xFF00C7, "THE CHANGE"},
-				{StageId_2_2, 0x2216FF, "OVERWORKED"},
-				{StageId_2_3, 0xFF9400, "LAST SPOOKTOBER"},
-				{StageId_3_1, 0x26FF00, "GUNSHOT"},
-				{StageId_3_2, 0x0094FF, "BLUE BALLED"},
-				{StageId_3_3, 0xFFFFFF, "CORRUPTED HERO"},
-				{StageId_4_1, 0xFFC700, "BROTHERLEY BOND"},
-				{StageId_4_2, 0xFF00DC, "GUMMY SUBSTANCE"},
-				{StageId_4_3, 0xFFC700, "TOGETHER FOREVER"},
-				{StageId_5_1, 0xFFFFFF, "NO HERO REMASTERED"},
-				{StageId_5_2, 0xFFFFFF, "LOST LEGEND"},
-				{StageId_5_3, 0xFFC700, "ELASTIC DESTRUCTION"},
-				{StageId_6_1, 0xFFC700, "GLITCHED DUO"},
-				{StageId_6_2, 0xFFFFFF, "NO HERO"},
-				{StageId_6_3, 0x0C00FF, "YOU CANT SAVE THEM"},
-                {StageId_1_4, 0xFF00C7, "ILL BE FINE"},
+				{StageId_1_1, 0xFF00C7, "SAVE THE DAY", 1},
+				{StageId_1_2, 0xFF00C7, "GLITCHED GEM", 1},
+				{StageId_1_3, 0xFF006A, "MY FRIENDS", 2},
+				{StageId_2_1, 0xFF00C7, "THE CHANGE", 1},
+				{StageId_2_2, 0x2216FF, "OVERWORKED", 4},
+				{StageId_2_3, 0xFF9400, "LAST SPOOKTOBER", 9},
+				{StageId_3_1, 0x26FF00, "GUNSHOT", 3},
+				{StageId_3_2, 0x0094FF, "BLUE BALLED", 8},
+				{StageId_3_3, 0xFFFFFF, "CORRUPTED HERO", 5},
+				{StageId_4_1, 0xFFC700, "BROTHERLEY BOND", 6},
+                {StageId_4_2, 0xFF00C7, "GUMMY SUBSTANCE", 7},
+			    {StageId_4_3, 0xFFC700, "TOGETHER FOREVER", 6},
+				{StageId_5_1, 0xFFFFFF, "NO HERO REMASTERED", 5},
+				{StageId_5_2, 0x000000, "LOST LEGEND", 5},
+				{StageId_5_3, 0xFFC700, "ELASTIC DESTRUCTION", 6},
+				{StageId_6_1, 0xFFC700, "GLITCHED DUO", 6},
+				{StageId_6_2, 0xFFFFFF, "NO HERO", 5},
+				{StageId_6_3, 0x0C00FF, "YOU CANT SAVE THEM", 6},
+                {StageId_1_4, 0xFF00C7, "ILL BE FINE", 1},
 			};
-			
 			//Initialize page
 			if (menu.page_swap)
 			{
@@ -912,7 +896,7 @@ void Menu_Tick(void)
 				if (y >= SCREEN_HEIGHT2 + 8)
 					break;
 
-				Menu_DrawHealth(strlen(menu_options[i].text) * 14 + 48 + (y >> 2), SCREEN_HEIGHT2 + y - 20, i + 1);
+				Menu_DrawHealth(strlen(menu_options[i].text) * 14 + 48 + (y >> 2), SCREEN_HEIGHT2 + y - 20, menu_options[i].icon);
 				
 				//Draw text
 				menu.font_bold.draw(&menu.font_bold,

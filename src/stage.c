@@ -1675,12 +1675,18 @@ void Stage_Tick(void)
 		case StageState_Play:
 		{
             //welcome to the shit show
-        
-			if (stage.player_state[0].health < 10000) //bf zone
-				icony = -stage.player_state[0].health / 1024; 
-			else //opponent zone                   
-			    icony = stage.player_state[0].health / 1024;
-			 
+
+            if ((stage.player_state[0].health <= 2500) || (stage.player_state[0].health >= 17500)) 
+                icony = 5;
+            else if ((stage.player_state[0].health <= 5000) || (stage.player_state[0].health >= 15000)) 
+				icony = 4;
+            else if ((stage.player_state[0].health <= 7500) || (stage.player_state[0].health >= 12500)) 
+				icony = 3;
+            else if ((stage.player_state[0].health <= 10000) || (stage.player_state[0].health >= 10000))  
+				icony = 2;
+            else 
+                icony = 0;
+
 			//FntPrint("icony %d o", icony);
             //choose which health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
