@@ -206,13 +206,13 @@
 	},
 	{ //StageId_4_3 (together-forever)
 		//Characters
-		{Char_BF_New,   FIXED_DEC(120,1),   FIXED_DEC(40,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
 		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{Char_jake_New, FIXED_DEC(-150,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
 		
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},

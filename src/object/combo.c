@@ -62,7 +62,7 @@ boolean Obj_Combo_Tick(Object *obj)
 			81,
 			128,
 			79,
-			clipp - 2 << 1
+			(clipp - 2) << 1
 		};
         RECT_FIXED combo_dst = {
 			this->x + FIXED_DEC(77,1),
@@ -102,7 +102,7 @@ boolean Obj_Combo_Tick(Object *obj)
 				80  + ((num % 5) << 5),
 				160 + ((num / 5) << 5),
 				32,
-				clipp - 1 << 1
+				(clipp - 1) << 1
 			};
             RECT_FIXED num_dst = {
 				this->x - FIXED_DEC(20,1) + (i * FIXED_DEC(16,1)) - FIXED_DEC(12,1),
