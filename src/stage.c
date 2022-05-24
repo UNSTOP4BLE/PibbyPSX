@@ -72,8 +72,6 @@ int noteypos;
 int noteswap;
 fixed_t week3_fade;
 fixed_t week3_fadespd = FIXED_DEC(150,1);
-int icony;
-int iconybar;
 int fadething;
 int fadeswitch;
 u8 fader, fadeg, fadeb;
@@ -887,7 +885,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	};
 	RECT_FIXED dst = {
 		hx + ox * FIXED_DEC(25,1) - FIXED_DEC(25,1) + FIXED_DEC(24,1),
-		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 32, 1) + FIXED_DEC(27,1) - FIXED_DEC(icony,1),
+		FIXED_DEC(SCREEN_HEIGHT2 - 32 + 4 - 32, 1) + FIXED_DEC(27,1),
 		src.w << FIXED_SHIFT,
 		src.h << FIXED_SHIFT
 	};
@@ -1682,17 +1680,6 @@ void Stage_Tick(void)
 		{
             //welcome to the shit show
 
-            if ((stage.player_state[0].health <= 2500) || (stage.player_state[0].health >= 17500)) 
-                icony = 5;
-            else if ((stage.player_state[0].health <= 5000) || (stage.player_state[0].health >= 15000)) 
-				icony = 4;
-            else if ((stage.player_state[0].health <= 7500) || (stage.player_state[0].health >= 12500)) 
-				icony = 3;
-            else if ((stage.player_state[0].health <= 10000) || (stage.player_state[0].health >= 10000))  
-				icony = 2;
-            else 
-                icony = 0;
-
 			//FntPrint("icony %d o", icony);
             //choose which health bar color to use
 			switch ((stage.mode == StageMode_Swap) ? stage.player->health_i : stage.opponent->health_i)
@@ -1893,19 +1880,11 @@ void Stage_Tick(void)
             {
 				noteypos ++;
                 stage.hudangle -= 2;
-				if (stage.player_state[0].health < 10000)
-					icony = icony;
-				else 
-					icony = -icony;
             }
             else if (noteswap == 2)
 			{	
                 noteypos --;
                 stage.hudangle += 2;
-				if (stage.player_state[0].health < 10000)
-					icony = -icony;
-				else 
-					icony = icony;
             }
 			if (stage.song_step < 0)
 			{
@@ -2735,7 +2714,7 @@ void Stage_Tick(void)
 				//Draw health bar
 				RECT health_fill = {0, healthbary, 256 - (256 * stage.player_state[0].health / 20000), 8};
 				RECT health_back = {0, 8, 256, 8};
-				RECT_FIXED health_dst = {FIXED_DEC(-128,1) + FIXED_DEC(126,1), (SCREEN_HEIGHT2 - 32 + 4) << FIXED_SHIFT, 0, FIXED_DEC(8,1)};
+				RECT_FIXED health_dst = {FIXED_DEC(-128,1), (SCREEN_HEIGHT2 - 32) << FIXED_SHIFT, 0, FIXED_DEC(8,1)};
 				if (stage.downscroll)
 					health_dst.y = -health_dst.y - health_dst.h;
 				
@@ -2743,10 +2722,10 @@ void Stage_Tick(void)
 				health_dst.x += stage.noteshakex;
 
 				health_dst.w = health_fill.w << FIXED_SHIFT;
-				Stage_DrawTexRotate(&stage.tex_health, &health_fill, &health_dst, stage.bump, stage.hudangle);
+				Stage_DrawTex(&stage.tex_health, &health_fill, &health_dst, stage.bump);
 				
 				health_dst.w = health_back.w << FIXED_SHIFT;
-				Stage_DrawTexRotate(&stage.tex_health, &health_back, &health_dst, stage.bump, stage.hudangle);
+				Stage_DrawTex(&stage.tex_health, &health_back, &health_dst, stage.bump);
 			}
 			
 			//Draw stage foreground
