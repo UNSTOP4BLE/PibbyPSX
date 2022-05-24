@@ -75,6 +75,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 int icony;
 int iconybar;
 int fadething;
+int fadeswitch;
 u8 fader, fadeg, fadeb;
 
 #include "character/bf.h"
@@ -433,7 +434,12 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the sword note
 			note->type |= NOTE_FLAG_HIT;
-			
+		
+			if (((stage.song_step >= 2175 && stage.song_step <= 2431) || (stage.song_step >= 3200 && stage.song_step <= 3328)) && stage.stage_id == StageId_4_3)
+				fadeswitch ++;
+			if (fadeswitch == 9)
+				fadeswitch = 1;
+
             stage.opponent->set_anim(stage.opponent, CharAnim_DownAlt); //slash anim
             stage.player->set_anim(stage.player, CharAnim_DownAlt); //dodge anim
 			
@@ -2776,7 +2782,6 @@ void Stage_Tick(void)
 
 						case StageId_1_3:
                             Week3fade(383, 641, 255, 0, 0);
-							
 						break;
 						
 						case StageId_1_4:
@@ -2905,11 +2910,100 @@ void Stage_Tick(void)
                             else if (stage.song_step >= 642 && stage.song_step <= 1024)
 								Week3fade(642, 1024, 1, 100, 120); 
 						break;
-                
+
+						case StageId_4_3:
+							if (stage.song_step >= 802 && stage.song_step <= 1413)
+								Week3fade(802, 1413, fader, fadeg, fadeb); 
+							else if (stage.song_step >= 1664 && stage.song_step <= 1922)
+								Week3fade(1664, 1922, fader, fadeg, fadeb); 
+							else if (stage.song_step >= 2175 && stage.song_step <= 2689)
+								Week3fade(2175, 2689, fader, fadeg, fadeb); 
+							else 
+								Week3fade(3200, 3462, fader, fadeg, fadeb); 
+
+
+							if (stage.song_step >= 802 && stage.song_step <= 1413) {
+                                if ((stage.song_step >= 802 && stage.song_step <= 1152) ||
+                               		(stage.song_step >= 1280 && stage.song_step <= 1413)) { //blue
+                                    fader = 255;
+                                    fadeg = 0;
+                                    fadeb = 0;
+                                }
+                                else { //orange
+                                    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;   
+                                }  
+                            }
+
+                			if (stage.song_step >= 1664 && stage.song_step <= 1922) {
+                                if (stage.song_step >= 1664 && stage.song_step <= 1922) { //blue
+                                    fader = 255;
+                                    fadeg = 0;
+                                    fadeb = 0;
+                                }
+                                else { //orange
+                                    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;   
+                                }  
+                            }
+                			
+                			if (stage.song_step >= 2431 && stage.song_step <= 2689)
+                				fadeswitch = 1;
+
+	                        if (stage.song_step >= 3376 && stage.song_step <= 3392) 
+	                			fadeswitch = 4;
+	                        else if ((stage.song_step >= 3328 && stage.song_step <= 3376) || (stage.song_step >= 3392 && stage.song_step <= 3462))
+	                            fadeswitch = 1;
                 	default:
 				break;
 			}
-		
+			
+			switch (fadeswitch)
+			{
+				case 1:
+				    fader = 255;//blue
+                    fadeg = 0;
+                    fadeb = 0;            
+                break;
+                case 2:                     
+                    fader = 128;//green
+                    fadeg = 0;
+                    fadeb = 255;         
+                break; 
+				case 3:                     
+                    fader = 0;//purple
+                    fadeg = 120;
+                    fadeb = 32;         
+                break; 
+                case 4:                     
+                    fader = 0; //orange
+                    fadeg = 128;
+                    fadeb = 128;   
+                break; 
+                case 5:                     
+                    fader = 0; //yellow
+                    fadeg = 0;
+                    fadeb = 255;   
+                break;  
+                case 6:
+				    fader = 255;//blue
+                    fadeg = 0;
+                    fadeb = 0;    
+                break;  
+                case 7:                     
+                    fader = 0; //orange
+                    fadeg = 128;
+                    fadeb = 128;   
+                break;         
+                case 8:                     
+                    fader = 0;//purple
+                    fadeg = 120;
+                    fadeb = 32;         
+                break; 
+			}
+
 			//Tick characters
 			stage.player->tick(stage.player);
 			if (stage.opponent2 != NULL)
