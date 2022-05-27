@@ -2232,6 +2232,10 @@ void Stage_Tick(void)
 							{
 								if (!(note->type & NOTE_FLAG_MINE))
 									opponentsing = 1;
+
+								else
+								opponentsing = 0;
+
 								if (note->type & NOTE_FLAG_MINE)
 									opponent2sing = 1;
 
