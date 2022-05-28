@@ -109,7 +109,7 @@ void Char_finn_Tick(Character *character)
 {
 	Char_finn *this = (Char_finn*)character;
 	
-    if (stage.stage_id == StageId_4_1) {
+    if (stage.stage_id == StageId_4_1 || stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1) {
     	this->character.health_i = 6; //jake
     }
     else {

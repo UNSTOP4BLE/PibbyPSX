@@ -241,13 +241,13 @@
 	
 	{ //StageId_5_1 (no-hero-remastered)
 		//Characters
-		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_steven_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+		{NULL},
 		
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(32,10),FIXED_DEC(1,1)},
@@ -258,13 +258,13 @@
 	},
 	{ //StageId_5_2 (lost-legend)
 		//Characters
-		{Char_BF_New,  FIXED_DEC(90,1),   FIXED_DEC(85,1)},
-		{Char_steven_New, FIXED_DEC(-190,1),   FIXED_DEC(90,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
-		
+		{NULL},
+
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -275,13 +275,13 @@
 	},
 	{ //StageId_5_3 (elastic-destruction)
 		//Characters
-		{Char_BF_New, FIXED_DEC(105,1),  FIXED_DEC(100,1)},
-		{Char_steven_New,   FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,              FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
-		
+		{NULL},
+
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},
@@ -293,13 +293,13 @@
 	
 	{ //StageId_6_1 (glitched-duo)
 		//Characters
-		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-150,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
 		
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(31,10),FIXED_DEC(1,1)},
@@ -310,13 +310,13 @@
 	},
 	{ //StageId_6_2 (NO-HERO)
 		//Characters
-		{Char_BF_New,   FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,    FIXED_DEC(0,1),  FIXED_DEC(45,1)},
+		{NULL},
 		
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(3,1),FIXED_DEC(1,1)},

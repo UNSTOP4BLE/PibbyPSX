@@ -346,14 +346,12 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
 
-            if (stage.stage_id == StageId_4_3)
+            if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1)
             {
                 if (note->type & NOTE_FLAG_OPPONENT)
                     opponentsing = 1;
 				else
-				{
-				opponentsing = 0;
-				}
+					opponentsing = 0;
             }
 
 			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
@@ -1393,15 +1391,15 @@ static void Stage_LoadState(void)
 		stage.player_state[i].health = 10000;
 		stage.player_state[i].combo = 0;
 
-		if (stage.stage_id == StageId_4_3)
+		if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1)
 		{
-		opponentsing = 0;	
-		opponent2sing = 0;
+			opponentsing = 0;	
+			opponent2sing = 0;
 		}
 		else
 		{
-		opponentsing = 1;	
-		opponent2sing = 1;
+			opponentsing = 1;	
+			opponent2sing = 1;
 		}
 		stage.fade = 0;
 		stage.player_state[i].miss = 0;
@@ -2228,17 +2226,15 @@ void Stage_Tick(void)
 								opponent_anote = note_anims[note->type & 0x3][0];
 							note->type |= NOTE_FLAG_HIT;
 
-							if (stage.stage_id == StageId_4_3)
+							if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1)
 							{
 								if (!(note->type & NOTE_FLAG_MINE))
 									opponentsing = 1;
-
 								else
 								opponentsing = 0;
 
 								if (note->type & NOTE_FLAG_MINE)
 									opponent2sing = 1;
-
 								else
 								opponent2sing = 0;
 							}
@@ -2939,6 +2935,56 @@ void Stage_Tick(void)
 	                			fadeswitch = 4;
 	                        else if ((stage.song_step >= 3328 && stage.song_step <= 3376) || (stage.song_step >= 3392 && stage.song_step <= 3462))
 	                            fadeswitch = 1;
+	                        break;
+
+	                        case StageId_5_2:
+								Week3fade(1184, 1440, 255, 0, 0); 
+							break;
+
+	                        case StageId_5_3:
+	                        	if (stage.song_step >= 897 && stage.song_step <= 1311)
+									Week3fade(897, 1311, 255, 0, 0);
+								else
+									Week3fade(2111, 2466, fader, fadeg, fadeb); 
+								
+								if (stage.song_step >= 2240 && stage.song_step <= 2466) { //orange
+								    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;   
+                                }
+								else { //blue
+									fader = 255;
+									fadeg = 0;
+									fadeb = 0;
+								}
+							break;
+
+						    case StageId_6_1:
+	                        	if (stage.song_step >= 896 && stage.song_step <= 1152)
+									Week3fade(896, 1152, 255, 0, 0);
+								else
+									Week3fade(1407, 1792, fader, fadeg, fadeb); 
+								
+								if (stage.song_step >= 1407 && stage.song_step <= 1536) { //orange
+								    fader = 0;
+                                    fadeg = 128;
+                                    fadeb = 128;   
+                                }
+                                else if (stage.song_step >= 1664 && stage.song_step <= 1792) { //green
+								    fader = 128;
+                                    fadeg = 0;
+                                    fadeb = 255;
+                                }
+								else { //blue
+									fader = 255;
+									fadeg = 0;
+									fadeb = 0;
+								}
+							break;
+
+							case StageId_6_2:
+								Week3fade(0, 328, 255, 0, 0); 
+							break;
                 	default:
 				break;
 			}
