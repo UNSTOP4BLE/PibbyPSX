@@ -346,7 +346,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
 
-            if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1)
+            if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1 || stage.stage_id == StageId_6_3)
             {
                 if (note->type & NOTE_FLAG_OPPONENT)
                     opponentsing = 1;
@@ -1863,7 +1863,6 @@ void Stage_Tick(void)
 				opponent2sing = 1;
 
 			}
-			
 
 			//randomley shake the screen
 			if(RandomRange(0, 20) == 4)
@@ -2226,17 +2225,33 @@ void Stage_Tick(void)
 								opponent_anote = note_anims[note->type & 0x3][0];
 							note->type |= NOTE_FLAG_HIT;
 
-							if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1)
+							if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1 || stage.stage_id == StageId_6_3)
 							{
-								if (!(note->type & NOTE_FLAG_MINE))
-									opponentsing = 1;
-								else
-								opponentsing = 0;
+								if (!(note->type & NOTE_FLAG_MINE)) {
+									if (stage.stage_id == StageId_6_3)
+										opponent2sing = 1;
+									else 
+										opponentsing = 1;
+								}
+								else {
+									if (stage.stage_id == StageId_6_3)
+										opponent2sing = 0;
+									else 
+										opponentsing = 0;
+								}
 
-								if (note->type & NOTE_FLAG_MINE)
-									opponent2sing = 1;
-								else
-								opponent2sing = 0;
+								if (note->type & NOTE_FLAG_MINE) {
+									if (stage.stage_id == StageId_6_3)
+										opponentsing = 1;
+									else 
+										opponent2sing = 1;
+								}
+								else {
+									if (stage.stage_id == StageId_6_3)
+										opponentsing = 0;
+									else 
+										opponent2sing = 0;
+								}
 							}
 						}
 					}
@@ -2984,6 +2999,10 @@ void Stage_Tick(void)
 
 							case StageId_6_2:
 								Week3fade(0, 328, 255, 0, 0); 
+							break;
+
+							case StageId_6_3:
+								Week3fade(521, 770, 255, 0, 0); 
 							break;
                 	default:
 				break;

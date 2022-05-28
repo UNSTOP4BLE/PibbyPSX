@@ -327,13 +327,13 @@
 	},
 	{ //StageId_6_3 (you-can't-save-them)
 		//Characters
-		{Char_BF_New,  FIXED_DEC(52,1),  FIXED_DEC(50,1)},
-		{Char_steven_New, FIXED_DEC(-60,1),  FIXED_DEC(50,1)},
+		{Char_BF_New,     FIXED_DEC(56 + 20,1),   FIXED_DEC(85 + 40,1)},
+		{Char_finn_New, FIXED_DEC(-105 + 30,1),   FIXED_DEC(85 + 40,1)},
+		{Char_jake_New, FIXED_DEC(-150,1),   FIXED_DEC(85 + 40,1)},
 		{NULL},
-		{NULL,   FIXED_DEC(0,1),  FIXED_DEC(45,1)},
-		
+
 		//Stage background
-		Back_beach_New,
+		Back_school_New,
 		
 		//Song info
 		{FIXED_DEC(1,1),FIXED_DEC(33,10),FIXED_DEC(1,1)},
