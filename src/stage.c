@@ -77,6 +77,7 @@ int fadeswitch;
 u8 fader, fadeg, fadeb;
 
 #include "character/bf.h"
+#include "character/bfmenu.h"
 #include "character/steven.h"
 #include "character/spinel.h"
 #include "character/mordecai.h"

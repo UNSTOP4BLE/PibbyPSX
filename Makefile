@@ -26,6 +26,7 @@ SRCS = src/main.c \
        src/animation.c \
        src/character.c \
        src/character/bf.c \
+       src/character/bfmenu.c \
        src/character/steven.c \
        src/character/spinel.c \
        src/character/mordecai.c \

@@ -133,6 +133,8 @@
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				
+				<file name = "bfmenu.arc" type = "data" source = "iso/menu/main.arc"/>
+
 				<!-- steven assets -->
 				<file name = "steven.arc" type = "data" source = "iso/steven/main.arc"/>
 				

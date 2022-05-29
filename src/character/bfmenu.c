@@ -34,22 +34,22 @@ typedef struct
 
 //bfmenu character definitions
 static const CharFrame char_bfmenu_frame[] = {
-	{bfmenu_ArcMain_bfmenu, {  1,   1, 81, 79}, {119,  78}}, //0 idle 1
-	{bfmenu_ArcMain_bfmenu, {  84,  1, 81, 80}, {113,  79}}, //1 idle 2
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 149, 207}, {113,  206}}, //2 idle 3
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 149, 208}, {112,  205}}, //3 idle 4
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 150, 209}, {115,  205}}, //4 idle 5
+	{bfmenu_ArcMain_bfmenu, {  1,   1,  81, 79}, {75,  78}}, //0 idle 1
+	{bfmenu_ArcMain_bfmenu, { 84,   1,  81, 80}, {74,  79}}, //1 idle 2
+	{bfmenu_ArcMain_bfmenu, {166,   1,  82, 82}, {75,  82}}, //2 idle 3
+	{bfmenu_ArcMain_bfmenu, {  1,  83,  82, 83}, {75,  82}}, //4 idle 5
+	{bfmenu_ArcMain_bfmenu, { 84,  83,  81, 79}, {75,  78}}, //4 idle 5
 
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 149, 208}, {114,  204}}, //5 idle 6
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 150, 206}, {114,  204}}, //6 idle 7
-	{bfmenu_ArcMain_bfmenu, {  0,   0, 150, 205}, {113,  202}}, //7 idle 8
+	{bfmenu_ArcMain_bfmenu, {166,  83,  79, 84}, {75,  83}}, //5 peace 1
+	{bfmenu_ArcMain_bfmenu, {  1, 167,  83, 82}, {75,  81}}, //6 peace 2
+	{bfmenu_ArcMain_bfmenu, { 85, 167,  83, 82}, {75,  81}}, //7 peace 3
 };
 
 static const Animation char_bfmenu_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 0, 1, 2, 3, 4, ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){ 0, 1, 2, 3, 3, 4, 4, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Down
+	{2, (const u8[]){ 5, 6, 7, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt

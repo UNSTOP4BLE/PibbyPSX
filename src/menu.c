@@ -22,6 +22,7 @@
 #include "loadscr.h"
 
 #include "stage.h"
+#include "character/bfmenu.h"
 
 #define mordecai ((void *)1)
 #define week3 ((void *)2)
@@ -140,6 +141,7 @@ static struct
 	Gfx_Tex tex_back, tex_ng, tex_story, tex_title, tex_icon;
 	FontData font_bold, font_arial;
 
+	Character *bf; //Title Girlfriend
 } menu;
 
 #ifdef PSXF_NETWORK
@@ -303,6 +305,7 @@ void Menu_Load(MenuPage page)
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
 	
+	menu.bf = Char_bfmenu_New(FIXED_DEC(62,1), FIXED_DEC(-12,1));
 	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
 	stage.camera.bzoom = FIXED_UNIT;
 	stage.gf_speed = 4;
@@ -337,6 +340,12 @@ void Menu_Load(MenuPage page)
 	
 	//Set background colour
 	Gfx_SetClear(0, 0, 0);
+}
+
+void Menu_Unload(void)
+{
+	//Free title Girlfriend
+	Character_Free(menu.bf);
 }
 
 void Menu_ToStage(StageId id, StageDiff diff, boolean story)
@@ -700,6 +709,9 @@ void Menu_Tick(void)
 			if (menu.trans_time > 0 && (menu.trans_time -= timer_dt) <= 0)
 				Trans_Start();
 			
+			//Draw bf
+			menu.bf->tick(menu.bf);
+
 			if (menu.next_page == menu.page && Trans_Idle())
 			{
 				//Change option
@@ -868,6 +880,7 @@ void Menu_Tick(void)
 				//Select option if cross is pressed
 				if (pad_state.press & (PAD_START | PAD_CROSS))
 				{
+					menu.bf->set_anim(menu.bf, CharAnim_Down); //dodge anim
 					menu.next_page = MenuPage_Stage;
 					menu.page_param.stage.id = menu_options[menu.select].stage;
 					menu.page_param.stage.story = false;
@@ -1684,6 +1697,9 @@ void Menu_Tick(void)
 	#endif
 		case MenuPage_Stage:
 		{
+			//Unload menu state
+			Menu_Unload();
+			
 			//Load new stage
 			LoadScr_Start();
 			Stage_Load(menu.page_param.stage.id, menu.page_param.stage.diff, menu.page_param.stage.story);
