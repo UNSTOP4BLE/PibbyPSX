@@ -305,7 +305,7 @@ void Menu_Load(MenuPage page)
 	FontData_Load(&menu.font_bold, Font_Bold);
 	FontData_Load(&menu.font_arial, Font_Arial);
 	
-	menu.bf = Char_bfmenu_New(FIXED_DEC(62,1), FIXED_DEC(-12,1));
+	menu.bf = Char_bfmenu_New(FIXED_DEC(37,1), FIXED_DEC(-15,1));
 	stage.camera.x = stage.camera.y = FIXED_DEC(0,1);
 	stage.camera.bzoom = FIXED_UNIT;
 	stage.gf_speed = 4;
@@ -557,7 +557,7 @@ void Menu_Tick(void)
 			
 			//Draw version identification
 			menu.font_bold.draw(&menu.font_bold,
-				"PIBBYPSX BY UNSTOP4BLE",
+				"PIBBYPSX BY UNSTOPABLE",
 				16,
 				SCREEN_HEIGHT - 32,
 				FontAlign_Left
@@ -702,9 +702,6 @@ void Menu_Tick(void)
 				menu.page_state.title.fade -= FIXED_MUL(menu.page_state.title.fadespd, timer_dt);
 			}
 			
-			//Draw difficulty selector
-			Menu_DifficultySelector(SCREEN_WIDTH - 75, 80);
-			
 			//Handle option and selection
 			if (menu.trans_time > 0 && (menu.trans_time -= timer_dt) <= 0)
 				Trans_Start();
@@ -733,6 +730,7 @@ void Menu_Tick(void)
 				//Select option if cross is pressed
 				if (pad_state.press & (PAD_START | PAD_CROSS))
 				{
+					menu.bf->set_anim(menu.bf, CharAnim_Down);
 					menu.next_page = MenuPage_Stage;
 					menu.page_param.stage.id = menu_options[menu.select].stage;
 					menu.page_param.stage.story = true;
@@ -751,11 +749,14 @@ void Menu_Tick(void)
 			}
 			
 			//Draw week name and tracks
-			menu.font_bold.draw(&menu.font_bold,
+			menu.font_arial.draw_col(&menu.font_arial,
 				menu_options[menu.select].name,
-				SCREEN_WIDTH - 16,
-				24,
-				FontAlign_Right
+				SCREEN_WIDTH,
+				7,
+				FontAlign_Right,
+				86,
+				80,
+				83
 			);
 			
 			const char * const *trackp = menu_options[menu.select].tracks;
@@ -779,8 +780,8 @@ void Menu_Tick(void)
 			}
 			
 			//Draw upper strip
-			RECT name_bar = {0, 16, SCREEN_WIDTH, 32};
-			Gfx_DrawRect(&name_bar, 249, 207, 81);
+			RECT name_bar = {0, 8, 480, 100};
+			Gfx_DrawRect(&name_bar, 0, 0, 0);
 			
 			//Draw options
 			s32 next_scroll = menu.select * FIXED_DEC(48,1);
@@ -791,18 +792,18 @@ void Menu_Tick(void)
 				//Draw all options
 				for (u8 i = 0; i < COUNT_OF(menu_options); i++)
 				{
-					s32 y = 64 + (i * 48) - (menu.scroll >> FIXED_SHIFT);
+					s32 y = 128 + (i * 48) - (menu.scroll >> FIXED_SHIFT);
 					if (y <= 16)
 						continue;
 					if (y >= SCREEN_HEIGHT)
 						break;
-					Menu_DrawWeek(menu_options[i].week, SCREEN_WIDTH / 3, y);
+					Menu_DrawWeek(menu_options[i].week, 120, y);
 				}
 			}
 			else if (animf_count & 2)
 			{
 				//Draw selected option
-				Menu_DrawWeek(menu_options[menu.select].week, 48, 64 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
+				Menu_DrawWeek(menu_options[menu.select].week, 120, 128 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
 			}
 			
 			break;
@@ -880,7 +881,6 @@ void Menu_Tick(void)
 				//Select option if cross is pressed
 				if (pad_state.press & (PAD_START | PAD_CROSS))
 				{
-					menu.bf->set_anim(menu.bf, CharAnim_Down); //dodge anim
 					menu.next_page = MenuPage_Stage;
 					menu.page_param.stage.id = menu_options[menu.select].stage;
 					menu.page_param.stage.story = false;
