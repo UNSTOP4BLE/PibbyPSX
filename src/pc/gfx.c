@@ -994,6 +994,10 @@ void Gfx_DrawTex(Gfx_Tex *tex, const RECT *src, const RECT *dst)
 {
 	Gfx_DrawTexCol(tex, src, dst, 0x80, 0x80, 0x80);
 }
+void Gfx_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT *dst, u8 mode)
+{
+	Gfx_DrawTexCol(tex, src, dst, 0x80, 0x80, 0x80);
+}
 
 void Gfx_DrawTexArbCol(Gfx_Tex *tex, const RECT *src, const POINT *p0, const POINT *p1, const POINT *p2, const POINT *p3, u8 r, u8 g, u8 b)
 {
