@@ -75,6 +75,7 @@ fixed_t week3_fadespd = FIXED_DEC(150,1);
 int fadething;
 int fadeswitch;
 u8 fader, fadeg, fadeb;
+boolean hudbump;
 
 #include "character/bf.h"
 #include "character/bfmenu.h"
@@ -1884,7 +1885,7 @@ void Stage_Tick(void)
                 noteypos --;
                 stage.hudangle += 2;
             }
-			if (stage.song_step < 0)
+			if (hudbump == 0)
 			{
 				//BF
 				note_y[4] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
@@ -1896,8 +1897,10 @@ void Stage_Tick(void)
 				note_y[1] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);//+34
 				note_y[2] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
 				note_y[3] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
+
+				stage.hudangle = 0;
 			}
-			if  ((stage.flag & STAGE_FLAG_JUST_STEP && stage.song_step > 0))
+			if  ((stage.flag & STAGE_FLAG_JUST_STEP && hudbump))
 			{
 				if ((stage.song_step & 0x3) == 0)
 				switch_note++;
@@ -1962,11 +1965,12 @@ void Stage_Tick(void)
 						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 					}
 				}
+
 				while (switch_note > 1)
 				switch_note = 0;
 			}
 
-			FntPrint("%d %d %d", stage.song_step, opponentsing, opponent2sing);
+			FntPrint("%d %d \n\n\n\n\n\n\n\n\n%d", opponentsing, opponent2sing, stage.song_step);
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
@@ -2765,6 +2769,7 @@ void Stage_Tick(void)
 			switch (stage.stage_id)
 			{
 						case StageId_1_1:
+
                             Week3fade(760, 1152, 1, 100, 120);
 						break;
 
