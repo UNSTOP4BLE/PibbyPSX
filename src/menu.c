@@ -538,7 +538,7 @@ void Menu_Tick(void)
 			static const char *menu_options[] = {
 				"STORY MODE",
 				"FREEPLAY",
-				"MODS",
+				"CREDITS",
 				"OPTIONS",
 				#ifdef PSXF_NETWORK
 					"JOIN SERVER",
@@ -947,10 +947,56 @@ void Menu_Tick(void)
 				const char *text;
 				boolean difficulty;
 			} menu_options[] = {
-				{StageId_Kapi_1, "VS KAPI", false},
-				{StageId_Clwn_1, "VS TRICKY", true},
-				{StageId_Clwn_4, "   EXPURGATION", false},
-				{StageId_2_4,    "CLUCKED", false},
+				{StageId_Kapi_1, "		PIBBY PSX PORT", false},
+				{StageId_Kapi_1, "UNSTOPABLE", false},
+				{StageId_Kapi_1, "IGORSOU", false},
+				{StageId_Kapi_1, "MR RUMBLE ROSES", false},
+				{StageId_Kapi_1, "", false},
+				{StageId_Kapi_1, "		OG PIBBY MOD", false},
+				{StageId_Kapi_1, "DAYYBLOOM", false},
+				{StageId_Kapi_1, "FIDY", false},
+				{StageId_Kapi_1, "DBOY", false},
+				{StageId_Kapi_1, "TORMENTEDPROGRAM", false},
+				{StageId_Kapi_1, "A DJ CAT", false},
+				{StageId_Kapi_1, "KILLERFOXY", false},
+				{StageId_Kapi_1, "PRDEVOFFICIAL", false},
+				{StageId_Kapi_1, "YOSHI DAM", false},
+				{StageId_Kapi_1, "VISUMMUM", false},
+				{StageId_Kapi_1, "SHOTTAZENO", false},
+				{StageId_Kapi_1, "SMOKECANNON", false},
+				{StageId_Kapi_1, "JAKENEUTRON", false},
+				{StageId_Kapi_1, "MASHPROTATO", false},
+				{StageId_Kapi_1, "VTMINS", false},
+				{StageId_Kapi_1, "NOM LOL", false},
+				{StageId_Kapi_1, "COSMICALI", false},
+				{StageId_Kapi_1, "ANIMATION", false},
+				{StageId_Kapi_1, "NASA TOWAIRATO", false},
+				{StageId_Kapi_1, "ARTACHE", false},
+				{StageId_Kapi_1, "FUNTYLORA", false},
+				{StageId_Kapi_1, "BASICALLYSALMON", false},
+				{StageId_Kapi_1, "MEH", false},
+				{StageId_Kapi_1, "JALENBRAH", false},
+				{StageId_Kapi_1, "SUS PAIN", false},
+				{StageId_Kapi_1, "VURN", false},
+				{StageId_Kapi_1, "OJOGADORANIMADOR", false},
+				{StageId_Kapi_1, "VELJIKO", false},
+				{StageId_Kapi_1, "RBXJAMES", false},
+				{StageId_Kapi_1, "KNACKMASTER", false},
+				{StageId_Kapi_1, "BELLOWBOMB", false},
+				{StageId_Kapi_1, "SCISSOR", false},
+				{StageId_Kapi_1, "BLIKIEX", false},
+				{StageId_Kapi_1, "LUFFYDESTROYER", false},
+				{StageId_Kapi_1, "KYEVL", false},
+				{StageId_Kapi_1, "THEZOROFORCE", false},
+				{StageId_Kapi_1, "BLUECYANIDE", false},
+				{StageId_Kapi_1, "TREBLA", false},
+				{StageId_Kapi_1, "", false},
+				{StageId_Kapi_1, "		OG SPECIAL THANKS", false},
+				{StageId_Kapi_1, "SONIVV", false},
+				{StageId_Kapi_1, "SHADOW MARIO", false},
+				{StageId_Kapi_1, "RIVER OAKEN", false},
+				{StageId_Kapi_1, "BBPANZU", false},
+				{StageId_Kapi_1, "OPAL", false},
 			};
 			
 			//Initialize page
@@ -962,7 +1008,7 @@ void Menu_Tick(void)
 			
 			//Draw page label
 			menu.font_bold.draw(&menu.font_bold,
-				"MODS",
+				"CREDITS",
 				16,
 				SCREEN_HEIGHT - 32,
 				FontAlign_Left
@@ -991,6 +1037,7 @@ void Menu_Tick(void)
 						menu.select = 0;
 				}
 				
+				/*
 				//Select option if cross is pressed
 				if (pad_state.press & (PAD_START | PAD_CROSS))
 				{
@@ -1001,6 +1048,7 @@ void Menu_Tick(void)
 						menu.page_param.stage.diff = StageDiff_Hard;
 					Trans_Start();
 				}
+				*/
 				
 				//Return to main menu if circle is pressed
 				if (pad_state.press & PAD_CIRCLE)
