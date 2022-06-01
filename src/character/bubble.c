@@ -145,9 +145,14 @@ void Char_bubble_Tick(Character *character)
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_bubble_SetFrame);
     if (stage.song_step >= 113 && stage.song_step <= 116)
-	    Bubble_Draw(character, &this->tex, &char_bubble_frame[this->frame]);
+	    Bubble_DrawClear(character, &this->tex, &char_bubble_frame[this->frame]);
     if (stage.song_step >= 116)
 	    Bubble_Draw(character, &this->tex, &char_bubble_frame[this->frame]);
+
+	if (stage.song_step <= 113)
+		this->character.health_i = 10;
+	else
+		this->character.health_i = 7;
 }
 
 
@@ -188,7 +193,7 @@ Character *Char_bubble_New(fixed_t x, fixed_t y)
 	//Set character information
 	this->character.spec = 0;
 	
-	this->character.health_i = 7;
+	
 	
 	this->character.focus_x = FIXED_DEC(-142 - -120,1);
 	this->character.focus_y = FIXED_DEC(25 - 120,1);
