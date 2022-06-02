@@ -949,6 +949,7 @@ void Menu_Tick(void)
 				{StageId_Kapi_1, "UNSTOPABLE", false},
 				{StageId_Kapi_1, "IGORSOU", false},
 				{StageId_Kapi_1, "MR RUMBLE ROSES", false},
+				{StageId_Kapi_1, "NINTENDO BRO", false},
 				{StageId_Kapi_1, "", false},
 				{StageId_Kapi_1, "		OG PIBBY MOD", false},
 				{StageId_Kapi_1, "DAYYBLOOM", false},

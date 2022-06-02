@@ -167,7 +167,7 @@
 		3, 3,
 		XA_Blammed, 0,
 		
-		StageId_3_3, 0
+		StageId_4_1, STAGE_LOAD_OPPONENT2
 	},
 	
 	{ //StageId_4_1 (Brotherly-Bond)
@@ -185,7 +185,7 @@
 		4, 1,
 		XA_SatinPanties, 0,
 		
-		StageId_4_2, STAGE_LOAD_FLAG
+		StageId_4_2, STAGE_LOAD_OPPONENT | STAGE_LOAD_OPPONENT2
 	},
 	{ //StageId_4_2 (Gummy-Substance)
 		//Characters
@@ -202,7 +202,7 @@
 		4, 2,
 		XA_High, 2,
 		
-		StageId_4_3, STAGE_LOAD_FLAG
+		StageId_4_3, STAGE_LOAD_OPPONENT | STAGE_LOAD_OPPONENT2
 	},
 	{ //StageId_4_3 (together-forever)
 		//Characters
