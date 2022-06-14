@@ -351,7 +351,10 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
             if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1 || stage.stage_id == StageId_6_3)
             {
                 if (note->type & NOTE_FLAG_OPPONENT)
+				{
                     opponentsing = 1;
+					opponent2sing = 0;
+				}
 				else
 					opponentsing = 0;
             }
@@ -459,12 +462,16 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
 
-			if (note->type & NOTE_FLAG_OPPONENT)
+			if (stage.stage_id == StageId_4_3 || stage.stage_id == StageId_6_1 || stage.stage_id == StageId_6_3)
+            {
+                if (note->type & NOTE_FLAG_OPPONENT)
+                    {
                     opponent2sing = 1;
+					opponentsing = 0;
+					}
 				else
-				{
-				opponent2sing = 0;
-				}
+					opponent2sing = 0;
+            }
 			
 			if (stage.mode == StageMode_Swap)
 		    {      
@@ -473,10 +480,27 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			else
 				this->health -= 2000;
 
-			if (this->character->spec & CHAR_SPEC_MISSANIM)
-				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
-			else
-				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
+			if (stage.mode == StageMode_Swap && !(note->type & NOTE_FLAG_OPPONENT))
+			{
+			    if (opponentsing)
+			        if (stage.player->animatable.anim != CharAnim_DownAlt) 
+			            stage.player->set_anim(stage.player,  note_anims[type & 0x3][0]);
+			    if (stage.opponent2 != NULL && opponent2sing)
+			        if (stage.player->animatable.anim != CharAnim_DownAlt) 
+			            stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
+			}
+			if (stage.mode == StageMode_2P && note->type & NOTE_FLAG_OPPONENT)
+			{
+			    if (opponentsing)
+                    if (stage.opponent->animatable.anim != CharAnim_DownAlt) 
+                        stage.opponent->set_anim(stage.opponent,  note_anims[type & 0x3][0]);
+                if (stage.opponent2 != NULL && opponent2sing)
+                    if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
+                        stage.opponent2->set_anim(stage.opponent2,  note_anims[type & 0x3][0]);
+			}
+			else 
+			    if (this->character->animatable.anim != CharAnim_DownAlt) 
+			        this->character->set_anim(this->character, note_anims[type & 0x3][0]);
 			this->arrow_hitan[type & 0x3] = -1;
 			
 			return;
