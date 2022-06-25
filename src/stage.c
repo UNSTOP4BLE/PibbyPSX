@@ -2004,84 +2004,99 @@ void Stage_Tick(void)
 				case StageId_1_1:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_1_2:
 					if (stage.song_step >= 256)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_1_3:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_1_4:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_2_1:
 					if (stage.song_step >= 271)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_2_2:
 					if ((stage.song_step >= 256 && stage.song_step <= 768) || stage.song_step >= 1024)
 						hudbump = 1;
-					else 
-						hudbump = 0;
+					else hudbump = 0;
 				break; 
 				case StageId_2_3:
 					if (stage.song_step >= 256)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_3_1:
 					if (stage.song_step >= 130 && stage.song_step <= 1160)
 						hudbump = 1;
-					else 
-						hudbump = 0;
+					else hudbump = 0;
 				break; 
 				case StageId_3_2:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_3_3:
 					if (stage.song_step >= 32)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_4_1:
 					if (stage.song_step >= 256)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_4_2:
 					if (stage.song_step >= 128)
 						hudbump = 1; 
+					else hudbump = 0;
 				break; 
 				case StageId_4_3:
 					if (stage.song_step >= 32)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_5_1:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_5_2:
 					if (stage.song_step >= 128)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_5_3:
 					if (stage.song_step >= 256)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_6_1:
 					if (stage.song_step >= 0)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
 				case StageId_6_2:
 					if (stage.song_step >= 264)
 						hudbump = 1;
+					else hudbump = 0;
 				break;
 				case StageId_6_3:
 					if (stage.song_step >= 144)
 						hudbump = 1;
+					else hudbump = 0;
 				break; 
-				default:
+				default: hudbump = 0;
 				break;
 			}
 			FntPrint("%d %d \n\n\n\n\n\n\n\n\n%d", opponentsing, opponent2sing, stage.song_step);
