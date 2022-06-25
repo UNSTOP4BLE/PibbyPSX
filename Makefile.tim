@@ -1,6 +1,11 @@
 all: \
 	iso/menu/menu.arc \
 	iso/menu/loading.tim \
+	iso/menu/loading1.tim \
+	iso/menu/loading2.tim \
+	iso/menu/loading3.tim \
+	iso/menu/loading4.tim \
+	iso/menu/loading5.tim \
 	iso/font/boldfont.tim \
 	iso/font/arial.tim \
 	iso/stage/hud0.tim \

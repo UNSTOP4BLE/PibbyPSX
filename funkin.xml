@@ -24,6 +24,11 @@
 			<!-- Menu assets -->
 			<dir name = "menu">
 				<file name = "loading.tim" type = "data" source = "iso/menu/loading.tim"/>
+				<file name = "loading1.tim" type = "data" source = "iso/menu/loading1.tim"/>
+				<file name = "loading2.tim" type = "data" source = "iso/menu/loading2.tim"/>
+				<file name = "loading3.tim" type = "data" source = "iso/menu/loading3.tim"/>
+				<file name = "loading4.tim" type = "data" source = "iso/menu/loading4.tim"/>
+				<file name = "loading5.tim" type = "data" source = "iso/menu/loading5.tim"/>
 				<file name = "menu.arc" type = "data" source = "iso/menu/menu.arc"/>
 			</dir>
 			
