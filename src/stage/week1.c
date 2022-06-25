@@ -10,11 +10,6 @@
 #include "../mem.h"
 #include "../stage.h"
 
-
-
-#include "../pad.h"
-int x, y, w, h;
-
 //Week 1 background structure
 typedef struct
 {
@@ -32,28 +27,6 @@ void Back_Week1_DrawBG(StageBack *back)
 	Back_Week1 *this = (Back_Week1*)back;
 	
 	fixed_t fx, fy;
-
-		FntPrint("x%dy%dw%dh%d", x, y, w, h);
-
-	if (pad_state.held & PAD_LEFT)
-		x--;
-	if (pad_state.held & PAD_RIGHT)
-		x ++;
-	if (pad_state.held & PAD_UP)
-		y--;
-	if (pad_state.held & PAD_DOWN)
-		y++;
-
-	if (pad_state.held & PAD_SQUARE)
-		w--;
-	if (pad_state.held & PAD_CIRCLE)
-		w ++;
-	if (pad_state.held & PAD_TRIANGLE)
-		h--;
-	if (pad_state.held & PAD_CROSS)
-		h++;
-
-
 	
 	//Draw curtains
 	fx = (stage.camera.x * 5) >> 2;
