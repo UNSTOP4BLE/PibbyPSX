@@ -3291,11 +3291,20 @@ void Stage_Tick(void)
 			}
 
 			//Tick characters
-			stage.player->tick(stage.player);
-			if (stage.opponent2 != NULL)
-			stage.opponent2->tick(stage.opponent2);
-			stage.opponent->tick(stage.opponent);
-			
+			if(stage.mode == StageMode_Swap)
+			{
+				stage.opponent->tick(stage.opponent);
+				if (stage.opponent2 != NULL)
+				stage.opponent2->tick(stage.opponent2);
+				stage.player->tick(stage.player);
+			}
+			else
+			{
+				stage.player->tick(stage.player);
+				if (stage.opponent2 != NULL)
+				stage.opponent2->tick(stage.opponent2);
+				stage.opponent->tick(stage.opponent);
+			}
 			//Draw stage middle
 			if (stage.back->draw_md != NULL)
 				stage.back->draw_md(stage.back);
