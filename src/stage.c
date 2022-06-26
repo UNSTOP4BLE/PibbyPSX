@@ -974,7 +974,7 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 	};
 
 	if (stage.downscroll)
-		dst.y = -dst.y - dst.h;
+		dst.y = -dst.y - FIXED_DEC(6,1);
 	
 	dst.y += stage.noteshakey;
 	dst.x += stage.noteshakex;
@@ -1496,6 +1496,7 @@ static void Stage_LoadState(void)
 		stage.player_state[i].refresh_score = false;
 		stage.player_state[i].score = 0;
 		strcpy(stage.player_state[i].score_text, "0");
+		hudbump = 0;
 		
 		stage.player_state[i].pad_held = stage.player_state[i].pad_press = 0;
 	}
@@ -1979,6 +1980,9 @@ void Stage_Tick(void)
 				note_y[2] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
 				note_y[3] = FIXED_DEC(32 - SCREEN_HEIGHT2, 1);
 
+				stage.noteshakex = RandomRange(FIXED_DEC(-1,1),FIXED_DEC(1,1));
+				stage.noteshakey = RandomRange(FIXED_DEC(-1,1),FIXED_DEC(1,1));
+
 				stage.hudangle = 0;
 			}
 			if  ((stage.flag & STAGE_FLAG_JUST_STEP && hudbump))
@@ -2021,29 +2025,59 @@ void Stage_Tick(void)
 					if (switch_note == 0)
 					{
 						noteswap = 1;
-						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						if (stage.downscroll)
+						{
+							note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							
+							note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						}
+						else
+						{
+							note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
 
-						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						}
 					}
 					//2nd beat
 					else if (switch_note == 1)
 					{
 						noteswap = 2;
-						note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						
-						note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
-						note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						if (stage.downscroll)
+						{
+							note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+
+							note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						}
+						else
+						{
+							note_y[4] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(7,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[5] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(8,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[6] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(9,10))  - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[7] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(1,1))   - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							
+							note_y[0] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(11,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[1] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(12,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[2] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(13,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+							note_y[3] = FIXED_DEC(32,1) + (noteypos * FIXED_DEC(14,10)) - FIXED_DEC(15 + SCREEN_HEIGHT2,1);
+						}
 					}
 				}
 
@@ -2051,12 +2085,113 @@ void Stage_Tick(void)
 				switch_note = 0;
 			}
 
+			switch (stage.stage_id)
+			{
+				case StageId_1_1:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_1_2:
+					if (stage.song_step >= 256)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_1_3:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_1_4:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_2_1:
+					if (stage.song_step >= 271)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_2_2:
+					if ((stage.song_step >= 256 && stage.song_step <= 768) || stage.song_step >= 1024)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_2_3:
+					if (stage.song_step >= 256)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_3_1:
+					if (stage.song_step >= 130 && stage.song_step <= 1160)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_3_2:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_3_3:
+					if (stage.song_step >= 32)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_4_1:
+					if (stage.song_step >= 256)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_4_2:
+					if (stage.song_step >= 128)
+						hudbump = 1; 
+					else hudbump = 0;
+				break; 
+				case StageId_4_3:
+					if (stage.song_step >= 32)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_5_1:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_5_2:
+					if (stage.song_step >= 128)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_5_3:
+					if (stage.song_step >= 256)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_6_1:
+					if (stage.song_step >= 0)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				case StageId_6_2:
+					if (stage.song_step >= 264)
+						hudbump = 1;
+					else hudbump = 0;
+				break;
+				case StageId_6_3:
+					if (stage.song_step >= 144)
+						hudbump = 1;
+					else hudbump = 0;
+				break; 
+				default: hudbump = 0;
+				break;
+			}
 			FntPrint("%d %d \n\n\n\n\n\n\n\n\n%d", opponentsing, opponent2sing, stage.song_step);
+
 			if (stage.botplay == 1)
 			{
 				//Draw botplay
 				RECT bot_src = {174, 225, 67, 16};
-				RECT_FIXED bot_dst = {FIXED_DEC(-33 + 33,1), FIXED_DEC(-60 + 9,1), FIXED_DEC(67,1), FIXED_DEC(16,1)};
+				RECT_FIXED bot_dst = {FIXED_DEC(0,1), FIXED_DEC(-51,1), FIXED_DEC(67,1), FIXED_DEC(16,1)};
 
 				bot_dst.y += stage.noteshakey;
 				bot_dst.x += stage.noteshakex;
@@ -2064,17 +2199,29 @@ void Stage_Tick(void)
 				Stage_DrawTexRotate(&stage.tex_hud0, &bot_src, &bot_dst, stage.bump, stage.hudangle);
 			}
 
+			if (hudbump == 0) {
+				stage.noteshakex = RandomRange(FIXED_DEC(-1,1),FIXED_DEC(1,1));
+				stage.noteshakey = RandomRange(FIXED_DEC(-1,1),FIXED_DEC(1,1));
+			}
+			else
+			{
+				if (!noteshake)
+				{
+					stage.noteshakex = 0;
+					stage.noteshakey = 0;
+				}	
+			}
+
 			if (noteshake) 
 			{
 				stage.noteshakex = RandomRange(FIXED_DEC(-5,1),FIXED_DEC(5,1));
 				stage.noteshakey = RandomRange(FIXED_DEC(-5,1),FIXED_DEC(5,1));
 			}
-			else
+			else if (hudbump == 1)
 			{
 				stage.noteshakex = 0;
 				stage.noteshakey = 0;
 			}
-
 			//middle note x
 			if(stage.middlescroll)
 			{
