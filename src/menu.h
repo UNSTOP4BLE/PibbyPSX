@@ -8,6 +8,7 @@
 #define PSXF_GUARD_MENU_H
 
 #include "stage.h"
+#include "font.h"
 
 //Menu enums
 typedef enum
@@ -33,6 +34,76 @@ typedef enum
 	
 	MenuPage_Stage, //Changes game loop
 } MenuPage;
+
+
+//Menu state
+typedef struct
+{
+	//Menu state
+	u8 page, next_page;
+	boolean page_swap;
+	u8 select, next_select;
+	
+	fixed_t scroll;
+	fixed_t trans_time;
+	
+	//Page specific state
+	union
+	{
+		struct
+		{
+			u8 funny_message;
+		} opening;
+		struct
+		{
+			fixed_t logo_bump;
+			fixed_t fade, fadespd;
+		} title;
+		struct
+		{
+			fixed_t fade, fadespd;
+		} story;
+		struct
+		{
+			fixed_t back_r, back_g, back_b;
+		} freeplay;
+	#ifdef PSXF_NETWORK
+		struct
+		{
+			boolean type;
+			MenuStr port;
+			MenuStr pass;
+		} net_host;
+		struct
+		{
+			boolean type;
+			MenuStr ip;
+			MenuStr port;
+			MenuStr pass;
+		} net_join;
+		struct
+		{
+			boolean swap;
+		} net_op;
+	#endif
+	} page_state;
+	
+	union
+	{
+		struct
+		{
+			u8 id, diff;
+			boolean story;
+		} stage;
+	} page_param;
+	
+	//Menu assets
+	Gfx_Tex tex_back, tex_ng, tex_story, tex_title, tex_icon;
+	FontData font_bold, font_arial;
+
+	Character *bf; //Title Girlfriend
+} Menu;
+extern Menu menu;
 
 //Menu functions
 void Menu_Load(MenuPage page);

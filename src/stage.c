@@ -24,7 +24,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-//#define STAGE_FREECAM //Freecam
+#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF

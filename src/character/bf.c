@@ -171,7 +171,7 @@ void Char_BF_Tick(Character *character)
 	fy = stage.camera.y;
 
 	fixed_t beat_bop;
-	if ((stage.song_step & 0x3) == 0)
+	if ((stage.song_step & 0x7) == 0)
 		beat_bop = FIXED_UNIT - ((stage.note_scroll / 24) & FIXED_LAND);
 	else
 		beat_bop = 0;

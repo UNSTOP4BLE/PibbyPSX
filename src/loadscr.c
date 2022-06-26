@@ -13,6 +13,8 @@
 #include "trans.h"
 #include "network.h"
 #include "stage.h"
+#include "menu.h"
+
 
 //Loading screen functions
 void LoadScr_Start(void)
@@ -32,15 +34,15 @@ void LoadScr_Start(void)
 	Gfx_Tex loading_tex;
 	Gfx_SetClear(202, 255, 77);
 
-	if (stage.stage_id >= StageId_3_3 && stage.stage_id <= StageId_6_3)
+	if (menu.page_param.stage.id >= StageId_3_3 && menu.page_param.stage.id <= StageId_6_3)
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING5.TIM;1"), GFX_LOADTEX_FREE);
-	else if (stage.stage_id == StageId_3_2)
+	else if (menu.page_param.stage.id == StageId_3_2)
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING4.TIM;1"), GFX_LOADTEX_FREE);
-	else if (stage.stage_id == StageId_3_1)
+	else if (menu.page_param.stage.id == StageId_3_1)
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING3.TIM;1"), GFX_LOADTEX_FREE);
-	else if (stage.stage_id == StageId_2_3)
+	else if (menu.page_param.stage.id == StageId_2_3)
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING2.TIM;1"), GFX_LOADTEX_FREE);
-	else if (stage.stage_id == StageId_2_2)
+	else if (menu.page_param.stage.id == StageId_2_2)
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING1.TIM;1"), GFX_LOADTEX_FREE);
 	else
 		Gfx_LoadTex(&loading_tex, IO_Read("\\MENU\\LOADING.TIM;1"), GFX_LOADTEX_FREE);
@@ -52,9 +54,11 @@ void LoadScr_Start(void)
 	
 	while (!Trans_Idle())
 	{
+
 		//Draw loading screen and end frame
 		Timer_Tick();
 		Trans_Tick();
+
 		Gfx_DrawTex(&loading_tex, &pibby_src, &pibby_dst);
 		Gfx_DrawTex(&loading_tex, &loading_src, &loading_dst);
 		Gfx_DrawTex(&loading_tex, &back_src, &back_dst);
