@@ -2344,31 +2344,6 @@ void Stage_Tick(void)
 					}
 			
 					//anim shit
-					if (stage.mode == StageMode_Swap)
-					{		
-						if (opponent_anote != CharAnim_Idle)
-						{
-							if (opponentsing)
-								if (stage.player->animatable.anim != CharAnim_DownAlt) 
-									stage.player->set_anim(stage.player, opponent_anote);
-							if (stage.opponent2 != NULL && opponent2sing)
-								if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
-									stage.opponent2->set_anim(stage.opponent2, opponent_anote);
-				            
-						}
-						else if (opponent_snote != CharAnim_Idle)
-						{
-							if (opponentsing)
-								if (stage.player->animatable.anim != CharAnim_DownAlt) 
-									stage.player->set_anim(stage.player, opponent_snote);
-							if (stage.opponent2 != NULL && opponent2sing)
-								if (stage.opponent2->animatable.anim != CharAnim_DownAlt) 
-									stage.opponent2->set_anim(stage.opponent2, opponent_snote);
-				          
-						}
-					}
-					else
-					{
 						if (opponent_anote != CharAnim_Idle)
 						{
 							if (opponentsing)
@@ -2393,7 +2368,6 @@ void Stage_Tick(void)
 										stage.opponent2->set_anim(stage.opponent2, opponent_snote);
 				            }
 						}
-					}
 
 					break;
 
