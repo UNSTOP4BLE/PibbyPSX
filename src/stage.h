@@ -96,10 +96,10 @@ typedef enum
 typedef enum
 {
 	StageMode_Normal,
-	StageMode_Swap,
 	StageMode_2P,
 	StageMode_Net1,
 	StageMode_Net2,
+	StageMode_Swap,
 } StageMode;
 
 typedef enum

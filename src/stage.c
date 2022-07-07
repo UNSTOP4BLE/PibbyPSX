@@ -24,7 +24,7 @@
 
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
-#define STAGE_FREECAM //Freecam
+//#define STAGE_FREECAM //Freecam
 
 static int note_x[8] = {
 	//BF
@@ -472,8 +472,8 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 				fadeswitch = 1;
 
 			//anim shit
-            //stage.opponent->set_anim(stage.opponent, CharAnim_DownAlt); //slash anim
-            //stage.player->set_anim(stage.player, CharAnim_DownAlt); //dodge anim
+            stage.opponent->set_anim(stage.opponent, CharAnim_DownAlt); //slash anim
+            stage.player->set_anim(stage.player, CharAnim_DownAlt); //dodge anim
 			
             this->arrow_hitan[type & 0x3] = -1;
 			
@@ -2185,7 +2185,7 @@ void Stage_Tick(void)
 				default: hudbump = 0;
 				break;
 			}
-			FntPrint("%d %d \n\n\n\n\n\n\n\n\n%d", opponentsing, opponent2sing, stage.song_step);
+			//FntPrint("%d %d \n\n\n\n\n\n\n\n\n%d", opponentsing, opponent2sing, stage.song_step);
 
 			if (stage.botplay == 1)
 			{
@@ -2956,8 +2956,8 @@ void Stage_Tick(void)
 				if (stage.player_state[0].health > 20000)
 					stage.player_state[0].health = 20000;
 
-				if (stage.player_state[0].health <= 0 && stage.practice)
-					stage.player_state[0].health = 0;
+				if (stage.player_state[0].health <= 5 && stage.practice)
+					stage.player_state[0].health = 5;
 				
 				//Draw health heads
 				Stage_DrawHealth(stage.player_state[0].health, stage.player->health_i,    1);

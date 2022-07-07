@@ -1025,7 +1025,7 @@ void Menu_Tick(void)
 		}
 		case MenuPage_Options:
 		{
-			static const char *gamemode_strs[] = {"NORMAL", "SWAP", "TWO PLAYER"};
+			static const char *gamemode_strs[] = {"NORMAL", "TWO PLAYER"};
 			static const struct
 			{
 				enum
