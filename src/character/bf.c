@@ -194,10 +194,10 @@ void Char_BF_Tick(Character *character)
 			lbop_p->dst.w + (beat_bop << 2),
 			lbop_p->dst.h - (beat_bop << 3),
 		};
-		if (stage.player_state[0].health != 0 && stage.mode != StageMode_2P)
+		if (stage.player_state[0].health != 0)
 			Stage_DrawTex(&stage.tex_pibby, &lbop_p->src, &lbop_dst, stage.camera.bzoom);
 	}
-
+	
 	//Handle animation updates
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0 ||
 	    (character->animatable.anim != CharAnim_Left &&
